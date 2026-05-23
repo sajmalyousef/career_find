@@ -31,7 +31,6 @@ const outcomes = [
   '3–4 career paths that actually fit your personality',
   "Honest reasons why certain popular careers aren't right for you",
   'Colleges matched to your top career — with fees and entrance exams',
-  'Your Big Five personality profile explained in plain language',
 ];
 
 export default function Home() {
@@ -86,7 +85,7 @@ export default function Home() {
             </Link>
           </div>
           <p style={{ marginTop: '1rem', fontSize: '0.8rem', color: 'rgba(255,250,243,0.4)' }}>
-            Big Five + RIASEC framework · Instant results
+            Science-backed · Instant results
           </p>
         </div>
       </section>
@@ -163,7 +162,7 @@ export default function Home() {
       {/* ─── Footer ─── */}
       <footer style={{ background: 'var(--bark)', borderTop: '1px solid rgba(255,250,243,0.06)', padding: '2rem 1.5rem', textAlign: 'center' }}>
         <p style={{ fontSize: '0.8rem', color: 'var(--bark-mid)' }}>
-          Built for India&apos;s students · Big Five + RIASEC framework
+          Built for India&apos;s students
         </p>
       </footer>
     </main>
