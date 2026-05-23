@@ -7,12 +7,12 @@ export interface BigFiveScores {
 }
 
 export interface RIASECScores {
-  R: number; // Realistic
-  I: number; // Investigative
-  A: number; // Artistic
-  S: number; // Social
+  R: number;  // Realistic
+  I: number;  // Investigative
+  Ar: number; // Artistic (renamed from A to avoid collision with BigFive Agreeableness)
+  S: number;  // Social
   En: number; // Enterprising
-  C: number; // Conventional
+  Cv: number; // Conventional (renamed from C to avoid collision with BigFive Conscientiousness)
 }
 
 export interface LifestyleInputs {
@@ -45,7 +45,7 @@ export function scoreBigFive(answers: SessionAnswers): BigFiveScores {
 }
 
 export function scoreRIASEC(answers: SessionAnswers): RIASECScores {
-  const scores: RIASECScores = { R: 0, I: 0, A: 0, S: 0, En: 0, C: 0 };
+  const scores: RIASECScores = { R: 0, I: 0, Ar: 0, S: 0, En: 0, Cv: 0 };
   for (const answer of Object.values(answers)) {
     for (const [trait, val] of Object.entries(answer.traits)) {
       if (trait in scores) {
@@ -101,10 +101,10 @@ export function getRIASECLabel(code: string): string {
   const labels: Record<string, string> = {
     R: 'Realistic (hands-on doer)',
     I: 'Investigative (thinker & researcher)',
-    A: 'Artistic (creative & expressive)',
+    Ar: 'Artistic (creative & expressive)',
     S: 'Social (helper & communicator)',
     En: 'Enterprising (leader & persuader)',
-    C: 'Conventional (organiser & planner)',
+    Cv: 'Conventional (organiser & planner)',
   };
   return labels[code] ?? code;
 }

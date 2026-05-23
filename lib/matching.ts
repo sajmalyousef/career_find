@@ -136,10 +136,10 @@ function scoreCareer(
 const RIASEC_PHRASES: Record<string, string> = {
   R: 'your hands-on, build-it mindset',
   I: 'your deep curiosity and love for research',
-  A: 'your creative and expressive instincts',
+  Ar: 'your creative and expressive instincts',
   S: 'your natural warmth and ability to connect with people',
   En: 'your drive to lead, persuade, and make things happen',
-  C: 'your precision and love for structure and systems',
+  Cv: 'your precision and love for structure and systems',
 };
 
 const BIG_FIVE_HIGH_PHRASES: Record<string, string> = {
@@ -301,8 +301,8 @@ function findWorstMismatch(
     if (val < 0) {
       const codeNames: Record<string, string> = {
         R: 'Realistic (hands-on work)', I: 'Investigative (research & analysis)',
-        A: 'Artistic (creative work)', S: 'Social (people-focused work)',
-        En: 'Enterprising (leadership & persuasion)', C: 'Conventional (structured systems)',
+        Ar: 'Artistic (creative work)', S: 'Social (people-focused work)',
+        En: 'Enterprising (leadership & persuasion)', Cv: 'Conventional (structured systems)',
       };
       return {
         trait: `low interest in ${codeNames[code] ?? code}`,
@@ -399,8 +399,8 @@ function buildProfileSummary(
 ): string {
   const topR = getTopRIASEC(riasec, 2);
   const riasecNames: Record<string, string> = {
-    R: 'Realistic', I: 'Investigative', A: 'Artistic',
-    S: 'Social', En: 'Enterprising', C: 'Conventional',
+    R: 'Realistic', I: 'Investigative', Ar: 'Artistic',
+    S: 'Social', En: 'Enterprising', Cv: 'Conventional',
   };
 
   const profileType = topR.map((c) => riasecNames[c]).join('-');
@@ -514,10 +514,10 @@ function buildPersonalityHighlights(bigFive: BigFiveScores, riasec: RIASECScores
   const riasecDesc: Record<string, string> = {
     R: 'You\'re a hands-on builder — you understand things best by doing them, not just reading about them.',
     I: 'You\'re wired to investigate. Give you a problem to dig into and you\'ll stay up past midnight on it.',
-    A: 'Creativity isn\'t just a hobby for you — it\'s how you process and express the world.',
+    Ar: 'Creativity isn\'t just a hobby for you — it\'s how you process and express the world.',
     S: 'You genuinely care about people and naturally draw others to you. That\'s rare.',
     En: 'You\'re a natural mover — persuasive, energetic, and drawn to leadership whether you ask for it or not.',
-    C: 'You bring order to chaos. People rely on you to be the one who actually plans and follows through.',
+    Cv: 'You bring order to chaos. People rely on you to be the one who actually plans and follows through.',
   };
 
   for (const code of topR) {
@@ -592,7 +592,7 @@ export function computeResults(
   }
 
   const topCareers = topFour.map((x) => x.career);
-  const colleges = matchColleges(topCareers, lifestyle, true);
+  const colleges = matchColleges([topCareers[0]], lifestyle, true);
   const profileSummary = buildProfileSummary(bigFive, riasec, topCareers);
   const personalityHighlights = buildPersonalityHighlights(bigFive, riasec);
   const topRIASEC = getTopRIASEC(riasec, 2);
