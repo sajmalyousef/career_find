@@ -27,15 +27,6 @@ interface Block {
   questions: Question[];
 }
 
-interface ChatMessage {
-  id: string;
-  role: 'aarav' | 'user';
-  content: string;
-  options?: Option[];
-  questionId?: string;
-  type?: string;
-}
-
 interface SessionAnswers {
   [questionId: string]: {
     label: string;
@@ -58,24 +49,26 @@ function pickQuestionsForSession(blocks: Block[]): Question[] {
   });
 }
 
-const BLOCK_INTROS: Record<string, string> = {
-  A: "Let's start with some real-life scenarios. No right or wrong answers — just be honest.",
-  B: "Now let's figure out what kind of work actually excites you.",
-  C: "Quick practical stuff — helps me find colleges that suit your situation.",
-  D: "Last section! Tell me what you want your life to actually look like.",
+const BLOCK_LABELS: Record<string, { label: string; emoji: string }> = {
+  A: { label: 'About You', emoji: '🧠' },
+  B: { label: 'Your Interests', emoji: '✨' },
+  C: { label: 'Your Situation', emoji: '🎯' },
+  D: { label: 'Your Future', emoji: '🌅' },
 };
 
 const serif = "var(--font-serif), 'Instrument Serif', serif";
 
+type CardState = 'intro' | 'block-intro' | 'question' | 'loading';
+
 export default function AssessPage() {
   const router = useRouter();
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<SessionAnswers>({});
-  const [loading, setLoading] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardState, setCardState] = useState<CardState>('intro');
+  const [pendingBlockId, setPendingBlockId] = useState<string | null>(null);
+  const [animating, setAnimating] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const initialized = useRef(false);
   const sessionQuestions = useRef<Question[]>([]);
 
@@ -84,187 +77,210 @@ export default function AssessPage() {
   }
   const allQuestions = sessionQuestions.current;
 
-  const addMessage = (msg: ChatMessage, delay = 0) => {
-    setTimeout(() => {
-      setMessages((prev) => [...prev, { ...msg, id: `${msg.id}-${Date.now()}` }]);
-      setIsTyping(false);
-    }, delay);
-  };
-
-  const showNextQuestion = (index: number, prevBlock?: string) => {
-    if (index >= allQuestions.length) {
-      setIsTyping(true);
-      addMessage({ id: 'done', role: 'aarav', content: "That's everything! Give me a moment — building your career map now. 🗺️" }, 800);
-      return;
-    }
-    const q = allQuestions[index];
-    const currentBlock = allBlocks.find((b) => b.questions.some((qb) => qb.id === q.id))?.id;
-    if (currentBlock && currentBlock !== prevBlock) {
-      const intro = BLOCK_INTROS[currentBlock];
-      if (intro) {
-        setIsTyping(true);
-        setTimeout(() => {
-          setIsTyping(false);
-          addMessage({ id: `block-${currentBlock}`, role: 'aarav', content: intro });
-          setIsTyping(true);
-          setTimeout(() => {
-            setIsTyping(false);
-            addMessage({ id: q.id, role: 'aarav', content: q.text, options: q.options, questionId: q.id, type: q.type });
-          }, 600);
-        }, 800);
-        return;
-      }
-    }
-    setIsTyping(true);
-    addMessage({ id: q.id, role: 'aarav', content: q.text, options: q.options, questionId: q.id, type: q.type }, 600);
-  };
-
   useEffect(() => {
     if (initialized.current) return;
     initialized.current = true;
-    setIsTyping(true);
-    setTimeout(() => {
-      setIsTyping(false);
-      addMessage({ id: 'intro1', role: 'aarav', content: "Hey! I'm Aarav 👋 I'm going to help you figure out which careers actually match who you are." });
-      setIsTyping(true);
-      setTimeout(() => {
-        setIsTyping(false);
-        addMessage({
-          id: 'intro2', role: 'aarav',
-          content: "This takes about 8 minutes. Answer honestly — the more real you are, the better your results. Ready?",
-          options: [{ label: "Let's go! 🚀", traits: {}, value: 'ready' }],
-          questionId: 'intro', type: 'choice',
-        });
-      }, 1000);
-    }, 800);
+    setCardState('intro');
   }, []);
 
-  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages, isTyping]);
+  const advance = (nextState: CardState, fn: () => void) => {
+    setAnimating(true);
+    setTimeout(() => {
+      fn();
+      setCardState(nextState);
+      setAnimating(false);
+      setSelectedOption(null);
+    }, 280);
+  };
 
-  const handleAnswer = async (option: Option, questionId: string) => {
-    if (submitted) return;
-    addMessage({ id: `ans-${questionId}`, role: 'user', content: option.label });
-    if (questionId === 'intro') { showNextQuestion(0, undefined); return; }
+  const getBlockForIndex = (idx: number) =>
+    allBlocks.find((b) => b.questions.some((q) => q.id === allQuestions[idx]?.id))?.id ?? null;
 
-    const newAnswers = { ...answers, [questionId]: { label: option.label, traits: option.traits, value: option.value } };
+  const handleStart = () => {
+    const firstBlock = getBlockForIndex(0);
+    advance('block-intro', () => setPendingBlockId(firstBlock));
+  };
+
+  const handleBlockContinue = () => {
+    advance('question', () => {});
+  };
+
+  const handleAnswer = async (option: Option) => {
+    if (animating) return;
+    const q = allQuestions[currentIndex];
+    setSelectedOption(option.label);
+
+    const newAnswers = { ...answers, [q.id]: { label: option.label, traits: option.traits, value: option.value } };
     setAnswers(newAnswers);
-    const newIndex = currentIndex + 1;
-    setCurrentIndex(newIndex);
 
-    const prevQ = allQuestions[currentIndex];
-    const prevBlock = allBlocks.find((b) => b.questions.some((qb) => qb.id === prevQ?.id))?.id;
+    const newIndex = currentIndex + 1;
 
     if (newIndex >= allQuestions.length) {
-      setSubmitted(true);
-      setIsTyping(true);
-      addMessage({ id: 'done', role: 'aarav', content: "That's everything! Building your career map now… 🗺️" }, 600);
+      setAnimating(true);
       setTimeout(() => {
-        try {
-          const bigFive = scoreBigFive(newAnswers);
-          const riasec = scoreRIASEC(newAnswers);
-          const lifestyle = extractLifestyle(newAnswers);
-          const result = computeResults(bigFive, riasec, lifestyle);
-          sessionStorage.setItem('careerResults', JSON.stringify({ result, bigFive, riasec, lifestyle }));
-          router.push('/results');
-        } catch (err) {
-          setLoading(false);
-          setIsTyping(false);
-          const detail = err instanceof Error ? err.message : 'Unknown error';
-          addMessage({ id: 'error', role: 'aarav', content: `Something went wrong. ${detail}. Please refresh and try again.` }, 0);
-        }
-      }, 1200);
+        setCardState('loading');
+        setAnimating(false);
+        setTimeout(() => {
+          try {
+            const bigFive = scoreBigFive(newAnswers);
+            const riasec = scoreRIASEC(newAnswers);
+            const lifestyle = extractLifestyle(newAnswers);
+            const result = computeResults(bigFive, riasec, lifestyle);
+            sessionStorage.setItem('careerResults', JSON.stringify({ result, bigFive, riasec, lifestyle }));
+            router.push('/results');
+          } catch (err) {
+            const detail = err instanceof Error ? err.message : 'Unknown error';
+            setError(detail);
+            setCardState('question');
+          }
+        }, 1200);
+      }, 280);
+      return;
+    }
+
+    const prevBlock = getBlockForIndex(currentIndex);
+    const nextBlock = getBlockForIndex(newIndex);
+
+    if (nextBlock && nextBlock !== prevBlock) {
+      advance('block-intro', () => {
+        setCurrentIndex(newIndex);
+        setPendingBlockId(nextBlock);
+      });
     } else {
-      showNextQuestion(newIndex, prevBlock);
+      advance('question', () => setCurrentIndex(newIndex));
     }
   };
 
   const progress = Math.round((currentIndex / allQuestions.length) * 100);
+  const currentQ = allQuestions[currentIndex];
+  const blockId = cardState === 'block-intro' ? pendingBlockId : getBlockForIndex(currentIndex);
+  const blockMeta = blockId ? BLOCK_LABELS[blockId] : null;
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: 'var(--bark)' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bark)', display: 'flex', flexDirection: 'column' }}>
 
-      {/* Header */}
-      <header style={{ background: 'rgba(26,18,7,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(255,250,243,0.06)', padding: '0.875rem 1rem', position: 'sticky', top: 0, zIndex: 10 }}>
-        <div style={{ maxWidth: 640, margin: '0 auto', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bark)', fontWeight: 700, fontSize: '0.85rem', fontFamily: serif, flexShrink: 0 }}>A</div>
-          <div style={{ flex: 1 }}>
-            <p style={{ fontFamily: serif, fontSize: '1rem', color: 'var(--cream)', margin: 0, lineHeight: 1 }}>Aarav</p>
-            <p style={{ fontSize: '0.72rem', color: 'var(--warm-gray)', margin: 0, marginTop: 2 }}>Career Guide · CareerFind</p>
-          </div>
-          <div style={{ textAlign: 'right' }}>
-            <p style={{ fontSize: '0.72rem', color: 'var(--warm-gray)', margin: 0, marginBottom: 4 }}>{currentIndex}/{allQuestions.length}</p>
-            <div style={{ width: 80, height: 3, background: 'rgba(255,250,243,0.1)', borderRadius: 2 }}>
-              <div style={{ width: `${progress}%`, height: '100%', background: 'var(--amber)', borderRadius: 2, transition: 'width 0.5s ease' }} />
+      {/* Progress bar */}
+      {cardState !== 'intro' && cardState !== 'loading' && (
+        <div style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 20, background: 'rgba(26,18,7,0.9)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(255,250,243,0.06)', padding: '0.875rem 1.25rem' }}>
+          <div style={{ maxWidth: 480, margin: '0 auto' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+              <span style={{ fontFamily: serif, fontSize: '0.82rem', color: 'var(--amber)', letterSpacing: '0.04em' }}>CareerFind</span>
+              <span style={{ fontSize: '0.72rem', color: 'rgba(255,250,243,0.35)', fontVariantNumeric: 'tabular-nums' }}>
+                {currentIndex} / {allQuestions.length}
+              </span>
+            </div>
+            <div style={{ height: 3, background: 'rgba(255,250,243,0.08)', borderRadius: 2 }}>
+              <div style={{ height: '100%', width: `${progress}%`, background: 'var(--amber)', borderRadius: 2, transition: 'width 0.5s cubic-bezier(0.4,0,0.2,1)' }} />
             </div>
           </div>
         </div>
-      </header>
+      )}
 
-      {/* Chat */}
-      <div style={{ flex: 1, overflowY: 'auto', padding: '1.25rem 1rem' }}>
-        <div style={{ maxWidth: 640, margin: '0 auto' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', paddingBottom: '1rem' }}>
-            {messages.map((msg) => (
-              <div key={msg.id} className="chat-bubble-enter" style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
-                {msg.role === 'aarav' && (
-                  <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bark)', fontSize: '0.75rem', fontWeight: 700, marginRight: '0.5rem', marginTop: 4, flexShrink: 0 }}>A</div>
-                )}
-                <div style={{ maxWidth: '82%', display: 'flex', flexDirection: 'column', gap: 8, alignItems: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
-                  <div style={{
-                    padding: '0.75rem 1rem', borderRadius: msg.role === 'aarav' ? '4px 16px 16px 16px' : '16px 4px 16px 16px',
-                    fontSize: '0.9rem', lineHeight: 1.6,
-                    background: msg.role === 'aarav' ? 'rgba(255,250,243,0.06)' : 'var(--amber)',
-                    color: msg.role === 'aarav' ? 'rgba(255,250,243,0.88)' : 'var(--bark)',
-                    border: msg.role === 'aarav' ? '1px solid rgba(255,250,243,0.08)' : 'none',
-                    fontWeight: msg.role === 'user' ? 600 : 400,
-                  }}>
-                    {msg.content}
-                  </div>
+      {/* Card area */}
+      <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: cardState !== 'intro' && cardState !== 'loading' ? '5rem 1.25rem 2rem' : '2rem 1.25rem' }}>
+        <div
+          style={{
+            width: '100%', maxWidth: 480,
+            opacity: animating ? 0 : 1,
+            transform: animating ? 'translateY(16px) scale(0.98)' : 'translateY(0) scale(1)',
+            transition: 'opacity 0.28s ease, transform 0.28s ease',
+          }}
+        >
 
-                  {msg.options && msg.questionId && (
-                    ((!answers[msg.questionId] && msg.questionId !== 'intro') ||
-                    (msg.questionId === 'intro' && messages.filter(m => m.role === 'user').length === 0))
-                  ) && (
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: 4 }}>
-                      {msg.type === 'image_choice'
-                        ? msg.options.map((opt, i) => (
-                            <button key={i} onClick={() => msg.questionId && handleAnswer(opt, msg.questionId)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,250,243,0.05)', border: '1px solid rgba(255,250,243,0.1)', color: 'rgba(255,250,243,0.82)', fontSize: '0.85rem', padding: '0.6rem 0.875rem', borderRadius: 10, cursor: 'pointer', fontFamily: 'inherit' }}>
-                              <span style={{ fontSize: '1.2rem' }}>{opt.emoji}</span>
-                              <span>{opt.label}</span>
-                            </button>
-                          ))
-                        : msg.options.map((opt, i) => (
-                            <button key={i} onClick={() => msg.questionId && handleAnswer(opt, msg.questionId)} style={{ background: 'rgba(255,250,243,0.05)', border: '1px solid rgba(255,250,243,0.1)', color: 'rgba(255,250,243,0.82)', fontSize: '0.85rem', padding: '0.6rem 0.875rem', borderRadius: 10, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit', lineHeight: 1.4 }}>
-                              {opt.label}
-                            </button>
-                          ))
-                      }
-                    </div>
-                  )}
-                </div>
+          {/* Intro card */}
+          {cardState === 'intro' && (
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ width: 72, height: 72, borderRadius: '50%', background: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', fontSize: '1.75rem' }}>🧭</div>
+              <h1 style={{ fontFamily: serif, fontSize: '2rem', color: 'var(--cream)', margin: '0 0 0.75rem', lineHeight: 1.2 }}>What career was<br />made for you?</h1>
+              <p style={{ fontSize: '0.92rem', color: 'rgba(255,250,243,0.55)', lineHeight: 1.7, margin: '0 0 2.5rem', maxWidth: 320, marginLeft: 'auto', marginRight: 'auto' }}>
+                Answer 20 questions honestly — we'll match your personality and interests to real careers.
+              </p>
+              <div style={{ display: 'flex', gap: '0.75rem', marginBottom: '1.25rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                {['~8 min', '4 sections', 'No sign-up'].map((badge) => (
+                  <span key={badge} style={{ fontSize: '0.75rem', padding: '0.35rem 0.75rem', background: 'rgba(255,250,243,0.06)', border: '1px solid rgba(255,250,243,0.1)', borderRadius: 20, color: 'rgba(255,250,243,0.5)' }}>{badge}</span>
+                ))}
               </div>
-            ))}
+              <button onClick={handleStart} style={{ width: '100%', padding: '1rem', background: 'var(--amber)', color: 'var(--bark)', fontFamily: 'inherit', fontWeight: 700, fontSize: '1rem', border: 'none', borderRadius: 14, cursor: 'pointer', letterSpacing: '0.01em' }}>
+                Start your career map →
+              </button>
+            </div>
+          )}
 
-            {isTyping && (
-              <div className="chat-bubble-enter" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bark)', fontSize: '0.75rem', fontWeight: 700, flexShrink: 0 }}>A</div>
-                <div style={{ background: 'rgba(255,250,243,0.06)', border: '1px solid rgba(255,250,243,0.08)', borderRadius: '4px 16px 16px 16px', padding: '0.75rem 1rem', display: 'flex', gap: 6, alignItems: 'center' }}>
-                  <span className="typing-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--warm-gray)', display: 'inline-block' }} />
-                  <span className="typing-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--warm-gray)', display: 'inline-block' }} />
-                  <span className="typing-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--warm-gray)', display: 'inline-block' }} />
-                </div>
+          {/* Block intro card */}
+          {cardState === 'block-intro' && blockMeta && (
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{blockMeta.emoji}</div>
+              <p style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--amber)', textTransform: 'uppercase', letterSpacing: '0.12em', margin: '0 0 0.5rem' }}>
+                Section {Object.keys(BLOCK_LABELS).indexOf(blockId!) + 1} of 4
+              </p>
+              <h2 style={{ fontFamily: serif, fontSize: '1.75rem', color: 'var(--cream)', margin: '0 0 0.875rem' }}>{blockMeta.label}</h2>
+              <p style={{ fontSize: '0.88rem', color: 'rgba(255,250,243,0.5)', lineHeight: 1.7, margin: '0 0 2.5rem' }}>
+                {blockId === 'A' && 'Real-life scenarios. No right or wrong — just be honest.'}
+                {blockId === 'B' && 'What kind of work actually excites you?'}
+                {blockId === 'C' && 'Quick practical details to personalise your results.'}
+                {blockId === 'D' && 'Last section — tell us what you want your life to look like.'}
+              </p>
+              <button onClick={handleBlockContinue} style={{ width: '100%', padding: '1rem', background: 'rgba(255,250,243,0.07)', color: 'var(--cream)', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.95rem', border: '1px solid rgba(255,250,243,0.12)', borderRadius: 14, cursor: 'pointer' }}>
+                Let's go →
+              </button>
+            </div>
+          )}
+
+          {/* Question card */}
+          {cardState === 'question' && currentQ && (
+            <div>
+              {blockMeta && (
+                <p style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--amber)', textTransform: 'uppercase', letterSpacing: '0.12em', margin: '0 0 1.25rem', opacity: 0.7 }}>
+                  {blockMeta.emoji} {blockMeta.label}
+                </p>
+              )}
+              <h2 style={{ fontFamily: serif, fontSize: '1.45rem', color: 'var(--cream)', lineHeight: 1.4, margin: '0 0 1.75rem' }}>
+                {currentQ.text}
+              </h2>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
+                {currentQ.options.map((opt, i) => {
+                  const isSelected = selectedOption === opt.label;
+                  return (
+                    <button
+                      key={i}
+                      onClick={() => handleAnswer(opt)}
+                      disabled={!!selectedOption}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: '0.75rem',
+                        width: '100%', padding: '1rem 1.1rem',
+                        background: isSelected ? 'var(--amber)' : 'rgba(255,250,243,0.05)',
+                        border: `1.5px solid ${isSelected ? 'var(--amber)' : 'rgba(255,250,243,0.1)'}`,
+                        borderRadius: 12, cursor: selectedOption ? 'default' : 'pointer',
+                        textAlign: 'left', fontFamily: 'inherit',
+                        color: isSelected ? 'var(--bark)' : 'rgba(255,250,243,0.85)',
+                        fontSize: '0.9rem', lineHeight: 1.4, fontWeight: isSelected ? 600 : 400,
+                        transition: 'all 0.18s ease',
+                        transform: isSelected ? 'scale(1.01)' : 'scale(1)',
+                      }}
+                    >
+                      {opt.emoji && <span style={{ fontSize: '1.25rem', flexShrink: 0 }}>{opt.emoji}</span>}
+                      <span>{opt.label}</span>
+                    </button>
+                  );
+                })}
               </div>
-            )}
 
-            {loading && (
-              <div style={{ textAlign: 'center', padding: '2rem 0' }}>
-                <div style={{ width: 40, height: 40, border: '3px solid rgba(255,250,243,0.1)', borderTopColor: 'var(--amber)', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto 0.75rem' }} />
-                <p style={{ fontSize: '0.85rem', color: 'var(--warm-gray)' }}>Analysing your profile…</p>
-              </div>
-            )}
+              {error && (
+                <p style={{ fontSize: '0.8rem', color: '#f87171', marginTop: '1rem', textAlign: 'center' }}>{error}</p>
+              )}
+            </div>
+          )}
 
-            <div ref={bottomRef} />
-          </div>
+          {/* Loading card */}
+          {cardState === 'loading' && (
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ width: 56, height: 56, border: '3px solid rgba(255,250,243,0.08)', borderTopColor: 'var(--amber)', borderRadius: '50%', animation: 'spin 0.9s linear infinite', margin: '0 auto 1.5rem' }} />
+              <h2 style={{ fontFamily: serif, fontSize: '1.5rem', color: 'var(--cream)', margin: '0 0 0.5rem' }}>Building your career map…</h2>
+              <p style={{ fontSize: '0.85rem', color: 'rgba(255,250,243,0.4)' }}>Analysing your personality and interests</p>
+            </div>
+          )}
+
         </div>
       </div>
     </div>
