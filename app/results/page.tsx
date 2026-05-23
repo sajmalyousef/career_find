@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import type { BigFiveScores, RIASECScores } from '@/lib/scoring';
-import { getBigFiveLabel, getRIASECLabel } from '@/lib/scoring';
+import { getRIASECLabel } from '@/lib/scoring';
 
 interface CareerResult {
   id: string;
@@ -69,8 +69,11 @@ function formatFees(fees: number): string {
 }
 
 function BigFiveRadar({ scores }: { scores: BigFiveScores }) {
+  const traitNames: Record<string, string> = {
+    E: 'Extraversion', A: 'Agreeableness', C: 'Conscientiousness', N: 'Stability', O: 'Openness',
+  };
   const data = Object.entries(scores).map(([key, val]) => ({
-    trait: key === 'N' ? 'Stability' : key,
+    trait: traitNames[key] ?? key,
     value: Math.max(0, key === 'N' ? -val + 5 : val + 5),
     fullMark: 10,
   }));
@@ -162,14 +165,6 @@ export default function ResultsPage() {
           </div>
 
           <BigFiveRadar scores={bigFive} />
-
-          <div className="grid grid-cols-5 gap-1 mt-1">
-            {Object.entries(bigFive).map(([key]) => (
-              <p key={key} className="text-xs text-center" style={{ color: 'var(--text-muted)' }}>
-                {key === 'N' ? 'Stability' : getBigFiveLabel(key).split(' ')[0]}
-              </p>
-            ))}
-          </div>
         </section>
 
         {/* Tab Nav */}
