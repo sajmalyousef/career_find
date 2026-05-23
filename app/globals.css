@@ -1,43 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0d0d0d;
-  --bg-card: #161616;
-  --bg-elevated: #1f1f1f;
-  --bg-input: #1a1a1a;
-  --accent: #ff5c35;
-  --accent-dim: rgba(255, 92, 53, 0.12);
-  --accent-hover: #ff3d10;
-  --text-primary: #f0ede8;
-  --text-secondary: #a09b94;
-  --text-muted: #5e5a55;
-  --border: #252525;
-  --border-light: #2e2e2e;
-  --shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+  --amber:       #d4942a;
+  --amber-light: #e8b05a;
+  --amber-dark:  #a87321;
+  --cream:       #fffaf3;
+  --cream-deep:  #fff3e4;
+  --bark:        #1a1207;
+  --bark-light:  #2d2006;
+  --bark-mid:    #5c4a2a;
+  --warm-gray:   #8b7d6b;
+  --warm-white:  #fefcf9;
+
+  /* semantic aliases */
+  --bg:          var(--cream);
+  --bg-card:     var(--warm-white);
+  --bg-dark:     var(--bark);
+  --accent:      var(--amber);
+  --accent-dim:  rgba(212, 148, 42, 0.12);
+  --text-primary:   var(--bark);
+  --text-secondary: var(--bark-mid);
+  --text-muted:     var(--warm-gray);
+  --border:      rgba(26, 18, 7, 0.1);
+  --border-amber: var(--amber);
 }
 
-@theme inline {
-  --color-background: var(--bg);
-  --color-foreground: var(--text-primary);
-}
+* { box-sizing: border-box; }
 
-* {
-  box-sizing: border-box;
-}
-
-html {
-  color-scheme: dark;
-}
+html { scroll-behavior: smooth; color-scheme: light; }
 
 body {
-  background: var(--bg);
-  color: var(--text-primary);
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--bark-light);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, .font-display {
-  font-family: 'Syne', sans-serif;
+  font-family: var(--font-serif), 'Instrument Serif', serif;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--amber);
 }
 
 .chat-bubble-enter {
@@ -49,9 +58,7 @@ h1, h2, h3, .font-display {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.typing-dot {
-  animation: blink 1.4s infinite;
-}
+.typing-dot { animation: blink 1.4s infinite; }
 .typing-dot:nth-child(2) { animation-delay: 0.2s; }
 .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
@@ -60,7 +67,6 @@ h1, h2, h3, .font-display {
   40%           { opacity: 1; }
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: rgba(26,18,7,0.15); border-radius: 2px; }

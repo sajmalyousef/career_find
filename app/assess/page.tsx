@@ -65,6 +65,8 @@ const BLOCK_INTROS: Record<string, string> = {
   D: "Last section! Tell me what you want your life to actually look like.",
 };
 
+const serif = "var(--font-serif), 'Instrument Serif', serif";
+
 export default function AssessPage() {
   const router = useRouter();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -92,17 +94,11 @@ export default function AssessPage() {
   const showNextQuestion = (index: number, prevBlock?: string) => {
     if (index >= allQuestions.length) {
       setIsTyping(true);
-      addMessage({
-        id: 'done',
-        role: 'aarav',
-        content: "That's everything! Give me a moment — building your career map now. 🗺️",
-      }, 800);
+      addMessage({ id: 'done', role: 'aarav', content: "That's everything! Give me a moment — building your career map now. 🗺️" }, 800);
       return;
     }
-
     const q = allQuestions[index];
     const currentBlock = allBlocks.find((b) => b.questions.some((qb) => qb.id === q.id))?.id;
-
     if (currentBlock && currentBlock !== prevBlock) {
       const intro = BLOCK_INTROS[currentBlock];
       if (intro) {
@@ -119,7 +115,6 @@ export default function AssessPage() {
         return;
       }
     }
-
     setIsTyping(true);
     addMessage({ id: q.id, role: 'aarav', content: q.text, options: q.options, questionId: q.id, type: q.type }, 600);
   };
@@ -130,46 +125,29 @@ export default function AssessPage() {
     setIsTyping(true);
     setTimeout(() => {
       setIsTyping(false);
-      addMessage({
-        id: 'intro1',
-        role: 'aarav',
-        content: "Hey! I'm Aarav 👋 I'm going to help you figure out which careers actually match who you are.",
-      });
+      addMessage({ id: 'intro1', role: 'aarav', content: "Hey! I'm Aarav 👋 I'm going to help you figure out which careers actually match who you are." });
       setIsTyping(true);
       setTimeout(() => {
         setIsTyping(false);
         addMessage({
-          id: 'intro2',
-          role: 'aarav',
+          id: 'intro2', role: 'aarav',
           content: "This takes about 8 minutes. Answer honestly — the more real you are, the better your results. Ready?",
           options: [{ label: "Let's go! 🚀", traits: {}, value: 'ready' }],
-          questionId: 'intro',
-          type: 'choice',
+          questionId: 'intro', type: 'choice',
         });
       }, 1000);
     }, 800);
   }, []);
 
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isTyping]);
+  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [messages, isTyping]);
 
   const handleAnswer = async (option: Option, questionId: string) => {
     if (submitted) return;
-
     addMessage({ id: `ans-${questionId}`, role: 'user', content: option.label });
+    if (questionId === 'intro') { showNextQuestion(0, undefined); return; }
 
-    if (questionId === 'intro') {
-      showNextQuestion(0, undefined);
-      return;
-    }
-
-    const newAnswers = {
-      ...answers,
-      [questionId]: { label: option.label, traits: option.traits, value: option.value },
-    };
+    const newAnswers = { ...answers, [questionId]: { label: option.label, traits: option.traits, value: option.value } };
     setAnswers(newAnswers);
-
     const newIndex = currentIndex + 1;
     setCurrentIndex(newIndex);
 
@@ -179,12 +157,7 @@ export default function AssessPage() {
     if (newIndex >= allQuestions.length) {
       setSubmitted(true);
       setIsTyping(true);
-      addMessage({
-        id: 'done',
-        role: 'aarav',
-        content: "That's everything! Building your career map now… 🗺️",
-      }, 600);
-
+      addMessage({ id: 'done', role: 'aarav', content: "That's everything! Building your career map now… 🗺️" }, 600);
       setTimeout(() => {
         try {
           const bigFive = scoreBigFive(newAnswers);
@@ -197,11 +170,7 @@ export default function AssessPage() {
           setLoading(false);
           setIsTyping(false);
           const detail = err instanceof Error ? err.message : 'Unknown error';
-          addMessage({
-            id: 'error',
-            role: 'aarav',
-            content: `Something went wrong. ${detail}. Please refresh and try again.`,
-          }, 0);
+          addMessage({ id: 'error', role: 'aarav', content: `Something went wrong. ${detail}. Please refresh and try again.` }, 0);
         }
       }, 1200);
     } else {
@@ -212,119 +181,90 @@ export default function AssessPage() {
   const progress = Math.round((currentIndex / allQuestions.length) * 100);
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: 'var(--bg)' }}>
+    <div className="min-h-screen flex flex-col" style={{ background: 'var(--bark)' }}>
+
       {/* Header */}
-      <header
-        className="px-4 py-3 flex items-center gap-3 sticky top-0 z-10"
-        style={{ background: 'var(--bg-card)', borderBottom: '1px solid var(--border)' }}
-      >
-        <div
-          className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
-          style={{ background: 'var(--accent)', fontFamily: 'var(--font-syne), sans-serif' }}
-        >
-          A
-        </div>
-        <div className="flex-1">
-          <p className="font-semibold text-sm" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif' }}>Aarav</p>
-          <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Career Guide · CareerFind</p>
-        </div>
-        <div className="text-right">
-          <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{currentIndex}/{allQuestions.length}</p>
-          <div className="w-20 h-1 rounded-full mt-1" style={{ background: 'var(--border)' }}>
-            <div
-              className="h-full rounded-full transition-all duration-500"
-              style={{ width: `${progress}%`, background: 'var(--accent)' }}
-            />
+      <header style={{ background: 'rgba(26,18,7,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid rgba(255,250,243,0.06)', padding: '0.875rem 1rem', position: 'sticky', top: 0, zIndex: 10 }}>
+        <div style={{ maxWidth: 640, margin: '0 auto', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bark)', fontWeight: 700, fontSize: '0.85rem', fontFamily: serif, flexShrink: 0 }}>A</div>
+          <div style={{ flex: 1 }}>
+            <p style={{ fontFamily: serif, fontSize: '1rem', color: 'var(--cream)', margin: 0, lineHeight: 1 }}>Aarav</p>
+            <p style={{ fontSize: '0.72rem', color: 'var(--warm-gray)', margin: 0, marginTop: 2 }}>Career Guide · CareerFind</p>
+          </div>
+          <div style={{ textAlign: 'right' }}>
+            <p style={{ fontSize: '0.72rem', color: 'var(--warm-gray)', margin: 0, marginBottom: 4 }}>{currentIndex}/{allQuestions.length}</p>
+            <div style={{ width: 80, height: 3, background: 'rgba(255,250,243,0.1)', borderRadius: 2 }}>
+              <div style={{ width: `${progress}%`, height: '100%', background: 'var(--amber)', borderRadius: 2, transition: 'width 0.5s ease' }} />
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Chat area */}
-      <div className="flex-1 overflow-y-auto px-4 py-4 max-w-2xl mx-auto w-full">
-        <div className="space-y-4 pb-4">
-          {messages.map((msg) => (
-            <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'} chat-bubble-enter`}>
-              {msg.role === 'aarav' && (
-                <div
-                  className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2 mt-1 flex-shrink-0"
-                  style={{ background: 'var(--accent)' }}
-                >
-                  A
-                </div>
-              )}
-              <div className={`max-w-[82%] ${msg.role === 'user' ? 'items-end' : 'items-start'} flex flex-col gap-2`}>
-                <div
-                  className="px-4 py-3 rounded-2xl text-sm leading-relaxed"
-                  style={msg.role === 'aarav'
-                    ? { background: 'var(--bg-card)', color: 'var(--text-primary)', border: '1px solid var(--border)', borderTopLeftRadius: '4px' }
-                    : { background: 'var(--accent)', color: '#fff', borderTopRightRadius: '4px' }
-                  }
-                >
-                  {msg.content}
-                </div>
-                {msg.options && msg.questionId && (
-                  (!answers[msg.questionId] && msg.questionId !== 'intro') ||
-                  (msg.questionId === 'intro' && messages.filter(m => m.role === 'user').length === 0)
-                ) ? (
-                  <div className={`flex flex-wrap gap-2 mt-1 ${msg.role === 'aarav' ? 'ml-0' : 'justify-end'}`}>
-                    {msg.type === 'image_choice'
-                      ? msg.options.map((opt, i) => (
-                          <button
-                            key={i}
-                            onClick={() => msg.questionId && handleAnswer(opt, msg.questionId)}
-                            className="flex items-center gap-2 text-sm px-3 py-2.5 rounded-xl transition-all"
-                            style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
-                          >
-                            <span className="text-xl">{opt.emoji}</span>
-                            <span>{opt.label}</span>
-                          </button>
-                        ))
-                      : msg.options.map((opt, i) => (
-                          <button
-                            key={i}
-                            onClick={() => msg.questionId && handleAnswer(opt, msg.questionId)}
-                            className="text-sm px-4 py-2.5 rounded-xl transition-all text-left"
-                            style={{ background: 'var(--bg-elevated)', color: 'var(--text-primary)', border: '1px solid var(--border)' }}
-                          >
-                            {opt.label}
-                          </button>
-                        ))
-                    }
+      {/* Chat */}
+      <div style={{ flex: 1, overflowY: 'auto', padding: '1.25rem 1rem' }}>
+        <div style={{ maxWidth: 640, margin: '0 auto' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', paddingBottom: '1rem' }}>
+            {messages.map((msg) => (
+              <div key={msg.id} className="chat-bubble-enter" style={{ display: 'flex', justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
+                {msg.role === 'aarav' && (
+                  <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bark)', fontSize: '0.75rem', fontWeight: 700, marginRight: '0.5rem', marginTop: 4, flexShrink: 0 }}>A</div>
+                )}
+                <div style={{ maxWidth: '82%', display: 'flex', flexDirection: 'column', gap: 8, alignItems: msg.role === 'user' ? 'flex-end' : 'flex-start' }}>
+                  <div style={{
+                    padding: '0.75rem 1rem', borderRadius: msg.role === 'aarav' ? '4px 16px 16px 16px' : '16px 4px 16px 16px',
+                    fontSize: '0.9rem', lineHeight: 1.6,
+                    background: msg.role === 'aarav' ? 'rgba(255,250,243,0.06)' : 'var(--amber)',
+                    color: msg.role === 'aarav' ? 'rgba(255,250,243,0.88)' : 'var(--bark)',
+                    border: msg.role === 'aarav' ? '1px solid rgba(255,250,243,0.08)' : 'none',
+                    fontWeight: msg.role === 'user' ? 600 : 400,
+                  }}>
+                    {msg.content}
                   </div>
-                ) : null}
-              </div>
-            </div>
-          ))}
 
-          {isTyping && (
-            <div className="flex items-center gap-2 chat-bubble-enter">
-              <div
-                className="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
-                style={{ background: 'var(--accent)' }}
-              >
-                A
+                  {msg.options && msg.questionId && (
+                    ((!answers[msg.questionId] && msg.questionId !== 'intro') ||
+                    (msg.questionId === 'intro' && messages.filter(m => m.role === 'user').length === 0))
+                  ) && (
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: 4 }}>
+                      {msg.type === 'image_choice'
+                        ? msg.options.map((opt, i) => (
+                            <button key={i} onClick={() => msg.questionId && handleAnswer(opt, msg.questionId)} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,250,243,0.05)', border: '1px solid rgba(255,250,243,0.1)', color: 'rgba(255,250,243,0.82)', fontSize: '0.85rem', padding: '0.6rem 0.875rem', borderRadius: 10, cursor: 'pointer', fontFamily: 'inherit' }}>
+                              <span style={{ fontSize: '1.2rem' }}>{opt.emoji}</span>
+                              <span>{opt.label}</span>
+                            </button>
+                          ))
+                        : msg.options.map((opt, i) => (
+                            <button key={i} onClick={() => msg.questionId && handleAnswer(opt, msg.questionId)} style={{ background: 'rgba(255,250,243,0.05)', border: '1px solid rgba(255,250,243,0.1)', color: 'rgba(255,250,243,0.82)', fontSize: '0.85rem', padding: '0.6rem 0.875rem', borderRadius: 10, cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit', lineHeight: 1.4 }}>
+                              {opt.label}
+                            </button>
+                          ))
+                      }
+                    </div>
+                  )}
+                </div>
               </div>
-              <div
-                className="px-4 py-3 rounded-2xl rounded-tl-sm flex gap-1.5 items-center"
-                style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}
-              >
-                <span className="typing-dot w-2 h-2 rounded-full" style={{ background: 'var(--text-muted)' }} />
-                <span className="typing-dot w-2 h-2 rounded-full" style={{ background: 'var(--text-muted)' }} />
-                <span className="typing-dot w-2 h-2 rounded-full" style={{ background: 'var(--text-muted)' }} />
-              </div>
-            </div>
-          )}
+            ))}
 
-          {loading && (
-            <div className="text-center py-8">
-              <div className="inline-flex flex-col items-center gap-3">
-                <div className="w-12 h-12 border-4 rounded-full animate-spin" style={{ borderColor: 'var(--border)', borderTopColor: 'var(--accent)' }} />
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>Analysing your profile…</p>
+            {isTyping && (
+              <div className="chat-bubble-enter" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'var(--amber)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bark)', fontSize: '0.75rem', fontWeight: 700, flexShrink: 0 }}>A</div>
+                <div style={{ background: 'rgba(255,250,243,0.06)', border: '1px solid rgba(255,250,243,0.08)', borderRadius: '4px 16px 16px 16px', padding: '0.75rem 1rem', display: 'flex', gap: 6, alignItems: 'center' }}>
+                  <span className="typing-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--warm-gray)', display: 'inline-block' }} />
+                  <span className="typing-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--warm-gray)', display: 'inline-block' }} />
+                  <span className="typing-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--warm-gray)', display: 'inline-block' }} />
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          <div ref={bottomRef} />
+            {loading && (
+              <div style={{ textAlign: 'center', padding: '2rem 0' }}>
+                <div style={{ width: 40, height: 40, border: '3px solid rgba(255,250,243,0.1)', borderTopColor: 'var(--amber)', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto 0.75rem' }} />
+                <p style={{ fontSize: '0.85rem', color: 'var(--warm-gray)' }}>Analysing your profile…</p>
+              </div>
+            )}
+
+            <div ref={bottomRef} />
+          </div>
         </div>
       </div>
     </div>
