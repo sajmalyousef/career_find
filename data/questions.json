@@ -1,0 +1,257 @@
+{
+  "blocks": [
+    {
+      "id": "A",
+      "title": "Let's understand how you think and act",
+      "questions": [
+        {
+          "id": "A1",
+          "text": "Your group project is a total mess — wrong direction, deadline tomorrow. What do you do?",
+          "type": "choice",
+          "options": [
+            { "label": "Take charge and redirect the whole team", "traits": { "E": 2, "C": 1 } },
+            { "label": "Quietly fix my part and hope others follow", "traits": { "E": -1, "A": 1 } },
+            { "label": "Talk to each person individually to align everyone", "traits": { "A": 2, "E": 1 } },
+            { "label": "Raise the issue loudly so everyone stops and rethinks", "traits": { "E": 1, "O": 1, "N": -1 } }
+          ]
+        },
+        {
+          "id": "A2",
+          "text": "You've been studying for 3 hours straight. Your best friend wants you to come play cricket. You:",
+          "type": "choice",
+          "options": [
+            { "label": "Go — I need the break and social time", "traits": { "E": 2, "C": -1 } },
+            { "label": "Say no — I finish what I start", "traits": { "C": 2, "E": -1 } },
+            { "label": "Go for 30 minutes, then come back", "traits": { "A": 1, "C": 1 } },
+            { "label": "Feel guilty either way", "traits": { "N": 2 } }
+          ]
+        },
+        {
+          "id": "A3",
+          "text": "Your teacher marks your answer wrong even though you're 100% sure you're right. You:",
+          "type": "choice",
+          "options": [
+            { "label": "Politely challenge them with your reasoning", "traits": { "E": 1, "O": 2, "A": -1 } },
+            { "label": "Accept it and move on to avoid conflict", "traits": { "A": 2, "N": -1 } },
+            { "label": "Stew about it but say nothing", "traits": { "N": 2, "E": -1 } },
+            { "label": "Double-check yourself first, then decide", "traits": { "C": 2, "O": 1 } }
+          ]
+        },
+        {
+          "id": "A4",
+          "text": "There's a new student who knows nobody. What do you do?",
+          "type": "choice",
+          "options": [
+            { "label": "Walk up and introduce myself immediately", "traits": { "E": 2, "A": 2 } },
+            { "label": "Wait to see if they seem open to talking", "traits": { "E": -1, "A": 1 } },
+            { "label": "Get someone more social to introduce them", "traits": { "E": -2, "A": 1 } },
+            { "label": "Smile, nod — and let them settle in on their own", "traits": { "A": 1, "E": -1 } }
+          ]
+        },
+        {
+          "id": "A5",
+          "text": "You have one week of holiday. What's your dream plan?",
+          "type": "choice",
+          "options": [
+            { "label": "Road trip with a big group of friends", "traits": { "E": 2, "O": 1 } },
+            { "label": "Read books, watch docs, learn something new", "traits": { "O": 2, "E": -1 } },
+            { "label": "Stay home, sleep, recharge — alone", "traits": { "E": -2, "N": -1 } },
+            { "label": "Volunteer for a cause I care about", "traits": { "A": 2, "O": 1 } }
+          ]
+        },
+        {
+          "id": "A6",
+          "text": "You're in the middle of a tough exam and your mind blanks. You:",
+          "type": "choice",
+          "options": [
+            { "label": "Panic — I can feel my heart racing", "traits": { "N": 2 } },
+            { "label": "Skip it, do other questions, come back calm", "traits": { "N": -1, "C": 2 } },
+            { "label": "Take three deep breaths and try again", "traits": { "N": -2, "C": 1 } },
+            { "label": "Accept the loss and move on", "traits": { "N": -1, "A": 1 } }
+          ]
+        },
+        {
+          "id": "A7",
+          "text": "You get a chance to redesign the school canteen menu. You:",
+          "type": "choice",
+          "options": [
+            { "label": "Survey every student and make data-based decisions", "traits": { "C": 2, "O": 1 } },
+            { "label": "Come up with wild, creative new dishes", "traits": { "O": 2, "E": 1 } },
+            { "label": "Ask the canteen staff what's feasible", "traits": { "A": 2, "C": 1 } },
+            { "label": "Not my thing — let someone else handle it", "traits": { "E": -2 } }
+          ]
+        },
+        {
+          "id": "A8",
+          "text": "A friend asks you to help them with something dishonest (copying homework). You:",
+          "type": "choice",
+          "options": [
+            { "label": "Refuse and explain why it's a bad idea", "traits": { "C": 2, "A": -1 } },
+            { "label": "Help but feel really uncomfortable", "traits": { "N": 2, "A": 1 } },
+            { "label": "Help without thinking twice", "traits": { "C": -2, "A": 2 } },
+            { "label": "Offer to teach them the concept instead", "traits": { "C": 2, "A": 2, "O": 1 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "title": "What kind of work excites you?",
+      "questions": [
+        {
+          "id": "B1",
+          "text": "If you had to pick one thing to spend a Saturday afternoon on, what would it be?",
+          "type": "image_choice",
+          "options": [
+            { "label": "Build or fix something with your hands", "emoji": "🔧", "traits": { "R": 3 } },
+            { "label": "Research a mystery or unsolved question", "emoji": "🔬", "traits": { "I": 3 } },
+            { "label": "Create art, music, or write a story", "emoji": "🎨", "traits": { "A": 3 } },
+            { "label": "Organise a get-together or help a friend", "emoji": "🤝", "traits": { "S": 3 } },
+            { "label": "Start a small business or sell something", "emoji": "💼", "traits": { "En": 3 } },
+            { "label": "Make spreadsheets, plans, or organise data", "emoji": "📊", "traits": { "C": 3 } }
+          ]
+        },
+        {
+          "id": "B2",
+          "text": "You're watching YouTube. Which video do you click first?",
+          "type": "choice",
+          "options": [
+            { "label": "How a jet engine works (engineering explained)", "traits": { "R": 2, "I": 1 } },
+            { "label": "Why humans dream — science of the brain", "traits": { "I": 3 } },
+            { "label": "This artist built a house from scratch", "traits": { "R": 2, "A": 1 } },
+            { "label": "How this 19-year-old made ₹10 lakh online", "traits": { "En": 3 } },
+            { "label": "A spoken word poem that made millions cry", "traits": { "A": 3 } },
+            { "label": "Documentary: the people who clean up after disasters", "traits": { "S": 2, "I": 1 } }
+          ]
+        },
+        {
+          "id": "B3",
+          "text": "School gives you a free period to work on anything. You pick:",
+          "type": "choice",
+          "options": [
+            { "label": "Design a new app or gadget prototype", "traits": { "R": 1, "I": 2, "En": 1 } },
+            { "label": "Write a short film script or comic strip", "traits": { "A": 3 } },
+            { "label": "Organise a fundraiser for a cause", "traits": { "S": 2, "En": 2 } },
+            { "label": "Analyse data about something you're curious about", "traits": { "I": 3, "C": 1 } },
+            { "label": "Practice a sport or build something physical", "traits": { "R": 3 } },
+            { "label": "Create a detailed plan for your future", "traits": { "C": 3, "En": 1 } }
+          ]
+        },
+        {
+          "id": "B4",
+          "text": "Which school subject do you actually enjoy most?",
+          "type": "choice",
+          "options": [
+            { "label": "Physics / Chemistry / Biology", "traits": { "R": 1, "I": 2 } },
+            { "label": "Maths", "traits": { "I": 2, "C": 1 } },
+            { "label": "English / Literature / Languages", "traits": { "A": 2, "S": 1 } },
+            { "label": "History / Geography / Social Studies", "traits": { "I": 1, "S": 1 } },
+            { "label": "Business Studies / Economics", "traits": { "En": 2, "C": 1 } },
+            { "label": "Art / Music / Drama", "traits": { "A": 3 } }
+          ]
+        },
+        {
+          "id": "B5",
+          "text": "You're on a school trip to a new city. You're most excited to:",
+          "type": "choice",
+          "options": [
+            { "label": "Visit factories or see how things are made", "traits": { "R": 3 } },
+            { "label": "Go to a museum or science centre", "traits": { "I": 3 } },
+            { "label": "Visit a market and talk to vendors about their business", "traits": { "En": 2, "S": 1 } },
+            { "label": "Explore local art, music, or theatre", "traits": { "A": 3 } },
+            { "label": "Do community service or meet local NGOs", "traits": { "S": 3 } },
+            { "label": "Check out coworking spaces or offices", "traits": { "En": 2, "C": 1 } }
+          ]
+        },
+        {
+          "id": "B6",
+          "text": "Your dream project is something that:",
+          "type": "choice",
+          "options": [
+            { "label": "Solves a real physical problem — clean water, safer buildings", "traits": { "R": 2, "I": 1 } },
+            { "label": "Discovers something nobody knew before", "traits": { "I": 3 } },
+            { "label": "Makes people feel something deeply — a film, a song", "traits": { "A": 3 } },
+            { "label": "Directly helps people in need", "traits": { "S": 3 } },
+            { "label": "Builds a brand that changes an industry", "traits": { "En": 3 } },
+            { "label": "Creates a perfectly organized system", "traits": { "C": 3 } }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "title": "Let's talk about your situation",
+      "questions": [
+        {
+          "id": "C1",
+          "text": "How much can your family invest in college per year (roughly)?",
+          "type": "choice",
+          "options": [
+            { "label": "Under ₹1 lakh", "value": "under_1L", "traits": {} },
+            { "label": "₹1–5 lakh", "value": "1L_5L", "traits": {} },
+            { "label": "₹5–15 lakh", "value": "5L_15L", "traits": {} },
+            { "label": "₹15 lakh+", "value": "above_15L", "traits": {} }
+          ]
+        },
+        {
+          "id": "C2",
+          "text": "What grade are you currently in?",
+          "type": "choice",
+          "options": [
+            { "label": "Grade 8 or 9 (early explorer)", "value": "grade_8_9", "traits": {} },
+            { "label": "Grade 10 (board year coming)", "value": "grade_10", "traits": {} },
+            { "label": "Grade 11 or 12 (serious planning time)", "value": "grade_11_12", "traits": {} }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "title": "What do you want your life to look like?",
+      "questions": [
+        {
+          "id": "D1",
+          "text": "Picture yourself at 30. Where are you living?",
+          "type": "choice",
+          "options": [
+            { "label": "A big metro city — Mumbai, Delhi, Bangalore", "value": "metro", "traits": {} },
+            { "label": "A growing mid-size city", "value": "tier2", "traits": {} },
+            { "label": "Back in my hometown — I want to grow it", "value": "hometown", "traits": {} },
+            { "label": "Wherever the work takes me", "value": "flexible", "traits": {} }
+          ]
+        },
+        {
+          "id": "D2",
+          "text": "What matters more to you in a career?",
+          "type": "choice",
+          "options": [
+            { "label": "Stability — steady income, safe job", "value": "stability", "traits": { "N": -1 } },
+            { "label": "High income — I want to be wealthy", "value": "wealth", "traits": { "En": 1 } },
+            { "label": "Impact — I want to change something real", "value": "impact", "traits": { "O": 1 } },
+            { "label": "Flexibility — work on my own terms", "value": "flexibility", "traits": { "O": 1, "E": -1 } }
+          ]
+        },
+        {
+          "id": "D3",
+          "text": "How do you feel about risk?",
+          "type": "choice",
+          "options": [
+            { "label": "I avoid it — I'd rather have something certain", "value": "risk_averse", "traits": { "N": 1 } },
+            { "label": "Calculated risks are fine — if I've thought it through", "value": "calculated", "traits": { "C": 1 } },
+            { "label": "I thrive on it — risk is exciting", "value": "risk_lover", "traits": { "En": 2, "N": -2 } }
+          ]
+        },
+        {
+          "id": "D4",
+          "text": "How do you feel about AI changing jobs in the future?",
+          "type": "choice",
+          "options": [
+            { "label": "Worried — I want a career AI can't replace", "value": "ai_worried", "traits": {} },
+            { "label": "Excited — I want to work with AI and tech", "value": "ai_excited", "traits": { "I": 1 } },
+            { "label": "Indifferent — I'll adapt to whatever comes", "value": "ai_neutral", "traits": { "O": 1 } }
+          ]
+        }
+      ]
+    }
+  ]
+}
