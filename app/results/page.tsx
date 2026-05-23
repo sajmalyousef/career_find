@@ -13,8 +13,6 @@ interface CareerResult {
   dayInLife: string;
   aiRisk: string;
   aiNote: string;
-  salaryFresher: string;
-  salary5yr: string;
   exams: string[];
 }
 
@@ -53,10 +51,10 @@ interface ApiResponse {
   riasec: RIASECScores;
 }
 
-const AI_RISK_COLORS: Record<string, string> = {
-  low: 'bg-green-100 text-green-700',
-  medium: 'bg-yellow-100 text-yellow-700',
-  high: 'bg-red-100 text-red-700',
+const AI_RISK_STYLES: Record<string, { bg: string; color: string }> = {
+  low:    { bg: 'rgba(34,197,94,0.12)',  color: '#4ade80' },
+  medium: { bg: 'rgba(234,179,8,0.12)',  color: '#facc15' },
+  high:   { bg: 'rgba(239,68,68,0.12)',  color: '#f87171' },
 };
 
 const TIER_LABELS: Record<string, string> = {
@@ -78,11 +76,11 @@ function BigFiveRadar({ scores }: { scores: BigFiveScores }) {
   }));
 
   return (
-    <ResponsiveContainer width="100%" height={220}>
+    <ResponsiveContainer width="100%" height={200}>
       <RadarChart data={data}>
-        <PolarGrid stroke="#f3f4f6" />
-        <PolarAngleAxis dataKey="trait" tick={{ fontSize: 12, fill: '#6b7280' }} />
-        <Radar name="You" dataKey="value" stroke="#f97316" fill="#f97316" fillOpacity={0.2} strokeWidth={2} />
+        <PolarGrid stroke="var(--border)" />
+        <PolarAngleAxis dataKey="trait" tick={{ fontSize: 11, fill: 'var(--text-muted)' }} />
+        <Radar name="You" dataKey="value" stroke="var(--accent)" fill="var(--accent)" fillOpacity={0.15} strokeWidth={2} />
       </RadarChart>
     </ResponsiveContainer>
   );
@@ -96,16 +94,10 @@ export default function ResultsPage() {
 
   useEffect(() => {
     const stored = sessionStorage.getItem('careerResults');
-    if (!stored) {
-      router.push('/assess');
-      return;
-    }
+    if (!stored) { router.push('/assess'); return; }
     try {
       const parsed = JSON.parse(stored);
-      if (!parsed.result) {
-        router.push('/assess');
-        return;
-      }
+      if (!parsed.result) { router.push('/assess'); return; }
       setData(parsed);
     } catch {
       router.push('/');
@@ -114,15 +106,13 @@ export default function ResultsPage() {
 
   if (!data) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="w-10 h-10 border-4 border-orange-200 border-t-orange-500 rounded-full animate-spin" />
+      <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg)' }}>
+        <div className="w-10 h-10 border-4 rounded-full animate-spin" style={{ borderColor: 'var(--border)', borderTopColor: 'var(--accent)' }} />
       </div>
     );
   }
 
   const { result, bigFive, riasec } = data;
-
-  // Safety fallbacks so the page never crashes on missing fields
   const careers = result.careers ?? [];
   const eliminated = result.eliminated ?? [];
   const colleges = result.colleges ?? [];
@@ -133,46 +123,49 @@ export default function ResultsPage() {
   const abroadColleges = colleges.filter((c) => c.abroad);
   const displayColleges = showAbroad ? abroadColleges : indiaColleges;
 
+  const cardStyle = { background: 'var(--bg-card)', border: '1px solid var(--border)' };
+  const elevatedStyle = { background: 'var(--bg-elevated)', border: '1px solid var(--border-light)' };
+
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen" style={{ background: 'var(--bg)' }}>
       {/* Header */}
-      <header className="bg-white border-b border-gray-100 px-4 py-4 text-center">
-        <p className="text-orange-500 font-semibold text-sm">CareerFind</p>
-        <h1 className="text-xl font-bold text-gray-900 mt-1">Your Career Map 🗺️</h1>
+      <header className="px-4 py-4 text-center" style={{ background: 'var(--bg-card)', borderBottom: '1px solid var(--border)' }}>
+        <p className="text-sm font-semibold" style={{ color: 'var(--accent)', fontFamily: 'var(--font-syne), sans-serif' }}>CareerFind</p>
+        <h1 className="text-xl font-bold mt-1" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif' }}>Your Career Map 🗺️</h1>
       </header>
 
-      <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
+      <div className="max-w-2xl mx-auto px-4 py-6 space-y-5">
 
         {/* Profile Card */}
-        <section className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-          <h2 className="font-bold text-gray-900 mb-2 text-lg">Your Profile</h2>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4">{result.profileSummary}</p>
+        <section className="rounded-2xl p-5" style={cardStyle}>
+          <h2 className="font-bold text-lg mb-2" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif' }}>Your Profile</h2>
+          <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>{result.profileSummary}</p>
 
           {personalityHighlights.length > 0 && (
             <div className="space-y-2 mb-4">
               {personalityHighlights.map((h, i) => (
-                <div key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                  <span className="text-orange-500 mt-0.5">✦</span>
+                <div key={i} className="flex items-start gap-2 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                  <span className="mt-0.5" style={{ color: 'var(--accent)' }}>✦</span>
                   <span>{h}</span>
                 </div>
               ))}
             </div>
           )}
 
-          <div className="grid grid-cols-2 gap-3 mb-4">
+          <div className="grid grid-cols-2 gap-2 mb-4">
             {topRIASEC.map((code) => (
-              <div key={code} className="bg-orange-50 rounded-xl px-3 py-2.5 text-sm">
-                <span className="font-semibold text-orange-600">{code}</span>
-                <p className="text-gray-600 text-xs mt-0.5">{getRIASECLabel(code)}</p>
+              <div key={code} className="rounded-xl px-3 py-2.5 text-sm" style={{ background: 'var(--accent-dim)' }}>
+                <span className="font-semibold" style={{ color: 'var(--accent)', fontFamily: 'var(--font-syne), sans-serif' }}>{code}</span>
+                <p className="text-xs mt-0.5" style={{ color: 'var(--text-secondary)' }}>{getRIASECLabel(code)}</p>
               </div>
             ))}
           </div>
 
           <BigFiveRadar scores={bigFive} />
 
-          <div className="grid grid-cols-5 gap-1 mt-2">
+          <div className="grid grid-cols-5 gap-1 mt-1">
             {Object.entries(bigFive).map(([key]) => (
-              <p key={key} className="text-xs text-center text-gray-400">
+              <p key={key} className="text-xs text-center" style={{ color: 'var(--text-muted)' }}>
                 {key === 'N' ? 'Stability' : getBigFiveLabel(key).split(' ')[0]}
               </p>
             ))}
@@ -180,16 +173,16 @@ export default function ResultsPage() {
         </section>
 
         {/* Tab Nav */}
-        <div className="flex bg-white rounded-xl p-1 shadow-sm border border-gray-100 gap-1">
+        <div className="flex rounded-xl p-1 gap-1" style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
           {(['careers', 'eliminated', 'colleges'] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`flex-1 py-2.5 text-sm font-medium rounded-lg transition-all ${
-                activeTab === tab
-                  ? 'bg-orange-500 text-white shadow-sm'
-                  : 'text-gray-500 hover:text-gray-700'
-              }`}
+              className="flex-1 py-2.5 text-sm font-medium rounded-lg transition-all"
+              style={activeTab === tab
+                ? { background: 'var(--accent)', color: '#fff' }
+                : { color: 'var(--text-muted)' }
+              }
             >
               {tab === 'careers' ? '🎯 Careers' : tab === 'eliminated' ? '❌ Not for you' : '🏛️ Colleges'}
             </button>
@@ -199,75 +192,75 @@ export default function ResultsPage() {
         {/* Career Matches */}
         {activeTab === 'careers' && (
           <section className="space-y-4">
-            <h2 className="font-bold text-gray-900 text-lg px-1">Your top career matches</h2>
-            {careers.map((career, i) => (
-              <div key={career.id} className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    <span className="w-7 h-7 rounded-full bg-orange-100 text-orange-600 text-sm font-bold flex items-center justify-center">{i + 1}</span>
-                    <h3 className="font-bold text-gray-900">{career.name}</h3>
+            <h2 className="font-bold text-lg px-1" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif' }}>Your top career matches</h2>
+            {careers.map((career, i) => {
+              const riskStyle = AI_RISK_STYLES[career.aiRisk] ?? AI_RISK_STYLES.medium;
+              return (
+                <div key={career.id} className="rounded-2xl p-5" style={cardStyle}>
+                  <div className="flex items-start justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="w-7 h-7 rounded-full text-sm font-bold flex items-center justify-center"
+                        style={{ background: 'var(--accent-dim)', color: 'var(--accent)', fontFamily: 'var(--font-syne), sans-serif' }}
+                      >
+                        {i + 1}
+                      </span>
+                      <h3 className="font-bold" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif' }}>{career.name}</h3>
+                    </div>
+                    <span
+                      className="text-xs font-medium px-2.5 py-1 rounded-full"
+                      style={{ background: riskStyle.bg, color: riskStyle.color }}
+                    >
+                      AI risk: {career.aiRisk}
+                    </span>
                   </div>
-                  <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${AI_RISK_COLORS[career.aiRisk]}`}>
-                    AI risk: {career.aiRisk}
-                  </span>
+
+                  <p className="text-sm italic mb-3" style={{ color: 'var(--text-muted)' }}>&ldquo;{career.dayInLife}&rdquo;</p>
+
+                  <div className="rounded-xl p-3 mb-3" style={{ background: 'var(--accent-dim)' }}>
+                    <p className="text-xs font-semibold mb-1" style={{ color: 'var(--accent)' }}>Why this fits you</p>
+                    <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{career.whyFit}</p>
+                  </div>
+
+                  <p className="text-xs mb-3" style={{ color: 'var(--text-muted)' }}>{career.aiNote}</p>
+
+                  {career.exams?.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5">
+                      <span className="text-xs" style={{ color: 'var(--text-muted)' }}>Entrance:</span>
+                      {career.exams.map((e) => (
+                        <span key={e} className="text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: 'rgba(99,179,237,0.12)', color: '#63b3ed' }}>{e}</span>
+                      ))}
+                    </div>
+                  )}
                 </div>
-
-                <p className="text-sm text-gray-500 italic mb-3">"{career.dayInLife}"</p>
-
-                <div className="bg-orange-50 rounded-xl p-3 mb-3">
-                  <p className="text-xs font-semibold text-orange-600 mb-1">Why this fits you</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">{career.whyFit}</p>
-                </div>
-
-                <p className="text-xs text-gray-500 mb-3">{career.aiNote}</p>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-gray-50 rounded-xl p-3">
-                    <p className="text-xs text-gray-400">Starting salary</p>
-                    <p className="font-semibold text-gray-800 text-sm">{career.salaryFresher}</p>
-                  </div>
-                  <div className="bg-gray-50 rounded-xl p-3">
-                    <p className="text-xs text-gray-400">At 5 years</p>
-                    <p className="font-semibold text-gray-800 text-sm">{career.salary5yr}</p>
-                  </div>
-                </div>
-
-                {career.exams?.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    <span className="text-xs text-gray-400">Entrance:</span>
-                    {career.exams.map((e) => (
-                      <span key={e} className="text-xs bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full font-medium">{e}</span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </section>
         )}
 
         {/* Eliminated */}
         {activeTab === 'eliminated' && (
           <section className="space-y-4">
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
-              <strong>Why we show you this:</strong> Knowing what doesn't fit you saves years. These aren't meant to discourage you — they're meant to help you avoid spending 4 years on the wrong path.
+            <div className="rounded-xl p-4 text-sm" style={{ background: 'rgba(251,191,36,0.08)', border: '1px solid rgba(251,191,36,0.2)', color: '#fbbf24' }}>
+              <strong>Why we show you this:</strong> Knowing what doesn&apos;t fit saves years of wrong decisions. This isn&apos;t meant to discourage you — it&apos;s meant to protect your time.
             </div>
             {eliminated.map((item, i) => (
-              <div key={i} className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
+              <div key={i} className="rounded-2xl p-5" style={cardStyle}>
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-lg">🚫</span>
-                  <h3 className="font-bold text-gray-900">{item.career}</h3>
+                  <h3 className="font-bold" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif' }}>{item.career}</h3>
                 </div>
 
-                <div className="bg-red-50 rounded-xl p-3 mb-3">
-                  <p className="text-xs font-semibold text-red-600 mb-1">Not for you because</p>
-                  <p className="text-sm text-gray-700 font-medium">{item.notForYouBecause}</p>
+                <div className="rounded-xl p-3 mb-3" style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.15)' }}>
+                  <p className="text-xs font-semibold mb-1" style={{ color: '#f87171' }}>Not for you because</p>
+                  <p className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>{item.notForYouBecause}</p>
                 </div>
 
-                <p className="text-sm text-gray-600 leading-relaxed mb-3">{item.reason}</p>
+                <p className="text-sm leading-relaxed mb-3" style={{ color: 'var(--text-secondary)' }}>{item.reason}</p>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-400">Key trait:</span>
-                  <span className="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">{item.specificTrait}</span>
+                  <span className="text-xs" style={{ color: 'var(--text-muted)' }}>Key trait:</span>
+                  <span className="text-xs px-2 py-0.5 rounded-full" style={elevatedStyle}>{item.specificTrait}</span>
                 </div>
               </div>
             ))}
@@ -278,79 +271,86 @@ export default function ResultsPage() {
         {activeTab === 'colleges' && (
           <section className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="font-bold text-gray-900 text-lg px-1">Colleges to target</h2>
-              <div className="flex bg-white rounded-xl p-1 border border-gray-100 text-sm gap-1">
+              <h2 className="font-bold text-lg px-1" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif' }}>Colleges to target</h2>
+              <div className="flex rounded-xl p-1 gap-1 text-sm" style={{ background: 'var(--bg-card)', border: '1px solid var(--border)' }}>
                 <button
                   onClick={() => setShowAbroad(false)}
-                  className={`px-3 py-1.5 rounded-lg transition-all ${!showAbroad ? 'bg-orange-500 text-white' : 'text-gray-500'}`}
+                  className="px-3 py-1.5 rounded-lg transition-all"
+                  style={!showAbroad ? { background: 'var(--accent)', color: '#fff' } : { color: 'var(--text-muted)' }}
                 >
                   🇮🇳 India
                 </button>
                 <button
                   onClick={() => setShowAbroad(true)}
-                  className={`px-3 py-1.5 rounded-lg transition-all ${showAbroad ? 'bg-orange-500 text-white' : 'text-gray-500'}`}
+                  className="px-3 py-1.5 rounded-lg transition-all"
+                  style={showAbroad ? { background: 'var(--accent)', color: '#fff' } : { color: 'var(--text-muted)' }}
                 >
                   🌍 Abroad
                 </button>
               </div>
             </div>
 
-            <p className="text-sm text-gray-500 px-1">
-              These colleges are specifically matched to your career recommendations — not a generic list.
+            <p className="text-sm px-1" style={{ color: 'var(--text-muted)' }}>
+              Matched to your top career recommendation — not a generic list.
             </p>
 
             {displayColleges.length === 0 && (
-              <div className="bg-white rounded-2xl p-6 text-center text-gray-500 text-sm">
+              <div className="rounded-2xl p-6 text-center text-sm" style={{ ...cardStyle, color: 'var(--text-muted)' }}>
                 No colleges found for this filter. Try the India option.
               </div>
             )}
 
-            {displayColleges.map((college) => (
-              <div key={`${college.id}-${college.careerMatch}`} className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
-                <div className="flex items-start justify-between mb-2">
-                  <div>
-                    <h3 className="font-bold text-gray-900">{college.name}</h3>
-                    <p className="text-xs text-gray-400 mt-0.5">{college.location}</p>
+            {displayColleges.map((college) => {
+              const isTier1 = college.tier === 'tier1' || college.tier === 'global_elite';
+              return (
+                <div key={`${college.id}-${college.careerMatch}`} className="rounded-2xl p-5" style={cardStyle}>
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <h3 className="font-bold" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-syne), sans-serif' }}>{college.name}</h3>
+                      <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>{college.location}</p>
+                    </div>
+                    <span
+                      className="text-xs font-medium px-2 py-1 rounded-full"
+                      style={isTier1
+                        ? { background: 'rgba(168,85,247,0.12)', color: '#c084fc' }
+                        : { background: 'rgba(99,179,237,0.12)', color: '#63b3ed' }
+                      }
+                    >
+                      {TIER_LABELS[college.tier] ?? college.tier}
+                    </span>
                   </div>
-                  <span className={`text-xs font-medium px-2 py-1 rounded-full ${
-                    college.tier === 'tier1' || college.tier === 'global_elite'
-                      ? 'bg-purple-100 text-purple-700'
-                      : 'bg-blue-100 text-blue-700'
-                  }`}>
-                    {TIER_LABELS[college.tier] ?? college.tier}
-                  </span>
-                </div>
 
-                <div className="bg-green-50 rounded-xl p-3 mb-3">
-                  <p className="text-xs font-semibold text-green-600 mb-1">Why this college for you</p>
-                  <p className="text-sm text-gray-700 leading-relaxed">{college.whyGoodFit}</p>
-                </div>
+                  <div className="rounded-xl p-3 mb-3" style={{ background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.12)' }}>
+                    <p className="text-xs font-semibold mb-1" style={{ color: '#4ade80' }}>Why this college for you</p>
+                    <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{college.whyGoodFit}</p>
+                  </div>
 
-                <div className="grid grid-cols-3 gap-2 text-xs">
-                  <div className="bg-gray-50 rounded-lg p-2 text-center">
-                    <p className="text-gray-400">Fees/year</p>
-                    <p className="font-semibold text-gray-800">{formatFees(college.fees_per_year_inr)}</p>
+                  <div className="grid grid-cols-3 gap-2 text-xs">
+                    <div className="rounded-lg p-2 text-center" style={elevatedStyle}>
+                      <p style={{ color: 'var(--text-muted)' }}>Fees/year</p>
+                      <p className="font-semibold mt-0.5" style={{ color: 'var(--text-primary)' }}>{formatFees(college.fees_per_year_inr)}</p>
+                    </div>
+                    <div className="rounded-lg p-2 text-center" style={elevatedStyle}>
+                      <p style={{ color: 'var(--text-muted)' }}>NIRF Rank</p>
+                      <p className="font-semibold mt-0.5" style={{ color: 'var(--text-primary)' }}>{college.nirf_rank ?? '—'}</p>
+                    </div>
+                    <div className="rounded-lg p-2 text-center" style={elevatedStyle}>
+                      <p style={{ color: 'var(--text-muted)' }}>Career fit</p>
+                      <p className="font-semibold mt-0.5 truncate" style={{ color: 'var(--text-primary)' }}>{college.careerMatch.replace(/_/g, ' ')}</p>
+                    </div>
                   </div>
-                  <div className="bg-gray-50 rounded-lg p-2 text-center">
-                    <p className="text-gray-400">NIRF Rank</p>
-                    <p className="font-semibold text-gray-800">{college.nirf_rank ?? '—'}</p>
-                  </div>
-                  <div className="bg-gray-50 rounded-lg p-2 text-center">
-                    <p className="text-gray-400">Career fit</p>
-                    <p className="font-semibold text-gray-800 truncate">{college.careerMatch.replace(/_/g, ' ')}</p>
-                  </div>
-                </div>
 
-                {college.entrance_exams?.length > 0 && (
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    <span className="text-xs text-gray-400">Entrance:</span>
-                    {college.entrance_exams.map((e) => (
-                      <span key={e} className="text-xs bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full font-medium">{e}</span>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+                  {college.entrance_exams?.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      <span className="text-xs" style={{ color: 'var(--text-muted)' }}>Entrance:</span>
+                      {college.entrance_exams.map((e) => (
+                        <span key={e} className="text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: 'rgba(99,179,237,0.12)', color: '#63b3ed' }}>{e}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </section>
         )}
 
@@ -361,7 +361,8 @@ export default function ResultsPage() {
               sessionStorage.removeItem('careerResults');
               router.push('/assess');
             }}
-            className="text-sm text-gray-400 hover:text-orange-500 transition-colors"
+            className="text-sm transition-colors"
+            style={{ color: 'var(--text-muted)' }}
           >
             Retake the assessment →
           </button>

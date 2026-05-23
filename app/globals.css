@@ -1,37 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0d0d0d;
+  --bg-card: #161616;
+  --bg-elevated: #1f1f1f;
+  --bg-input: #1a1a1a;
+  --accent: #ff5c35;
+  --accent-dim: rgba(255, 92, 53, 0.12);
+  --accent-hover: #ff3d10;
+  --text-primary: #f0ede8;
+  --text-secondary: #a09b94;
+  --text-muted: #5e5a55;
+  --border: #252525;
+  --border-light: #2e2e2e;
+  --shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--bg);
+  --color-foreground: var(--text-primary);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Syne', sans-serif;
 }
 
 .chat-bubble-enter {
-  animation: slideUp 0.3s ease-out;
+  animation: slideUp 0.25s ease-out;
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .typing-dot {
@@ -42,5 +57,10 @@ body {
 
 @keyframes blink {
   0%, 80%, 100% { opacity: 0.2; }
-  40% { opacity: 1; }
+  40%           { opacity: 1; }
 }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 2px; }

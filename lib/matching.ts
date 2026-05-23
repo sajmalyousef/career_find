@@ -424,6 +424,7 @@ const BUDGET_MAX: Record<string, number> = {
   '1L_5L': 500000,
   '5L_15L': 1500000,
   above_15L: Infinity,
+  loan_open: Infinity,
   unknown: Infinity,
 };
 
