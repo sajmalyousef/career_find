@@ -78,9 +78,9 @@ function BigFiveRadar({ scores }: { scores: BigFiveScores }) {
   return (
     <ResponsiveContainer width="100%" height={200}>
       <RadarChart data={data}>
-        <PolarGrid stroke="var(--border)" />
-        <PolarAngleAxis dataKey="trait" tick={{ fontSize: 11, fill: 'var(--text-muted)' }} />
-        <Radar name="You" dataKey="value" stroke="var(--accent)" fill="var(--accent)" fillOpacity={0.15} strokeWidth={2} />
+        <PolarGrid stroke="#2e2e2e" />
+        <PolarAngleAxis dataKey="trait" tick={{ fontSize: 11, fill: '#5e5a55' }} />
+        <Radar name="You" dataKey="value" stroke="#ff5c35" fill="#ff5c35" fillOpacity={0.18} strokeWidth={2} />
       </RadarChart>
     </ResponsiveContainer>
   );
