@@ -57,14 +57,6 @@ const AI_RISK_COLORS: Record<string, { bg: string; color: string }> = {
   high:   { bg: 'rgba(239,68,68,0.1)',   color: '#dc2626' },
 };
 
-const TIER_LABELS: Record<string, string> = {
-  tier1: 'Top Tier', tier2: 'Good Tier', global_elite: 'Global Elite',
-};
-
-function formatFees(fees: number): string {
-  if (fees < 100000) return `₹${(fees / 1000).toFixed(0)}K/yr`;
-  return `₹${(fees / 100000).toFixed(1)}L/yr`;
-}
 
 const serif = "var(--font-serif), 'Instrument Serif', serif";
 
@@ -91,8 +83,27 @@ function BigFiveRadar({ scores }: { scores: BigFiveScores }) {
 export default function ResultsPage() {
   const router = useRouter();
   const [data, setData] = useState<ApiResponse | null>(null);
-  const [showAbroad, setShowAbroad] = useState(false);
-  const [activeTab, setActiveTab] = useState<'careers' | 'eliminated' | 'colleges'>('careers');
+  const [activeTab, setActiveTab] = useState<'careers' | 'eliminated'>('careers');
+  const [downloading, setDownloading] = useState(false);
+
+  async function downloadReport() {
+    if (!data) return;
+    setDownloading(true);
+    try {
+      const res = await fetch('/api/report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ result: data.result, bigFive: data.bigFive, riasec: data.riasec }),
+      });
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'careerfind-report.pdf'; a.click();
+      URL.revokeObjectURL(url);
+    } finally {
+      setDownloading(false);
+    }
+  }
 
   useEffect(() => {
     const stored = sessionStorage.getItem('careerResults');
@@ -115,12 +126,8 @@ export default function ResultsPage() {
   const { result, bigFive, riasec } = data;
   const careers = result.careers ?? [];
   const eliminated = result.eliminated ?? [];
-  const colleges = result.colleges ?? [];
   const personalityHighlights = result.personalityHighlights ?? [];
   const topRIASEC = result.topRIASEC ?? [];
-  const indiaColleges = colleges.filter(c => !c.abroad);
-  const abroadColleges = colleges.filter(c => c.abroad);
-  const displayColleges = showAbroad ? abroadColleges : indiaColleges;
 
   return (
     <main style={{ background: 'var(--cream)', minHeight: '100vh' }}>
@@ -163,7 +170,7 @@ export default function ResultsPage() {
 
         {/* Tab Nav */}
         <div style={{ display: 'flex', background: 'var(--warm-white)', borderRadius: 10, padding: 4, gap: 4, border: '1px solid rgba(26,18,7,0.08)' }}>
-          {(['careers', 'eliminated', 'colleges'] as const).map((tab) => (
+          {(['careers', 'eliminated'] as const).map((tab) => (
             <button key={tab} onClick={() => setActiveTab(tab)} style={{
               flex: 1, padding: '0.625rem 0', fontSize: '0.82rem', fontWeight: 600,
               borderRadius: 7, border: 'none', cursor: 'pointer', fontFamily: 'inherit',
@@ -171,7 +178,7 @@ export default function ResultsPage() {
               color: activeTab === tab ? 'var(--bark)' : 'var(--warm-gray)',
               transition: 'all 0.2s',
             }}>
-              {tab === 'careers' ? '🎯 Careers' : tab === 'eliminated' ? '❌ Not for you' : '🏛️ Colleges'}
+              {tab === 'careers' ? '🎯 Career Matches' : '❌ Not For You'}
             </button>
           ))}
         </div>
@@ -241,80 +248,24 @@ export default function ResultsPage() {
           </section>
         )}
 
-        {/* Colleges */}
-        {activeTab === 'colleges' && (
-          <section style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <h2 style={{ fontFamily: serif, fontSize: '1.25rem', color: 'var(--bark)', margin: 0 }}>Colleges to target</h2>
-              <div style={{ display: 'flex', background: 'var(--warm-white)', border: '1px solid rgba(26,18,7,0.08)', borderRadius: 8, padding: 3, gap: 3 }}>
-                {[{ label: '🇮🇳 India', val: false }, { label: '🌍 Abroad', val: true }].map(({ label, val }) => (
-                  <button key={label} onClick={() => setShowAbroad(val)} style={{ padding: '0.35rem 0.75rem', borderRadius: 6, border: 'none', fontSize: '0.78rem', fontWeight: 600, cursor: 'pointer', fontFamily: 'inherit', background: showAbroad === val ? 'var(--amber)' : 'transparent', color: showAbroad === val ? 'var(--bark)' : 'var(--warm-gray)', transition: 'all 0.2s' }}>
-                    {label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <p style={{ fontSize: '0.82rem', color: 'var(--warm-gray)', margin: 0 }}>
-              Matched to your top career recommendation — not a generic list.
-            </p>
-
-            {displayColleges.length === 0 && (
-              <div style={{ background: 'var(--warm-white)', borderRadius: 12, padding: '2rem', textAlign: 'center', fontSize: '0.88rem', color: 'var(--warm-gray)' }}>
-                No colleges found for this filter. Try the India option.
-              </div>
-            )}
-
-            {displayColleges.map((college) => {
-              const isTier1 = college.tier === 'tier1' || college.tier === 'global_elite';
-              return (
-                <div key={`${college.id}-${college.careerMatch}`} style={{ background: 'var(--warm-white)', borderRadius: 12, padding: '1.25rem', borderTop: `2px solid ${isTier1 ? 'var(--amber)' : 'rgba(212,148,42,0.3)'}` }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.625rem' }}>
-                    <div>
-                      <h3 style={{ fontFamily: serif, fontSize: '1.05rem', color: 'var(--bark)', margin: '0 0 0.2rem' }}>{college.name}</h3>
-                      <p style={{ fontSize: '0.75rem', color: 'var(--warm-gray)', margin: 0 }}>{college.location}</p>
-                    </div>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 600, padding: '0.25rem 0.6rem', borderRadius: 20, background: isTier1 ? 'rgba(212,148,42,0.12)' : 'rgba(26,18,7,0.06)', color: isTier1 ? 'var(--amber-dark)' : 'var(--bark-mid)', whiteSpace: 'nowrap', flexShrink: 0, marginLeft: 8 }}>
-                      {TIER_LABELS[college.tier] ?? college.tier}
-                    </span>
-                  </div>
-
-                  <div style={{ background: 'rgba(212,148,42,0.07)', borderRadius: 8, padding: '0.875rem', marginBottom: '0.875rem' }}>
-                    <p style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--amber-dark)', margin: '0 0 0.3rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Why this college for you</p>
-                    <p style={{ fontSize: '0.88rem', color: 'var(--bark-mid)', lineHeight: 1.65, margin: 0 }}>{college.whyGoodFit}</p>
-                  </div>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '0.5rem' }}>
-                    {[
-                      { label: 'Fees/year', value: formatFees(college.fees_per_year_inr) },
-                      { label: 'NIRF Rank', value: college.nirf_rank ?? '—' },
-                      { label: 'Career fit', value: college.careerMatch.replace(/_/g, ' ') },
-                    ].map(({ label, value }) => (
-                      <div key={label} style={{ background: 'rgba(26,18,7,0.04)', borderRadius: 8, padding: '0.5rem', textAlign: 'center' }}>
-                        <p style={{ fontSize: '0.68rem', color: 'var(--warm-gray)', margin: '0 0 0.2rem' }}>{label}</p>
-                        <p style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--bark)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{value}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {college.entrance_exams?.length > 0 && (
-                    <div style={{ marginTop: '0.75rem', display: 'flex', flexWrap: 'wrap', gap: '0.375rem', alignItems: 'center' }}>
-                      <span style={{ fontSize: '0.72rem', color: 'var(--warm-gray)' }}>Entrance:</span>
-                      {college.entrance_exams.map((e) => (
-                        <span key={e} style={{ fontSize: '0.72rem', background: 'rgba(26,18,7,0.06)', color: 'var(--bark-mid)', padding: '0.2rem 0.6rem', borderRadius: 20, fontWeight: 600 }}>{e}</span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </section>
-        )}
-
-        {/* Retake */}
-        <div style={{ textAlign: 'center', paddingTop: '0.5rem', paddingBottom: '1.5rem' }}>
-          <button onClick={() => { sessionStorage.removeItem('careerResults'); router.push('/assess'); }}
-            style={{ fontSize: '0.82rem', color: 'var(--warm-gray)', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
+        {/* Actions */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', paddingBottom: '1.5rem' }}>
+          <button
+            onClick={downloadReport}
+            disabled={downloading}
+            style={{
+              width: '100%', padding: '0.9rem', borderRadius: 10, border: 'none',
+              background: 'var(--amber)', color: 'var(--bark)', fontWeight: 700,
+              fontSize: '0.95rem', cursor: downloading ? 'wait' : 'pointer',
+              opacity: downloading ? 0.7 : 1, fontFamily: 'inherit',
+            }}
+          >
+            {downloading ? 'Generating your report…' : '↓ Download Full Report (PDF)'}
+          </button>
+          <button
+            onClick={() => { sessionStorage.removeItem('careerResults'); router.push('/assess'); }}
+            style={{ fontSize: '0.82rem', color: 'var(--warm-gray)', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
+          >
             Retake the assessment →
           </button>
         </div>
