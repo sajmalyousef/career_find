@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import questionsData from '@/data/questions.json';
+import { scoreBigFive, scoreRIASEC, extractLifestyle } from '@/lib/scoring';
+import { computeResults } from '@/lib/matching';
 
 interface Option {
   label: string;
@@ -162,36 +164,34 @@ export default function AssessPage() {
     const nextBlock = nextQ ? allBlocks.find((b) => b.questions.some((qb) => qb.id === nextQ.id))?.id : undefined;
 
     if (newIndex >= allQuestions.length) {
-      // submit
+      // submit — compute results locally, no API call needed
       setSubmitted(true);
       setIsTyping(true);
       addMessage({
         id: 'done',
         role: 'aarav',
-        content: "That's everything! Give me a moment — I'm building your career map now. 🗺️",
+        content: "That's everything! Building your career map now… 🗺️",
       }, 600);
 
-      setTimeout(async () => {
-        setLoading(true);
+      setTimeout(() => {
         try {
-          const res = await fetch('/api/analyze', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ answers: newAnswers }),
-          });
-          const data = await res.json();
-          sessionStorage.setItem('careerResults', JSON.stringify(data));
+          const bigFive = scoreBigFive(newAnswers);
+          const riasec = scoreRIASEC(newAnswers);
+          const lifestyle = extractLifestyle(newAnswers);
+          const result = computeResults(bigFive, riasec, lifestyle);
+          sessionStorage.setItem('careerResults', JSON.stringify({ result, bigFive, riasec, lifestyle }));
           router.push('/results');
-        } catch {
+        } catch (err) {
           setLoading(false);
           setIsTyping(false);
+          const detail = err instanceof Error ? err.message : 'Unknown error';
           addMessage({
             id: 'error',
             role: 'aarav',
-            content: "Hmm, something went wrong. Please refresh and try again.",
+            content: `Something went wrong building your results. ${detail}. Please refresh and try again.`,
           }, 0);
         }
-      }, 1500);
+      }, 1200);
     } else {
       showNextQuestion(newIndex, prevBlock);
     }

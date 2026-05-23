@@ -97,11 +97,16 @@ export default function ResultsPage() {
   useEffect(() => {
     const stored = sessionStorage.getItem('careerResults');
     if (!stored) {
-      router.push('/');
+      router.push('/assess');
       return;
     }
     try {
-      setData(JSON.parse(stored));
+      const parsed = JSON.parse(stored);
+      if (!parsed.result) {
+        router.push('/assess');
+        return;
+      }
+      setData(parsed);
     } catch {
       router.push('/');
     }
@@ -117,8 +122,15 @@ export default function ResultsPage() {
 
   const { result, bigFive, riasec } = data;
 
-  const indiaColleges = result.colleges.filter((c) => !c.abroad);
-  const abroadColleges = result.colleges.filter((c) => c.abroad);
+  // Safety fallbacks so the page never crashes on missing fields
+  const careers = result.careers ?? [];
+  const eliminated = result.eliminated ?? [];
+  const colleges = result.colleges ?? [];
+  const personalityHighlights = result.personalityHighlights ?? [];
+  const topRIASEC = result.topRIASEC ?? [];
+
+  const indiaColleges = colleges.filter((c) => !c.abroad);
+  const abroadColleges = colleges.filter((c) => c.abroad);
   const displayColleges = showAbroad ? abroadColleges : indiaColleges;
 
   return (
@@ -136,9 +148,9 @@ export default function ResultsPage() {
           <h2 className="font-bold text-gray-900 mb-2 text-lg">Your Profile</h2>
           <p className="text-gray-600 text-sm leading-relaxed mb-4">{result.profileSummary}</p>
 
-          {result.personalityHighlights?.length > 0 && (
+          {personalityHighlights.length > 0 && (
             <div className="space-y-2 mb-4">
-              {result.personalityHighlights.map((h, i) => (
+              {personalityHighlights.map((h, i) => (
                 <div key={i} className="flex items-start gap-2 text-sm text-gray-700">
                   <span className="text-orange-500 mt-0.5">✦</span>
                   <span>{h}</span>
@@ -148,7 +160,7 @@ export default function ResultsPage() {
           )}
 
           <div className="grid grid-cols-2 gap-3 mb-4">
-            {result.topRIASEC?.map((code) => (
+            {topRIASEC.map((code) => (
               <div key={code} className="bg-orange-50 rounded-xl px-3 py-2.5 text-sm">
                 <span className="font-semibold text-orange-600">{code}</span>
                 <p className="text-gray-600 text-xs mt-0.5">{getRIASECLabel(code)}</p>
@@ -188,7 +200,7 @@ export default function ResultsPage() {
         {activeTab === 'careers' && (
           <section className="space-y-4">
             <h2 className="font-bold text-gray-900 text-lg px-1">Your top career matches</h2>
-            {result.careers.map((career, i) => (
+            {careers.map((career, i) => (
               <div key={career.id} className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
@@ -239,7 +251,7 @@ export default function ResultsPage() {
             <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
               <strong>Why we show you this:</strong> Knowing what doesn't fit you saves years. These aren't meant to discourage you — they're meant to help you avoid spending 4 years on the wrong path.
             </div>
-            {result.eliminated.map((item, i) => (
+            {eliminated.map((item, i) => (
               <div key={i} className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-lg">🚫</span>
