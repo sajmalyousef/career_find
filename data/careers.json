@@ -813,15 +813,15 @@
     "dayInLife": "Fly commercial aircraft, command a crew, and navigate the skies.",
     "riasec": [
       "R",
-      "Cv",
+      "I",
       "En"
     ],
     "bigFiveFit": {
-      "O": "medium",
       "C": "high",
+      "N": "low",
       "E": "high",
-      "A": "medium",
-      "N": "low"
+      "O": "low",
+      "A": "medium"
     },
     "aiRisk": "medium",
     "aiNote": "Automation is rising in aviation, but human judgment in critical situations remains essential.",
@@ -843,8 +843,8 @@
       "wealthDrive": "high",
       "impactDrive": "low",
       "autonomyDrive": "medium",
-      "stabilityDrive": "medium",
-      "balanceDrive": "medium"
+      "stabilityDrive": "high",
+      "balanceDrive": "low"
     }
   },
   {
@@ -1781,6 +1781,130 @@
       "autonomyDrive": "medium",
       "stabilityDrive": "medium",
       "balanceDrive": "high"
+    }
+  },
+  {
+    "id": "air_traffic_controller",
+    "name": "Air Traffic Controller",
+    "cluster": "aviation",
+    "dayInLife": "Guide aircraft safely through controlled airspace, coordinate takeoffs and landings, and manage complex traffic flows from the tower.",
+    "riasec": [
+      "Cv",
+      "I",
+      "R"
+    ],
+    "bigFiveFit": {
+      "C": "high",
+      "N": "low",
+      "E": "medium",
+      "O": "any",
+      "A": "medium"
+    },
+    "aiRisk": "low",
+    "aiNote": "Real-time human judgment in safety-critical decisions makes full automation decades away.",
+    "salaryFresher": "₹8–12 LPA (AAI)",
+    "salary5yr": "₹14–22 LPA",
+    "exams": [
+      "AAI ATC Exam",
+      "NDA (optional path)"
+    ],
+    "careerTags": [
+      "aviation",
+      "government"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "medium",
+      "autonomyDrive": "low",
+      "stabilityDrive": "high",
+      "balanceDrive": "medium"
+    }
+  },
+  {
+    "id": "aerospace_engineer",
+    "name": "Aerospace Engineer",
+    "cluster": "engineering",
+    "dayInLife": "Design and test aircraft, satellites, and propulsion systems — solving the hardest physics and materials problems in engineering.",
+    "riasec": [
+      "I",
+      "R",
+      "Cv"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "N": "any",
+      "E": "any",
+      "A": "any"
+    },
+    "aiRisk": "low",
+    "aiNote": "Complex systems design and safety validation require deep human expertise.",
+    "salaryFresher": "₹6–12 LPA",
+    "salary5yr": "₹15–35 LPA",
+    "exams": [
+      "JEE Advanced (IIT)",
+      "IIST entrance",
+      "GATE (for PSUs)"
+    ],
+    "careerTags": [
+      "engineering",
+      "tech",
+      "science"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "high",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "high",
+      "balanceDrive": "medium"
+    }
+  },
+  {
+    "id": "merchant_navy_officer",
+    "name": "Merchant Navy Officer",
+    "cluster": "maritime",
+    "dayInLife": "Navigate cargo or tanker ships across international waters, manage a crew, and ensure safe delivery of goods across oceans.",
+    "riasec": [
+      "R",
+      "En",
+      "Cv"
+    ],
+    "bigFiveFit": {
+      "C": "high",
+      "N": "low",
+      "E": "medium",
+      "O": "medium",
+      "A": "medium"
+    },
+    "aiRisk": "low",
+    "aiNote": "On-board leadership, navigation decisions, and emergency response remain irreplaceably human.",
+    "salaryFresher": "₹25,000–60,000/month (cadet stipend)",
+    "salary5yr": "₹5–12 LPA (Officer rank)",
+    "exams": [
+      "IMU CET",
+      "DNS Sponsorship",
+      "GP Rating entry"
+    ],
+    "careerTags": [
+      "maritime",
+      "engineering",
+      "government"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "low",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "low"
     }
   }
 ]
