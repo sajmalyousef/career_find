@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { track } from '@vercel/analytics';
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import type { BigFiveScores, RIASECScores } from '@/lib/scoring';
 import { getRIASECLabel } from '@/lib/scoring';
@@ -85,6 +86,9 @@ export default function ResultsPage() {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [activeTab, setActiveTab] = useState<'careers' | 'eliminated'>('careers');
   const [downloading, setDownloading] = useState(false);
+  const [hoveredStar, setHoveredStar] = useState<number | null>(null);
+  const [selectedRating, setSelectedRating] = useState<number | null>(null);
+  const [ratingDone, setRatingDone] = useState(false);
 
   async function downloadReport() {
     if (!data) return;
@@ -128,6 +132,7 @@ export default function ResultsPage() {
   const eliminated = result.eliminated ?? [];
   const personalityHighlights = result.personalityHighlights ?? [];
   const topRIASEC = result.topRIASEC ?? [];
+  const topAspirations: string[] = (result as { topAspirations?: string[] }).topAspirations ?? [];
 
   return (
     <main style={{ background: 'var(--cream)', minHeight: '100vh' }}>
@@ -164,6 +169,19 @@ export default function ResultsPage() {
               </div>
             ))}
           </div>
+
+          {topAspirations.length > 0 && (
+            <div style={{ marginBottom: '1.25rem' }}>
+              <p style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--amber-dark)', textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 0.5rem' }}>You&apos;re optimising for</p>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                {topAspirations.map((label) => (
+                  <span key={label} style={{ fontSize: '0.82rem', fontWeight: 600, padding: '0.35rem 0.75rem', background: 'rgba(212,148,42,0.12)', color: 'var(--amber-dark)', borderRadius: 20, border: '1px solid rgba(212,148,42,0.25)' }}>
+                    {label}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
           <BigFiveRadar scores={bigFive} />
         </section>
@@ -248,8 +266,51 @@ export default function ResultsPage() {
           </section>
         )}
 
+        {/* Rating widget */}
+        {!ratingDone ? (
+          <div style={{ background: 'var(--warm-white)', borderRadius: 12, padding: '1.25rem', marginBottom: '2rem', textAlign: 'center', border: '1px solid rgba(26,18,7,0.06)' }}>
+            <p style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--bark)', margin: '0 0 0.25rem' }}>Was this useful?</p>
+            <p style={{ fontSize: '0.75rem', color: 'var(--warm-gray)', margin: '0 0 1rem' }}>Your rating helps us improve CareerFind</p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+              {[1, 2, 3, 4, 5].map((star) => {
+                const filled = hoveredStar ? star <= hoveredStar : star <= (selectedRating ?? 0);
+                return (
+                  <button
+                    key={star}
+                    onMouseEnter={() => setHoveredStar(star)}
+                    onMouseLeave={() => setHoveredStar(null)}
+                    onClick={() => {
+                      setSelectedRating(star);
+                      track('rating_submitted', { rating: star });
+                      setTimeout(() => setRatingDone(true), 600);
+                    }}
+                    style={{
+                      background: 'none', border: 'none', cursor: 'pointer', padding: '0.2rem',
+                      fontSize: '1.75rem', lineHeight: 1,
+                      filter: filled ? 'none' : 'grayscale(1) opacity(0.25)',
+                      transform: filled ? 'scale(1.2)' : 'scale(1)',
+                      transition: 'all 0.15s ease',
+                    }}
+                  >
+                    ⭐
+                  </button>
+                );
+              })}
+            </div>
+            {selectedRating && (
+              <p style={{ fontSize: '0.78rem', color: 'var(--amber-dark)', fontWeight: 600, margin: 0 }}>
+                {['', 'Not great', 'Could be better', 'Pretty good', 'Really good', 'Loved it! 🎉'][selectedRating]}
+              </p>
+            )}
+          </div>
+        ) : (
+          <div style={{ textAlign: 'center', marginBottom: '0.5rem', padding: '0.75rem' }}>
+            <p style={{ fontSize: '0.85rem', color: 'var(--warm-gray)' }}>Thanks for the feedback ✦</p>
+          </div>
+        )}
+
         {/* Actions */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', paddingBottom: '1.5rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', paddingBottom: '2rem' }}>
           <button
             onClick={downloadReport}
             disabled={downloading}
@@ -269,6 +330,7 @@ export default function ResultsPage() {
             Retake the assessment →
           </button>
         </div>
+
       </div>
     </main>
   );

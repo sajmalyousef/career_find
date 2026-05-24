@@ -22,9 +22,9 @@ const stories = [
 ];
 
 const steps = [
-  { icon: '💬', title: 'Chat with Aarav', desc: '20 questions in a WhatsApp-style conversation. Takes about 8 minutes.' },
-  { icon: '🧠', title: 'Get your profile', desc: 'We map your personality (Big Five) and interests (RIASEC) to real careers.' },
-  { icon: '🎯', title: 'See your career map', desc: '3–4 matches, honest elimination reasons, and targeted college recommendations.' },
+  { icon: '🃏', title: 'Answer 20 cards', desc: 'One question at a time. Real-life scenarios — no right or wrong answers. Takes about 8 minutes.' },
+  { icon: '🧠', title: 'Get your profile', desc: 'We map your personality (Big Five), interests (RIASEC), and life goals to real careers.' },
+  { icon: '🎯', title: 'See your career map', desc: '3–4 matches with honest reasoning, plus careers that don\'t fit you — and exactly why.' },
 ];
 
 const outcomes = [
@@ -126,6 +126,75 @@ export default function Home() {
                 <p style={{ fontSize: '0.88rem', color: 'var(--warm-gray)', lineHeight: 1.65 }}>{s.story}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Science section ─── */}
+      <section style={{ padding: 'clamp(4rem,8vw,6rem) 1.5rem', background: 'var(--cream)' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto' }}>
+          <p className="section-label" style={{ marginBottom: '0.75rem' }}>The science behind it</p>
+          <h2 style={{ fontFamily: serif, fontSize: 'clamp(1.75rem,3.5vw,2.5rem)', color: 'var(--bark)', marginBottom: '0.75rem', lineHeight: 1.15 }}>
+            Not opinions. Frameworks used by psychologists.
+          </h2>
+          <p style={{ fontSize: '0.95rem', color: 'var(--warm-gray)', lineHeight: 1.7, maxWidth: 560, marginBottom: '3rem' }}>
+            We don&apos;t ask you to describe yourself. We put you through scenarios and measure your response pattern — then match it against career requirements. The difference between a doctor asking &ldquo;do you feel sick?&rdquo; versus running a blood test.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
+
+            {/* Big Five */}
+            <div style={{ background: 'var(--warm-white)', borderRadius: 12, padding: '1.75rem', borderTop: '2px solid var(--amber)' }}>
+              <p style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--amber)', textTransform: 'uppercase' as const, letterSpacing: '0.1em', marginBottom: '0.5rem' }}>Framework 1</p>
+              <h3 style={{ fontFamily: serif, fontSize: '1.25rem', color: 'var(--bark)', marginBottom: '0.625rem' }}>Big Five Personality (OCEAN)</h3>
+              <p style={{ fontSize: '0.88rem', color: 'var(--warm-gray)', lineHeight: 1.7, marginBottom: '1rem' }}>
+                The most validated personality model in psychology. 40+ years of peer-reviewed research. Used by universities, military recruitment, and clinical psychology worldwide.
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: '0.375rem' }}>
+                {['Openness', 'Conscientiousness', 'Extraversion', 'Agreeableness', 'Stability'].map(t => (
+                  <span key={t} style={{ fontSize: '0.72rem', padding: '0.25rem 0.625rem', background: 'rgba(212,148,42,0.1)', color: 'var(--amber-dark)', borderRadius: 20, fontWeight: 600 }}>{t}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* RIASEC */}
+            <div style={{ background: 'var(--warm-white)', borderRadius: 12, padding: '1.75rem', borderTop: '2px solid var(--amber)' }}>
+              <p style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--amber)', textTransform: 'uppercase' as const, letterSpacing: '0.1em', marginBottom: '0.5rem' }}>Framework 2</p>
+              <h3 style={{ fontFamily: serif, fontSize: '1.25rem', color: 'var(--bark)', marginBottom: '0.625rem' }}>RIASEC (Holland Codes)</h3>
+              <p style={{ fontSize: '0.88rem', color: 'var(--warm-gray)', lineHeight: 1.7, marginBottom: '1rem' }}>
+                Developed at Johns Hopkins. Used by the US Department of Labor&apos;s O*NET — the world&apos;s largest career classification database. Maps the work environments you&apos;re drawn to, not just job titles.
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: '0.375rem' }}>
+                {['Realistic', 'Investigative', 'Artistic', 'Social', 'Enterprising', 'Conventional'].map(t => (
+                  <span key={t} style={{ fontSize: '0.72rem', padding: '0.25rem 0.625rem', background: 'rgba(212,148,42,0.1)', color: 'var(--amber-dark)', borderRadius: 20, fontWeight: 600 }}>{t}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* Aspirations */}
+            <div style={{ background: 'var(--warm-white)', borderRadius: 12, padding: '1.75rem', borderTop: '2px solid var(--amber)' }}>
+              <p style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--amber)', textTransform: 'uppercase' as const, letterSpacing: '0.1em', marginBottom: '0.5rem' }}>Framework 3</p>
+              <h3 style={{ fontFamily: serif, fontSize: '1.25rem', color: 'var(--bark)', marginBottom: '0.625rem' }}>Life Aspiration Profile</h3>
+              <p style={{ fontSize: '0.88rem', color: 'var(--warm-gray)', lineHeight: 1.7, marginBottom: '1rem' }}>
+                What do you want your life to actually look like? Wealth, impact, autonomy, stability, balance — we measure what you&apos;re optimising for and filter careers accordingly.
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: '0.375rem' }}>
+                {['Wealth', 'Impact', 'Autonomy', 'Stability', 'Balance'].map(t => (
+                  <span key={t} style={{ fontSize: '0.72rem', padding: '0.25rem 0.625rem', background: 'rgba(212,148,42,0.1)', color: 'var(--amber-dark)', borderRadius: 20, fontWeight: 600 }}>{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* vs Gemini callout */}
+          <div style={{ background: 'var(--bark)', borderRadius: 12, padding: '1.5rem 2rem', display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
+            <span style={{ fontSize: '1.5rem', flexShrink: 0, marginTop: 2 }}>💡</span>
+            <div>
+              <p style={{ fontFamily: serif, fontSize: '1rem', color: 'var(--cream)', margin: '0 0 0.4rem' }}>Why not just ask ChatGPT or Gemini?</p>
+              <p style={{ fontSize: '0.88rem', color: 'rgba(255,250,243,0.55)', lineHeight: 1.7, margin: 0 }}>
+                AI chatbots respond to what you <em>say</em> about yourself — which means they amplify your existing assumptions. CareerFind doesn&apos;t ask you to describe yourself. It measures you across 20 scenario-based questions and matches the pattern to career requirements. That&apos;s the difference between asking &ldquo;do you think you&apos;re creative?&rdquo; and actually measuring it.
+              </p>
+            </div>
           </div>
         </div>
       </section>

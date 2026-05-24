@@ -86,6 +86,67 @@ export function extractLifestyle(answers: SessionAnswers): LifestyleInputs {
   };
 }
 
+// ─── Aspirations ──────────────────────────────────────────────────────────────
+
+export interface AspirationProfile {
+  wealthDrive: number;     // want high income, build wealth
+  impactDrive: number;     // want meaningful work, change the world
+  autonomyDrive: number;   // entrepreneurship, independence, own terms
+  stabilityDrive: number;  // security, predictability
+  balanceDrive: number;    // work-life balance, time freedom
+}
+
+// Maps Block D answer values to aspiration dimension deltas
+const ASPIRATION_MAP: Record<string, Partial<AspirationProfile>> = {
+  wealth:       { wealthDrive: 2 },
+  impact:       { impactDrive: 2 },
+  risk_lover:   { autonomyDrive: 2, stabilityDrive: -1 },
+  stability:    { stabilityDrive: 2 },
+  flexibility:  { balanceDrive: 2, autonomyDrive: 0.5 },
+  calculated:   { autonomyDrive: 0.5, stabilityDrive: 0.5 },
+  ai_excited:   { autonomyDrive: 0.5, wealthDrive: 0.5 },
+  risk_averse:  { stabilityDrive: 1 },
+  hometown:     { stabilityDrive: 0.5, impactDrive: 0.5 },
+  metro:        { wealthDrive: 0.5 },
+};
+
+export function scoreAspirations(answers: SessionAnswers): AspirationProfile {
+  const profile: AspirationProfile = {
+    wealthDrive: 0,
+    impactDrive: 0,
+    autonomyDrive: 0,
+    stabilityDrive: 0,
+    balanceDrive: 0,
+  };
+  // Only read Block D answers (D1–D12)
+  for (const [qid, answer] of Object.entries(answers)) {
+    if (!qid.startsWith('D')) continue;
+    const val = answer.value;
+    if (!val) continue;
+    const deltas = ASPIRATION_MAP[val];
+    if (!deltas) continue;
+    for (const [dim, delta] of Object.entries(deltas) as [keyof AspirationProfile, number][]) {
+      profile[dim] += delta;
+    }
+  }
+  return profile;
+}
+
+export function getTopAspirations(profile: AspirationProfile, count = 2): string[] {
+  const LABELS: Record<keyof AspirationProfile, string> = {
+    wealthDrive: 'Wealth',
+    impactDrive: 'Impact',
+    autonomyDrive: 'Autonomy',
+    stabilityDrive: 'Stability',
+    balanceDrive: 'Work-life balance',
+  };
+  return (Object.entries(profile) as [keyof AspirationProfile, number][])
+    .filter(([, v]) => v > 0)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, count)
+    .map(([key]) => LABELS[key]);
+}
+
 export function getBigFiveLabel(key: string): string {
   const labels: Record<string, string> = {
     E: 'Extraversion',

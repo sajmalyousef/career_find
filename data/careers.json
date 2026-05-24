@@ -4,629 +4,1783 @@
     "name": "Software Engineer",
     "cluster": "tech",
     "dayInLife": "Design and build apps, websites, and systems that millions of people use every day.",
-    "riasec": ["I", "R", "Cv"],
-    "bigFiveFit": { "O": "high", "C": "high", "E": "any", "A": "any", "N": "low_preferred" },
+    "riasec": [
+      "I",
+      "R",
+      "Cv"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "E": "any",
+      "A": "any",
+      "N": "low_preferred"
+    },
     "aiRisk": "medium",
     "aiNote": "AI will automate some coding, but engineers who understand systems and architecture remain essential.",
     "salaryFresher": "₹4–12 LPA",
     "salary5yr": "₹12–40 LPA",
-    "exams": ["JEE Main", "JEE Advanced", "BITSAT", "State CETs"],
-    "careerTags": ["engineering", "tech", "software"],
-    "streams": ["science_pcm"]
+    "exams": [
+      "JEE Main",
+      "JEE Advanced",
+      "BITSAT",
+      "State CETs"
+    ],
+    "careerTags": [
+      "engineering",
+      "tech",
+      "software"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "low",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "data_scientist",
     "name": "Data Scientist / AI Engineer",
     "cluster": "tech",
     "dayInLife": "Find patterns in massive datasets and build models that help companies make smarter decisions.",
-    "riasec": ["I", "Cv", "R"],
-    "bigFiveFit": { "O": "high", "C": "high", "E": "low_preferred", "A": "any", "N": "low_preferred" },
+    "riasec": [
+      "I",
+      "Cv",
+      "R"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "E": "low_preferred",
+      "A": "any",
+      "N": "low_preferred"
+    },
     "aiRisk": "low",
     "aiNote": "You'll be the one building AI — highly future-proof.",
     "salaryFresher": "₹6–15 LPA",
     "salary5yr": "₹15–60 LPA",
-    "exams": ["JEE Main", "JEE Advanced", "BITSAT"],
-    "careerTags": ["engineering", "tech", "data", "ai"],
-    "streams": ["science_pcm"]
+    "exams": [
+      "JEE Main",
+      "JEE Advanced",
+      "BITSAT"
+    ],
+    "careerTags": [
+      "engineering",
+      "tech",
+      "data",
+      "ai"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "medium",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "doctor",
     "name": "Doctor (Medicine)",
     "cluster": "healthcare",
     "dayInLife": "Diagnose illness, treat patients, and make decisions that directly save lives.",
-    "riasec": ["I", "S", "R"],
-    "bigFiveFit": { "O": "medium", "C": "high", "E": "medium", "A": "high", "N": "low" },
+    "riasec": [
+      "I",
+      "S",
+      "R"
+    ],
+    "bigFiveFit": {
+      "O": "medium",
+      "C": "high",
+      "E": "medium",
+      "A": "high",
+      "N": "low"
+    },
     "aiRisk": "low",
     "aiNote": "Doctor-patient relationships and physical care require deep human judgment — highly resilient.",
     "salaryFresher": "₹6–10 LPA (resident/junior)",
     "salary5yr": "₹15–50 LPA",
-    "exams": ["NEET UG"],
-    "careerTags": ["healthcare", "medicine", "research"],
-    "streams": ["science_pcb"]
+    "exams": [
+      "NEET UG"
+    ],
+    "careerTags": [
+      "healthcare",
+      "medicine",
+      "research"
+    ],
+    "streams": [
+      "science_pcb"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "high",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "high",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "civil_engineer",
     "name": "Civil / Structural Engineer",
     "cluster": "engineering",
     "dayInLife": "Design bridges, roads, buildings, and water systems — shape the physical world.",
-    "riasec": ["R", "I", "Cv"],
-    "bigFiveFit": { "O": "medium", "C": "high", "E": "any", "A": "any", "N": "low_preferred" },
+    "riasec": [
+      "R",
+      "I",
+      "Cv"
+    ],
+    "bigFiveFit": {
+      "O": "medium",
+      "C": "high",
+      "E": "any",
+      "A": "any",
+      "N": "low_preferred"
+    },
     "aiRisk": "low",
     "aiNote": "Physical infrastructure requires on-site expertise that AI cannot replace.",
     "salaryFresher": "₹3–7 LPA",
     "salary5yr": "₹7–20 LPA",
-    "exams": ["JEE Main", "State CETs"],
-    "careerTags": ["engineering", "infrastructure"],
-    "streams": ["science_pcm"]
+    "exams": [
+      "JEE Main",
+      "State CETs"
+    ],
+    "careerTags": [
+      "engineering",
+      "infrastructure"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "medium",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "high",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "architect",
     "name": "Architect",
     "cluster": "design",
     "dayInLife": "Design buildings and spaces that are functional, beautiful, and sustainable.",
-    "riasec": ["Ar", "R", "I"],
-    "bigFiveFit": { "O": "high", "C": "high", "E": "medium", "A": "any", "N": "any" },
+    "riasec": [
+      "Ar",
+      "R",
+      "I"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "E": "medium",
+      "A": "any",
+      "N": "any"
+    },
     "aiRisk": "medium",
     "aiNote": "AI tools will assist but creative vision and client relationships keep architects relevant.",
     "salaryFresher": "₹3–6 LPA",
     "salary5yr": "₹8–20 LPA",
-    "exams": ["NATA", "JEE Paper 2 (B.Arch)"],
-    "careerTags": ["design", "architecture"],
-    "streams": ["science_pcm", "arts"]
+    "exams": [
+      "NATA",
+      "JEE Paper 2 (B.Arch)"
+    ],
+    "careerTags": [
+      "design",
+      "architecture"
+    ],
+    "streams": [
+      "science_pcm",
+      "arts"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "medium",
+      "autonomyDrive": "high",
+      "stabilityDrive": "medium",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "ux_designer",
     "name": "UX / Product Designer",
     "cluster": "design",
     "dayInLife": "Design how apps and products feel to use — research users, sketch flows, and craft experiences.",
-    "riasec": ["Ar", "I", "S"],
-    "bigFiveFit": { "O": "high", "C": "medium", "E": "medium", "A": "high", "N": "any" },
+    "riasec": [
+      "Ar",
+      "I",
+      "S"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "medium",
+      "E": "medium",
+      "A": "high",
+      "N": "any"
+    },
     "aiRisk": "medium",
     "aiNote": "User empathy and strategic thinking remain human strengths.",
     "salaryFresher": "₹4–9 LPA",
     "salary5yr": "₹12–35 LPA",
-    "exams": ["NID", "NIFT", "CEED", "Design school entrances"],
-    "careerTags": ["design", "tech", "product"],
-    "streams": ["science_pcm", "arts", "commerce"]
+    "exams": [
+      "NID",
+      "NIFT",
+      "CEED",
+      "Design school entrances"
+    ],
+    "careerTags": [
+      "design",
+      "tech",
+      "product"
+    ],
+    "streams": [
+      "science_pcm",
+      "arts",
+      "commerce"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "medium",
+      "autonomyDrive": "high",
+      "stabilityDrive": "medium",
+      "balanceDrive": "high"
+    }
   },
   {
     "id": "entrepreneur",
     "name": "Entrepreneur / Startup Founder",
     "cluster": "business",
     "dayInLife": "Build a business from scratch — find a problem, create a solution, grow a team.",
-    "riasec": ["En", "S", "Ar"],
-    "bigFiveFit": { "O": "high", "C": "medium", "E": "high", "A": "medium", "N": "low" },
+    "riasec": [
+      "En",
+      "S",
+      "Ar"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "medium",
+      "E": "high",
+      "A": "medium",
+      "N": "low"
+    },
     "aiRisk": "low",
     "aiNote": "Entrepreneurship thrives on human creativity and relationship-building.",
     "salaryFresher": "Variable (₹0 to unlimited)",
     "salary5yr": "Highly variable",
-    "exams": ["No specific entrance — but IIM/IIT backgrounds help"],
-    "careerTags": ["business", "startup", "management"],
-    "streams": ["science_pcm", "commerce", "arts"]
+    "exams": [
+      "No specific entrance — but IIM/IIT backgrounds help"
+    ],
+    "careerTags": [
+      "business",
+      "startup",
+      "management"
+    ],
+    "streams": [
+      "science_pcm",
+      "commerce",
+      "arts"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "high",
+      "autonomyDrive": "high",
+      "stabilityDrive": "low",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "management_consultant",
     "name": "Management Consultant",
     "cluster": "business",
     "dayInLife": "Help large companies solve their hardest problems — strategy, efficiency, transformation.",
-    "riasec": ["En", "I", "Cv"],
-    "bigFiveFit": { "O": "high", "C": "high", "E": "high", "A": "medium", "N": "low" },
+    "riasec": [
+      "En",
+      "I",
+      "Cv"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "E": "high",
+      "A": "medium",
+      "N": "low"
+    },
     "aiRisk": "medium",
     "aiNote": "Strategic judgment and executive relationships are hard to automate.",
     "salaryFresher": "₹8–15 LPA (Big 4), ₹20–30 LPA (MBB)",
     "salary5yr": "₹20–60 LPA",
-    "exams": ["CAT (for IIM)", "GMAT"],
-    "careerTags": ["business", "strategy", "management"],
-    "streams": ["science_pcm", "commerce"]
+    "exams": [
+      "CAT (for IIM)",
+      "GMAT"
+    ],
+    "careerTags": [
+      "business",
+      "strategy",
+      "management"
+    ],
+    "streams": [
+      "science_pcm",
+      "commerce"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "medium",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "low",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "chartered_accountant",
     "name": "Chartered Accountant (CA)",
     "cluster": "finance",
     "dayInLife": "Audit company books, handle taxes, and advise businesses on financial decisions.",
-    "riasec": ["Cv", "En", "I"],
-    "bigFiveFit": { "O": "low_preferred", "C": "high", "E": "medium", "A": "medium", "N": "low_preferred" },
+    "riasec": [
+      "Cv",
+      "En",
+      "I"
+    ],
+    "bigFiveFit": {
+      "O": "low_preferred",
+      "C": "high",
+      "E": "medium",
+      "A": "medium",
+      "N": "low_preferred"
+    },
     "aiRisk": "high",
     "aiNote": "Routine accounting is being automated — future CAs need to focus on advisory, strategy, and complex judgment.",
     "salaryFresher": "₹6–10 LPA",
     "salary5yr": "₹15–40 LPA",
-    "exams": ["CA Foundation → Intermediate → Final (ICAI)"],
-    "careerTags": ["finance", "accounting"],
-    "streams": ["commerce", "science_pcm"]
+    "exams": [
+      "CA Foundation → Intermediate → Final (ICAI)"
+    ],
+    "careerTags": [
+      "finance",
+      "accounting"
+    ],
+    "streams": [
+      "commerce",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "low",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "high",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "lawyer",
     "name": "Lawyer / Legal Professional",
     "cluster": "law",
     "dayInLife": "Argue cases, draft contracts, advise clients — defend rights and navigate the legal system.",
-    "riasec": ["En", "I", "Ar"],
-    "bigFiveFit": { "O": "high", "C": "high", "E": "high", "A": "medium", "N": "low" },
+    "riasec": [
+      "En",
+      "I",
+      "Ar"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "E": "high",
+      "A": "medium",
+      "N": "low"
+    },
     "aiRisk": "medium",
     "aiNote": "AI handles research, but courtroom advocacy and client strategy require humans.",
     "salaryFresher": "₹3–8 LPA",
     "salary5yr": "₹10–40 LPA",
-    "exams": ["CLAT", "AILET", "LSAT India"],
-    "careerTags": ["law", "humanities"],
-    "streams": ["commerce", "arts", "science_pcm"]
+    "exams": [
+      "CLAT",
+      "AILET",
+      "LSAT India"
+    ],
+    "careerTags": [
+      "law",
+      "humanities"
+    ],
+    "streams": [
+      "commerce",
+      "arts",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "medium",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "psychologist",
     "name": "Psychologist / Counselor",
     "cluster": "social",
     "dayInLife": "Help people work through mental health challenges, trauma, and life transitions.",
-    "riasec": ["S", "I", "Ar"],
-    "bigFiveFit": { "O": "high", "C": "medium", "E": "medium", "A": "high", "N": "low" },
+    "riasec": [
+      "S",
+      "I",
+      "Ar"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "medium",
+      "E": "medium",
+      "A": "high",
+      "N": "low"
+    },
     "aiRisk": "low",
     "aiNote": "Human connection and trust in therapy cannot be replicated by AI.",
     "salaryFresher": "₹3–6 LPA",
     "salary5yr": "₹8–20 LPA",
-    "exams": ["BA/BSc Psychology entrances", "DUET", "BHU UET"],
-    "careerTags": ["social", "healthcare", "humanities"],
-    "streams": ["science_pcb", "arts"]
+    "exams": [
+      "BA/BSc Psychology entrances",
+      "DUET",
+      "BHU UET"
+    ],
+    "careerTags": [
+      "social",
+      "healthcare",
+      "humanities"
+    ],
+    "streams": [
+      "science_pcb",
+      "arts"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "high",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "high"
+    }
   },
   {
     "id": "journalist",
     "name": "Journalist / Content Creator",
     "cluster": "media",
     "dayInLife": "Investigate stories, interview people, and share truth with the world — in print, video, or digital.",
-    "riasec": ["Ar", "I", "S"],
-    "bigFiveFit": { "O": "high", "C": "medium", "E": "high", "A": "medium", "N": "any" },
+    "riasec": [
+      "Ar",
+      "I",
+      "S"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "medium",
+      "E": "high",
+      "A": "medium",
+      "N": "any"
+    },
     "aiRisk": "high",
     "aiNote": "AI writes commodity content — original investigation and human storytelling remain valuable.",
     "salaryFresher": "₹2–6 LPA",
     "salary5yr": "₹6–20 LPA",
-    "exams": ["IIMC", "ACJ", "Symbiosis", "XIC"],
-    "careerTags": ["media", "humanities"],
-    "streams": ["arts", "commerce", "science_pcm"]
+    "exams": [
+      "IIMC",
+      "ACJ",
+      "Symbiosis",
+      "XIC"
+    ],
+    "careerTags": [
+      "media",
+      "humanities"
+    ],
+    "streams": [
+      "arts",
+      "commerce",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "low",
+      "impactDrive": "high",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "low",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "teacher_professor",
     "name": "Teacher / Professor / Researcher",
     "cluster": "education",
     "dayInLife": "Educate the next generation or push the boundaries of knowledge through research.",
-    "riasec": ["S", "I", "Ar"],
-    "bigFiveFit": { "O": "high", "C": "high", "E": "medium", "A": "high", "N": "any" },
+    "riasec": [
+      "S",
+      "I",
+      "Ar"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "E": "medium",
+      "A": "high",
+      "N": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Teaching and mentorship require deep human presence — especially in India's schools.",
     "salaryFresher": "₹3–8 LPA",
     "salary5yr": "₹8–20 LPA",
-    "exams": ["CUET PG", "JRF/NET (for teaching)", "PhD entrances"],
-    "careerTags": ["education", "research", "social"],
-    "streams": ["arts", "science_pcm", "science_pcb", "commerce"]
+    "exams": [
+      "CUET PG",
+      "JRF/NET (for teaching)",
+      "PhD entrances"
+    ],
+    "careerTags": [
+      "education",
+      "research",
+      "social"
+    ],
+    "streams": [
+      "arts",
+      "science_pcm",
+      "science_pcb",
+      "commerce"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "low",
+      "impactDrive": "high",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "high",
+      "balanceDrive": "high"
+    }
   },
   {
     "id": "biotech_researcher",
     "name": "Biotechnology / Life Sciences Researcher",
     "cluster": "science",
     "dayInLife": "Work in labs to develop medicines, understand genetics, or tackle disease at the molecular level.",
-    "riasec": ["I", "R", "Cv"],
-    "bigFiveFit": { "O": "high", "C": "high", "E": "low_preferred", "A": "any", "N": "low_preferred" },
+    "riasec": [
+      "I",
+      "R",
+      "Cv"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "E": "low_preferred",
+      "A": "any",
+      "N": "low_preferred"
+    },
     "aiRisk": "low",
     "aiNote": "Biotech is booming — AI accelerates research but human scientists direct it.",
     "salaryFresher": "₹3–7 LPA",
     "salary5yr": "₹8–25 LPA",
-    "exams": ["NEET (for some paths)", "JEE", "BHU UET", "IISER Aptitude"],
-    "careerTags": ["science", "research", "healthcare"],
-    "streams": ["science_pcb", "science_pcm"]
+    "exams": [
+      "NEET (for some paths)",
+      "JEE",
+      "BHU UET",
+      "IISER Aptitude"
+    ],
+    "careerTags": [
+      "science",
+      "research",
+      "healthcare"
+    ],
+    "streams": [
+      "science_pcb",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "low",
+      "impactDrive": "high",
+      "autonomyDrive": "high",
+      "stabilityDrive": "medium",
+      "balanceDrive": "high"
+    }
   },
   {
     "id": "product_manager",
     "name": "Product Manager",
     "cluster": "tech",
     "dayInLife": "Sit at the intersection of tech, design, and business — decide what gets built and why.",
-    "riasec": ["En", "I", "S"],
-    "bigFiveFit": { "O": "high", "C": "high", "E": "high", "A": "high", "N": "low" },
+    "riasec": [
+      "En",
+      "I",
+      "S"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "E": "high",
+      "A": "high",
+      "N": "low"
+    },
     "aiRisk": "low",
     "aiNote": "PM requires cross-functional leadership and user empathy — highly valued.",
     "salaryFresher": "₹8–15 LPA",
     "salary5yr": "₹20–60 LPA",
-    "exams": ["JEE / Engineering degree or MBA from top institute"],
-    "careerTags": ["tech", "business", "strategy"],
-    "streams": ["science_pcm"]
+    "exams": [
+      "JEE / Engineering degree or MBA from top institute"
+    ],
+    "careerTags": [
+      "tech",
+      "business",
+      "strategy"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "medium",
+      "autonomyDrive": "high",
+      "stabilityDrive": "medium",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "finance_investment",
     "name": "Investment Banker / Financial Analyst",
     "cluster": "finance",
     "dayInLife": "Value companies, structure deals, and help businesses raise capital or merge.",
-    "riasec": ["En", "Cv", "I"],
-    "bigFiveFit": { "O": "medium", "C": "high", "E": "high", "A": "low_preferred", "N": "low" },
+    "riasec": [
+      "En",
+      "Cv",
+      "I"
+    ],
+    "bigFiveFit": {
+      "O": "medium",
+      "C": "high",
+      "E": "high",
+      "A": "low_preferred",
+      "N": "low"
+    },
     "aiRisk": "medium",
     "aiNote": "Analytics is being automated but deal-making and client relationships remain human.",
     "salaryFresher": "₹6–15 LPA",
     "salary5yr": "₹15–60 LPA",
-    "exams": ["CA", "CFA", "MBA from IIM/top B-school"],
-    "careerTags": ["finance", "business"],
-    "streams": ["commerce", "science_pcm"]
+    "exams": [
+      "CA",
+      "CFA",
+      "MBA from IIM/top B-school"
+    ],
+    "careerTags": [
+      "finance",
+      "business"
+    ],
+    "streams": [
+      "commerce",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "low",
+      "autonomyDrive": "low",
+      "stabilityDrive": "low",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "civil_services",
     "name": "Civil Services (IAS/IPS/IFS)",
     "cluster": "government",
     "dayInLife": "Administer districts, shape policy, and serve the country as an IAS/IPS/IFS officer.",
-    "riasec": ["S", "En", "Cv"],
-    "bigFiveFit": { "O": "medium", "C": "high", "E": "medium", "A": "medium", "N": "low" },
+    "riasec": [
+      "S",
+      "En",
+      "Cv"
+    ],
+    "bigFiveFit": {
+      "O": "medium",
+      "C": "high",
+      "E": "medium",
+      "A": "medium",
+      "N": "low"
+    },
     "aiRisk": "low",
     "aiNote": "Governance requires ground-level judgment and accountability that AI cannot replace.",
     "salaryFresher": "₹56,000–₹75,000/month (Grade Pay + allowances)",
     "salary5yr": "₹1–2 LPA (with perks, housing, and security)",
-    "exams": ["UPSC CSE"],
-    "careerTags": ["government", "social", "humanities"],
-    "streams": ["arts", "commerce", "science_pcm", "science_pcb"]
+    "exams": [
+      "UPSC CSE"
+    ],
+    "careerTags": [
+      "government",
+      "social",
+      "humanities"
+    ],
+    "streams": [
+      "arts",
+      "commerce",
+      "science_pcm",
+      "science_pcb"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "low",
+      "impactDrive": "high",
+      "autonomyDrive": "low",
+      "stabilityDrive": "high",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "fashion_designer",
     "name": "Fashion / Textile Designer",
     "cluster": "creative",
     "dayInLife": "Design clothing collections, textiles, and fashion lines for brands or your own label.",
-    "riasec": ["Ar", "R", "En"],
-    "bigFiveFit": { "O": "high", "C": "medium", "E": "medium", "A": "medium", "N": "any" },
+    "riasec": [
+      "Ar",
+      "R",
+      "En"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "medium",
+      "E": "medium",
+      "A": "medium",
+      "N": "any"
+    },
     "aiRisk": "medium",
     "aiNote": "Creative direction is human — but AI will handle trend prediction and pattern generation.",
     "salaryFresher": "₹2–5 LPA",
     "salary5yr": "₹5–20 LPA",
-    "exams": ["NIFT", "NID", "Pearl Academy"],
-    "careerTags": ["design", "creative", "arts"],
-    "streams": ["arts", "commerce"]
+    "exams": [
+      "NIFT",
+      "NID",
+      "Pearl Academy"
+    ],
+    "careerTags": [
+      "design",
+      "creative",
+      "arts"
+    ],
+    "streams": [
+      "arts",
+      "commerce"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "low",
+      "autonomyDrive": "high",
+      "stabilityDrive": "low",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "social_worker_ngo",
     "name": "Social Worker / NGO Professional",
     "cluster": "social",
     "dayInLife": "Work on the ground to improve lives — education, health, women's rights, environment.",
-    "riasec": ["S", "Ar", "En"],
-    "bigFiveFit": { "O": "high", "C": "medium", "E": "medium", "A": "high", "N": "any" },
+    "riasec": [
+      "S",
+      "Ar",
+      "En"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "medium",
+      "E": "medium",
+      "A": "high",
+      "N": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Grassroots human relationships cannot be automated.",
     "salaryFresher": "₹2–5 LPA",
     "salary5yr": "₹5–15 LPA",
-    "exams": ["TISS NET", "IGNOU", "State social work entrances"],
-    "careerTags": ["social", "ngo", "humanities"],
-    "streams": ["arts", "commerce", "science_pcb"]
+    "exams": [
+      "TISS NET",
+      "IGNOU",
+      "State social work entrances"
+    ],
+    "careerTags": [
+      "social",
+      "ngo",
+      "humanities"
+    ],
+    "streams": [
+      "arts",
+      "commerce",
+      "science_pcb"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "low",
+      "impactDrive": "high",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "low",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "pilot",
     "name": "Commercial Pilot",
     "cluster": "aviation",
     "dayInLife": "Fly commercial aircraft, command a crew, and navigate the skies.",
-    "riasec": ["R", "Cv", "En"],
-    "bigFiveFit": { "O": "medium", "C": "high", "E": "high", "A": "medium", "N": "low" },
+    "riasec": [
+      "R",
+      "Cv",
+      "En"
+    ],
+    "bigFiveFit": {
+      "O": "medium",
+      "C": "high",
+      "E": "high",
+      "A": "medium",
+      "N": "low"
+    },
     "aiRisk": "medium",
     "aiNote": "Automation is rising in aviation, but human judgment in critical situations remains essential.",
     "salaryFresher": "₹1.5–3 LPA (training), ₹10–20 LPA after CPL",
     "salary5yr": "₹25–60 LPA",
-    "exams": ["NDA (optional)", "Class 2/1 Medical", "DGCA CPL exams"],
-    "careerTags": ["aviation", "engineering"],
-    "streams": ["science_pcm"]
+    "exams": [
+      "NDA (optional)",
+      "Class 2/1 Medical",
+      "DGCA CPL exams"
+    ],
+    "careerTags": [
+      "aviation",
+      "engineering"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "low",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "graphic_designer",
     "name": "Graphic Designer",
     "cluster": "design",
     "dayInLife": "Create visual identities, posters, packaging, and digital assets for brands and campaigns.",
-    "riasec": ["Ar", "R", "I"],
-    "bigFiveFit": { "O": "high", "C": "medium", "E": "any", "A": "any", "N": "any" },
+    "riasec": [
+      "Ar",
+      "R",
+      "I"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "medium",
+      "E": "any",
+      "A": "any",
+      "N": "any"
+    },
     "aiRisk": "medium",
     "aiNote": "AI tools assist but can't replace taste, cultural understanding, and client relationships.",
     "salaryFresher": "₹3–7 LPA",
     "salary5yr": "₹8–20 LPA",
-    "exams": ["NID entrance", "NIFT", "BFA entrance"],
-    "careerTags": ["design", "creative", "visual"],
-    "streams": ["arts", "science_pcm", "commerce"]
+    "exams": [
+      "NID entrance",
+      "NIFT",
+      "BFA entrance"
+    ],
+    "careerTags": [
+      "design",
+      "creative",
+      "visual"
+    ],
+    "streams": [
+      "arts",
+      "science_pcm",
+      "commerce"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "low",
+      "autonomyDrive": "high",
+      "stabilityDrive": "low",
+      "balanceDrive": "high"
+    }
   },
   {
     "id": "game_developer",
     "name": "Game Developer",
     "cluster": "tech",
     "dayInLife": "Build game mechanics, design levels, write code for gameplay systems, collaborate with artists.",
-    "riasec": ["R", "I", "Ar"],
-    "bigFiveFit": { "O": "high", "C": "high", "E": "low_preferred", "A": "any", "N": "any" },
+    "riasec": [
+      "R",
+      "I",
+      "Ar"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "E": "low_preferred",
+      "A": "any",
+      "N": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Creativity + programming is a rare combo; the gaming industry is booming in India.",
     "salaryFresher": "₹4–9 LPA",
     "salary5yr": "₹10–25 LPA",
-    "exams": ["JEE", "design entrance", "Unity/Unreal portfolio"],
-    "careerTags": ["tech", "gaming", "creative"],
-    "streams": ["science_pcm"]
+    "exams": [
+      "JEE",
+      "design entrance",
+      "Unity/Unreal portfolio"
+    ],
+    "careerTags": [
+      "tech",
+      "gaming",
+      "creative"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "low",
+      "autonomyDrive": "high",
+      "stabilityDrive": "low",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "content_creator",
     "name": "Content Creator / YouTuber",
     "cluster": "media",
     "dayInLife": "Create videos, reels, or written content for an audience; manage brand deals and grow a community.",
-    "riasec": ["Ar", "En", "S"],
-    "bigFiveFit": { "O": "high", "E": "high", "C": "medium", "A": "medium", "N": "any" },
+    "riasec": [
+      "Ar",
+      "En",
+      "S"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "E": "high",
+      "C": "medium",
+      "A": "medium",
+      "N": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Authentic personality and community connection can't be replicated — audiences follow people.",
     "salaryFresher": "₹1–5 LPA",
     "salary5yr": "₹5–50 LPA (high variance)",
-    "exams": ["No fixed exam — mass comm or self-built"],
-    "careerTags": ["media", "creative", "digital"],
-    "streams": ["arts", "commerce", "science_pcm"]
+    "exams": [
+      "No fixed exam — mass comm or self-built"
+    ],
+    "careerTags": [
+      "media",
+      "creative",
+      "digital"
+    ],
+    "streams": [
+      "arts",
+      "commerce",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "low",
+      "autonomyDrive": "high",
+      "stabilityDrive": "low",
+      "balanceDrive": "high"
+    }
   },
   {
     "id": "digital_marketer",
     "name": "Digital Marketer",
     "cluster": "business",
     "dayInLife": "Run paid ad campaigns, optimise content for search, analyse performance data, manage social media.",
-    "riasec": ["En", "Ar", "Cv"],
-    "bigFiveFit": { "O": "high", "E": "high", "C": "medium", "A": "any", "N": "any" },
+    "riasec": [
+      "En",
+      "Ar",
+      "Cv"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "E": "high",
+      "C": "medium",
+      "A": "any",
+      "N": "any"
+    },
     "aiRisk": "medium",
     "aiNote": "Strategy and brand insight stay human; routine content tasks are automating.",
     "salaryFresher": "₹3–7 LPA",
     "salary5yr": "₹8–22 LPA",
-    "exams": ["BBA", "mass comm", "Google/Meta certifications"],
-    "careerTags": ["business", "digital", "marketing"],
-    "streams": ["commerce", "arts"]
+    "exams": [
+      "BBA",
+      "mass comm",
+      "Google/Meta certifications"
+    ],
+    "careerTags": [
+      "business",
+      "digital",
+      "marketing"
+    ],
+    "streams": [
+      "commerce",
+      "arts"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "low",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "hr_manager",
     "name": "HR Manager / Talent Acquisition",
     "cluster": "business",
     "dayInLife": "Hire and onboard employees, manage performance reviews, resolve workplace conflicts, build culture.",
-    "riasec": ["S", "En", "Cv"],
-    "bigFiveFit": { "A": "high", "E": "high", "C": "medium", "O": "any", "N": "low_preferred" },
+    "riasec": [
+      "S",
+      "En",
+      "Cv"
+    ],
+    "bigFiveFit": {
+      "A": "high",
+      "E": "high",
+      "C": "medium",
+      "O": "any",
+      "N": "low_preferred"
+    },
     "aiRisk": "medium",
     "aiNote": "Recruitment tools are automating; culture-building and people judgment stay human.",
     "salaryFresher": "₹4–8 LPA",
     "salary5yr": "₹10–20 LPA",
-    "exams": ["MBA HR (XAT/CAT)", "BBA"],
-    "careerTags": ["business", "people", "management"],
-    "streams": ["commerce", "arts"]
+    "exams": [
+      "MBA HR (XAT/CAT)",
+      "BBA"
+    ],
+    "careerTags": [
+      "business",
+      "people",
+      "management"
+    ],
+    "streams": [
+      "commerce",
+      "arts"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "medium",
+      "autonomyDrive": "low",
+      "stabilityDrive": "high",
+      "balanceDrive": "high"
+    }
   },
   {
     "id": "event_manager",
     "name": "Event Manager",
     "cluster": "business",
     "dayInLife": "Plan and execute weddings, corporate events, concerts — coordinate vendors, timelines, and budgets.",
-    "riasec": ["En", "Ar", "S"],
-    "bigFiveFit": { "E": "high", "C": "high", "N": "low", "O": "any", "A": "any" },
+    "riasec": [
+      "En",
+      "Ar",
+      "S"
+    ],
+    "bigFiveFit": {
+      "E": "high",
+      "C": "high",
+      "N": "low",
+      "O": "any",
+      "A": "any"
+    },
     "aiRisk": "low",
     "aiNote": "On-ground execution and people coordination are inherently human.",
     "salaryFresher": "₹3–6 LPA",
     "salary5yr": "₹8–20 LPA",
-    "exams": ["Event management degree", "MBA", "BBA"],
-    "careerTags": ["business", "creative", "management"],
-    "streams": ["commerce", "arts"]
+    "exams": [
+      "Event management degree",
+      "MBA",
+      "BBA"
+    ],
+    "careerTags": [
+      "business",
+      "creative",
+      "management"
+    ],
+    "streams": [
+      "commerce",
+      "arts"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "low",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "low",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "hotel_manager",
     "name": "Hotel Manager / Hospitality Professional",
     "cluster": "hospitality",
     "dayInLife": "Manage hotel operations, train staff, handle VIP guests, ensure quality across food and stay.",
-    "riasec": ["En", "S", "Cv"],
-    "bigFiveFit": { "E": "high", "A": "high", "C": "high", "O": "any", "N": "low" },
+    "riasec": [
+      "En",
+      "S",
+      "Cv"
+    ],
+    "bigFiveFit": {
+      "E": "high",
+      "A": "high",
+      "C": "high",
+      "O": "any",
+      "N": "low"
+    },
     "aiRisk": "low",
     "aiNote": "Guest experience is fundamentally human — warmth and service can't be automated.",
     "salaryFresher": "₹3–7 LPA",
     "salary5yr": "₹10–25 LPA",
-    "exams": ["NCHMCT JEE", "hotel management college entrance"],
-    "careerTags": ["hospitality", "management", "service"],
-    "streams": ["commerce", "arts", "science_pcm"]
+    "exams": [
+      "NCHMCT JEE",
+      "hotel management college entrance"
+    ],
+    "careerTags": [
+      "hospitality",
+      "management",
+      "service"
+    ],
+    "streams": [
+      "commerce",
+      "arts",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "low",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "chef",
     "name": "Chef / Culinary Professional",
     "cluster": "hospitality",
     "dayInLife": "Create recipes, run a kitchen, manage food costs and staff, build a signature style.",
-    "riasec": ["Ar", "R", "En"],
-    "bigFiveFit": { "O": "high", "C": "high", "N": "low", "E": "any", "A": "any" },
+    "riasec": [
+      "Ar",
+      "R",
+      "En"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "N": "low",
+      "E": "any",
+      "A": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Culinary creativity and kitchen leadership are irreplaceably human.",
     "salaryFresher": "₹2–5 LPA",
     "salary5yr": "₹6–20 LPA",
-    "exams": ["IHM entrance", "culinary arts college"],
-    "careerTags": ["hospitality", "creative", "culinary"],
-    "streams": ["commerce", "arts", "science_pcm"]
+    "exams": [
+      "IHM entrance",
+      "culinary arts college"
+    ],
+    "careerTags": [
+      "hospitality",
+      "creative",
+      "culinary"
+    ],
+    "streams": [
+      "commerce",
+      "arts",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "low",
+      "autonomyDrive": "high",
+      "stabilityDrive": "low",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "ca_acca",
     "name": "CA / ACCA (International Accountant)",
     "cluster": "finance",
     "dayInLife": "Audit multinational companies, work in global accounting firms, advise on international tax and compliance.",
-    "riasec": ["Cv", "I", "En"],
-    "bigFiveFit": { "C": "high", "N": "low_preferred", "E": "medium", "O": "any", "A": "any" },
+    "riasec": [
+      "Cv",
+      "I",
+      "En"
+    ],
+    "bigFiveFit": {
+      "C": "high",
+      "N": "low_preferred",
+      "E": "medium",
+      "O": "any",
+      "A": "any"
+    },
     "aiRisk": "medium",
     "aiNote": "Routine accounting is automating — ACCA opens Big 4 and MNC doors where advisory stays human.",
     "salaryFresher": "₹6–12 LPA",
     "salary5yr": "₹15–35 LPA",
-    "exams": ["CA Foundation (ICAI)", "ACCA qualification (pursue alongside graduation)"],
-    "careerTags": ["finance", "accounting", "international"],
-    "streams": ["commerce", "science_pcm"]
+    "exams": [
+      "CA Foundation (ICAI)",
+      "ACCA qualification (pursue alongside graduation)"
+    ],
+    "careerTags": [
+      "finance",
+      "accounting",
+      "international"
+    ],
+    "streams": [
+      "commerce",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "low",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "high",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "cfa_portfolio",
     "name": "CFA / Portfolio Manager",
     "cluster": "finance",
     "dayInLife": "Manage investment portfolios, research equities and bonds, advise institutional clients on asset allocation.",
-    "riasec": ["I", "Cv", "En"],
-    "bigFiveFit": { "C": "high", "O": "high", "N": "low", "E": "any", "A": "any" },
+    "riasec": [
+      "I",
+      "Cv",
+      "En"
+    ],
+    "bigFiveFit": {
+      "C": "high",
+      "O": "high",
+      "N": "low",
+      "E": "any",
+      "A": "any"
+    },
     "aiRisk": "medium",
     "aiNote": "Quantitative screening is automating; investment thesis and client trust stay human.",
     "salaryFresher": "₹6–12 LPA",
     "salary5yr": "₹20–60 LPA",
-    "exams": ["CFA Level I → II → III (CFA Institute)", "B.Com / B.Sc Maths base"],
-    "careerTags": ["finance", "investment", "analytics"],
-    "streams": ["commerce", "science_pcm"]
+    "exams": [
+      "CFA Level I → II → III (CFA Institute)",
+      "B.Com / B.Sc Maths base"
+    ],
+    "careerTags": [
+      "finance",
+      "investment",
+      "analytics"
+    ],
+    "streams": [
+      "commerce",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "low",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "actuary",
     "name": "Actuary",
     "cluster": "finance",
     "dayInLife": "Model financial risks for insurance and pension companies using advanced statistics.",
-    "riasec": ["Cv", "I", "R"],
-    "bigFiveFit": { "C": "high", "O": "high", "E": "low_preferred", "A": "any", "N": "low_preferred" },
+    "riasec": [
+      "Cv",
+      "I",
+      "R"
+    ],
+    "bigFiveFit": {
+      "C": "high",
+      "O": "high",
+      "E": "low_preferred",
+      "A": "any",
+      "N": "low_preferred"
+    },
     "aiRisk": "low",
     "aiNote": "Actuarial judgment and risk communication require expertise AI can only assist.",
     "salaryFresher": "₹5–10 LPA",
     "salary5yr": "₹15–40 LPA",
-    "exams": ["Institute of Actuaries of India (IAI) exams"],
-    "careerTags": ["finance", "mathematics", "insurance"],
-    "streams": ["commerce", "science_pcm"]
+    "exams": [
+      "Institute of Actuaries of India (IAI) exams"
+    ],
+    "careerTags": [
+      "finance",
+      "mathematics",
+      "insurance"
+    ],
+    "streams": [
+      "commerce",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "high",
+      "impactDrive": "low",
+      "autonomyDrive": "low",
+      "stabilityDrive": "high",
+      "balanceDrive": "high"
+    }
   },
   {
     "id": "army_officer",
     "name": "Army Officer (Indian Army)",
     "cluster": "defence",
     "dayInLife": "Lead soldiers in training and operations, manage logistics, make high-stakes decisions under pressure.",
-    "riasec": ["En", "R", "S"],
-    "bigFiveFit": { "C": "high", "E": "high", "N": "low", "A": "medium", "O": "any" },
+    "riasec": [
+      "En",
+      "R",
+      "S"
+    ],
+    "bigFiveFit": {
+      "C": "high",
+      "E": "high",
+      "N": "low",
+      "A": "medium",
+      "O": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Combat leadership and ground decision-making are irreplaceably human.",
     "salaryFresher": "₹8–12 LPA + perks",
     "salary5yr": "₹12–20 LPA + perks (accommodation, medical, pension)",
-    "exams": ["NDA (after 12th)", "CDS", "TES entry"],
-    "careerTags": ["defence", "leadership", "government"],
-    "streams": ["science_pcm", "arts", "commerce"]
+    "exams": [
+      "NDA (after 12th)",
+      "CDS",
+      "TES entry"
+    ],
+    "careerTags": [
+      "defence",
+      "leadership",
+      "government"
+    ],
+    "streams": [
+      "science_pcm",
+      "arts",
+      "commerce"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "high",
+      "autonomyDrive": "low",
+      "stabilityDrive": "high",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "navy_officer",
     "name": "Naval Officer (Indian Navy)",
     "cluster": "defence",
     "dayInLife": "Operate warships and submarines, navigate at sea, manage crew and defence systems.",
-    "riasec": ["R", "En", "I"],
-    "bigFiveFit": { "C": "high", "N": "low", "E": "medium", "O": "any", "A": "any" },
+    "riasec": [
+      "R",
+      "En",
+      "I"
+    ],
+    "bigFiveFit": {
+      "C": "high",
+      "N": "low",
+      "E": "medium",
+      "O": "any",
+      "A": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Naval operations at sea require human judgment in unpredictable environments.",
     "salaryFresher": "₹8–12 LPA + perks",
     "salary5yr": "₹12–20 LPA + perks",
-    "exams": ["NDA", "CDS", "10+2 B.Tech Naval Academy entry"],
-    "careerTags": ["defence", "engineering", "government"],
-    "streams": ["science_pcm"]
+    "exams": [
+      "NDA",
+      "CDS",
+      "10+2 B.Tech Naval Academy entry"
+    ],
+    "careerTags": [
+      "defence",
+      "engineering",
+      "government"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "high",
+      "autonomyDrive": "low",
+      "stabilityDrive": "high",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "airforce_officer",
     "name": "Air Force Officer (IAF)",
     "cluster": "defence",
     "dayInLife": "Fly fighter jets or transport aircraft, conduct aerial missions, lead a flight squadron.",
-    "riasec": ["R", "En", "I"],
-    "bigFiveFit": { "C": "high", "N": "low", "E": "high", "O": "any", "A": "any" },
+    "riasec": [
+      "R",
+      "En",
+      "I"
+    ],
+    "bigFiveFit": {
+      "C": "high",
+      "N": "low",
+      "E": "high",
+      "O": "any",
+      "A": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Combat flying and tactical air decisions remain irreplaceable human skills.",
     "salaryFresher": "₹10–15 LPA + perks",
     "salary5yr": "₹15–25 LPA + perks",
-    "exams": ["NDA", "AFCAT", "Class 1 medical fitness"],
-    "careerTags": ["defence", "aviation", "government"],
-    "streams": ["science_pcm"]
+    "exams": [
+      "NDA",
+      "AFCAT",
+      "Class 1 medical fitness"
+    ],
+    "careerTags": [
+      "defence",
+      "aviation",
+      "government"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "high",
+      "autonomyDrive": "low",
+      "stabilityDrive": "high",
+      "balanceDrive": "low"
+    }
   },
   {
     "id": "drdo_scientist",
     "name": "Defence Scientist (DRDO)",
     "cluster": "defence",
     "dayInLife": "Research and develop weapons systems, missiles, or defence electronics at DRDO or defence PSUs.",
-    "riasec": ["I", "R", "Cv"],
-    "bigFiveFit": { "O": "high", "C": "high", "E": "low_preferred", "A": "any", "N": "any" },
+    "riasec": [
+      "I",
+      "R",
+      "Cv"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "E": "low_preferred",
+      "A": "any",
+      "N": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Defence R&D requires specialised classified engineering that AI cannot replicate.",
     "salaryFresher": "₹7–10 LPA",
     "salary5yr": "₹12–22 LPA",
-    "exams": ["JEE", "GATE", "DRDO CEPTAM"],
-    "careerTags": ["defence", "engineering", "science"],
-    "streams": ["science_pcm"]
+    "exams": [
+      "JEE",
+      "GATE",
+      "DRDO CEPTAM"
+    ],
+    "careerTags": [
+      "defence",
+      "engineering",
+      "science"
+    ],
+    "streams": [
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "high",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "high",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "agronomist",
     "name": "Agronomist / Agricultural Scientist",
     "cluster": "agriculture",
     "dayInLife": "Research crop improvement, advise farmers on yield and soil health, work with agri-tech companies or government.",
-    "riasec": ["I", "R", "S"],
-    "bigFiveFit": { "O": "high", "C": "high", "A": "medium", "E": "any", "N": "any" },
+    "riasec": [
+      "I",
+      "R",
+      "S"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "C": "high",
+      "A": "medium",
+      "E": "any",
+      "N": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Field-level agronomy, crop disease diagnosis, and farmer engagement need human expertise.",
     "salaryFresher": "₹3–6 LPA",
     "salary5yr": "₹7–18 LPA",
-    "exams": ["ICAR AIEEA", "B.Sc Agriculture entrance"],
-    "careerTags": ["agriculture", "science", "research"],
-    "streams": ["science_pcb", "science_pcm"]
+    "exams": [
+      "ICAR AIEEA",
+      "B.Sc Agriculture entrance"
+    ],
+    "careerTags": [
+      "agriculture",
+      "science",
+      "research"
+    ],
+    "streams": [
+      "science_pcb",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "low",
+      "impactDrive": "high",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "high"
+    }
   },
   {
     "id": "agri_tech_entrepreneur",
     "name": "Agri-Tech Entrepreneur",
     "cluster": "agriculture",
     "dayInLife": "Build or manage agri-startups, run modern farms, connect technology with rural communities.",
-    "riasec": ["En", "R", "I"],
-    "bigFiveFit": { "O": "high", "E": "high", "C": "medium", "A": "any", "N": "low_preferred" },
+    "riasec": [
+      "En",
+      "R",
+      "I"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "E": "high",
+      "C": "medium",
+      "A": "any",
+      "N": "low_preferred"
+    },
     "aiRisk": "low",
     "aiNote": "Agri-tech is one of India's fastest growing startup sectors — vision and ground knowledge matter.",
     "salaryFresher": "₹3–8 LPA",
     "salary5yr": "₹10–30 LPA (high variance)",
-    "exams": ["B.Sc Agriculture", "MBA Agribusiness"],
-    "careerTags": ["agriculture", "business", "startup"],
-    "streams": ["science_pcb", "science_pcm", "commerce"]
+    "exams": [
+      "B.Sc Agriculture",
+      "MBA Agribusiness"
+    ],
+    "careerTags": [
+      "agriculture",
+      "business",
+      "startup"
+    ],
+    "streams": [
+      "science_pcb",
+      "science_pcm",
+      "commerce"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "high",
+      "autonomyDrive": "high",
+      "stabilityDrive": "low",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "veterinarian",
     "name": "Veterinarian",
     "cluster": "agriculture",
     "dayInLife": "Diagnose and treat animals, support livestock health on farms, work in animal hospitals or government labs.",
-    "riasec": ["I", "R", "S"],
-    "bigFiveFit": { "A": "high", "C": "high", "N": "low", "O": "any", "E": "any" },
+    "riasec": [
+      "I",
+      "R",
+      "S"
+    ],
+    "bigFiveFit": {
+      "A": "high",
+      "C": "high",
+      "N": "low",
+      "O": "any",
+      "E": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Animal diagnosis and surgery require hands-on expertise AI cannot replicate.",
     "salaryFresher": "₹3–7 LPA",
     "salary5yr": "₹8–18 LPA",
-    "exams": ["NEET (B.V.Sc)", "state veterinary entrance"],
-    "careerTags": ["agriculture", "medicine", "science"],
-    "streams": ["science_pcb"]
+    "exams": [
+      "NEET (B.V.Sc)",
+      "state veterinary entrance"
+    ],
+    "careerTags": [
+      "agriculture",
+      "medicine",
+      "science"
+    ],
+    "streams": [
+      "science_pcb"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "high",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "high"
+    }
   },
   {
     "id": "sports_athlete",
     "name": "Professional Athlete",
     "cluster": "sports",
     "dayInLife": "Train daily, compete in tournaments, follow strict nutrition and recovery routines.",
-    "riasec": ["R", "En", "S"],
-    "bigFiveFit": { "C": "high", "N": "low", "E": "high", "O": "any", "A": "any" },
+    "riasec": [
+      "R",
+      "En",
+      "S"
+    ],
+    "bigFiveFit": {
+      "C": "high",
+      "N": "low",
+      "E": "high",
+      "O": "any",
+      "A": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Physical performance is irreplaceably human.",
     "salaryFresher": "₹2–10 LPA",
     "salary5yr": "₹5–60 LPA (sport and level dependent)",
-    "exams": ["SAI trials", "state and national selection camps"],
-    "careerTags": ["sports", "physical", "competition"],
-    "streams": ["arts", "commerce", "science_pcm", "science_pcb"]
+    "exams": [
+      "SAI trials",
+      "state and national selection camps"
+    ],
+    "careerTags": [
+      "sports",
+      "physical",
+      "competition"
+    ],
+    "streams": [
+      "arts",
+      "commerce",
+      "science_pcm",
+      "science_pcb"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "medium",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "low",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "sports_coach",
     "name": "Sports Coach / Fitness Trainer",
     "cluster": "sports",
     "dayInLife": "Design training programs, analyse performance, build strategy, motivate athletes.",
-    "riasec": ["S", "R", "En"],
-    "bigFiveFit": { "A": "high", "E": "high", "C": "high", "O": "any", "N": "any" },
+    "riasec": [
+      "S",
+      "R",
+      "En"
+    ],
+    "bigFiveFit": {
+      "A": "high",
+      "E": "high",
+      "C": "high",
+      "O": "any",
+      "N": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Motivating athletes and reading team dynamics require human presence.",
     "salaryFresher": "₹2–5 LPA",
     "salary5yr": "₹5–15 LPA",
-    "exams": ["NIS Patiala diploma", "B.P.Ed"],
-    "careerTags": ["sports", "coaching", "education"],
-    "streams": ["arts", "commerce", "science_pcm", "science_pcb"]
+    "exams": [
+      "NIS Patiala diploma",
+      "B.P.Ed"
+    ],
+    "careerTags": [
+      "sports",
+      "coaching",
+      "education"
+    ],
+    "streams": [
+      "arts",
+      "commerce",
+      "science_pcm",
+      "science_pcb"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "high",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "medium"
+    }
   },
   {
     "id": "sports_analyst",
     "name": "Sports Analyst / Commentator",
     "cluster": "sports",
     "dayInLife": "Analyse match data, write performance reports, provide on-air commentary.",
-    "riasec": ["I", "Ar", "En"],
-    "bigFiveFit": { "O": "high", "E": "medium", "C": "medium", "A": "any", "N": "any" },
+    "riasec": [
+      "I",
+      "Ar",
+      "En"
+    ],
+    "bigFiveFit": {
+      "O": "high",
+      "E": "medium",
+      "C": "medium",
+      "A": "any",
+      "N": "any"
+    },
     "aiRisk": "medium",
     "aiNote": "Live commentary and tactical insight need deep human expertise.",
     "salaryFresher": "₹3–7 LPA",
     "salary5yr": "₹8–20 LPA",
-    "exams": ["Statistics/data degree", "journalism", "no fixed exam"],
-    "careerTags": ["sports", "media", "analytics"],
-    "streams": ["arts", "commerce", "science_pcm"]
+    "exams": [
+      "Statistics/data degree",
+      "journalism",
+      "no fixed exam"
+    ],
+    "careerTags": [
+      "sports",
+      "media",
+      "analytics"
+    ],
+    "streams": [
+      "arts",
+      "commerce",
+      "science_pcm"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "medium",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "high"
+    }
   },
   {
     "id": "sports_physio",
     "name": "Sports Physiotherapist",
     "cluster": "sports",
     "dayInLife": "Assess and treat sports injuries, design rehabilitation programs, travel with professional teams.",
-    "riasec": ["S", "I", "R"],
-    "bigFiveFit": { "A": "high", "C": "high", "N": "low", "O": "any", "E": "any" },
+    "riasec": [
+      "S",
+      "I",
+      "R"
+    ],
+    "bigFiveFit": {
+      "A": "high",
+      "C": "high",
+      "N": "low",
+      "O": "any",
+      "E": "any"
+    },
     "aiRisk": "low",
     "aiNote": "Physical rehabilitation requires hands-on treatment.",
     "salaryFresher": "₹3–6 LPA",
     "salary5yr": "₹7–18 LPA",
-    "exams": ["BPT (Bachelor of Physiotherapy)", "NEET optional"],
-    "careerTags": ["sports", "healthcare", "medicine"],
-    "streams": ["science_pcb"]
+    "exams": [
+      "BPT (Bachelor of Physiotherapy)",
+      "NEET optional"
+    ],
+    "careerTags": [
+      "sports",
+      "healthcare",
+      "medicine"
+    ],
+    "streams": [
+      "science_pcb"
+    ],
+    "aspirationFit": {
+      "wealthDrive": "medium",
+      "impactDrive": "medium",
+      "autonomyDrive": "medium",
+      "stabilityDrive": "medium",
+      "balanceDrive": "high"
+    }
   }
 ]

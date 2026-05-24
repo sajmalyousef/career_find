@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { track } from '@vercel/analytics';
 import questionsData from '@/data/questions.json';
-import { scoreBigFive, scoreRIASEC, extractLifestyle } from '@/lib/scoring';
+import { scoreBigFive, scoreRIASEC, extractLifestyle, scoreAspirations } from '@/lib/scoring';
 import { computeResults } from '@/lib/matching';
 
 interface Option {
@@ -125,8 +126,10 @@ export default function AssessPage() {
             const bigFive = scoreBigFive(newAnswers);
             const riasec = scoreRIASEC(newAnswers);
             const lifestyle = extractLifestyle(newAnswers);
-            const result = computeResults(bigFive, riasec, lifestyle);
-            sessionStorage.setItem('careerResults', JSON.stringify({ result, bigFive, riasec, lifestyle }));
+            const aspirations = scoreAspirations(newAnswers);
+            const result = computeResults(bigFive, riasec, lifestyle, aspirations);
+            sessionStorage.setItem('careerResults', JSON.stringify({ result, bigFive, riasec, lifestyle, aspirations }));
+            track('assessment_completed');
             router.push('/results');
           } catch (err) {
             const detail = err instanceof Error ? err.message : 'Unknown error';

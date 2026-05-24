@@ -93,6 +93,7 @@ function Footer({ label }: { label: string }) {
 export function CareerReportDoc({ result, bigFive, riasec }: { result: any; bigFive: any; riasec: any }) {
   const date = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
   const topRIASEC: string[] = result.topRIASEC ?? [];
+  const topAspirations: string[] = result.topAspirations ?? [];
   const careers = result.careers ?? [];
   const eliminated = result.eliminated ?? [];
   const highlights: string[] = result.personalityHighlights ?? [];
@@ -166,6 +167,20 @@ export function CareerReportDoc({ result, bigFive, riasec }: { result: any; bigF
             </View>
           ))}
         </View>
+
+        {topAspirations.length > 0 && (
+          <>
+            <View style={s.divider} />
+            <Text style={{ fontSize: 10.5, fontFamily: 'Helvetica-Bold', color: BARK, marginBottom: 8 }}>What You&apos;re Optimising For</Text>
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
+              {topAspirations.map((label: string) => (
+                <View key={label} style={{ backgroundColor: '#fef3e0', borderRadius: 12, paddingHorizontal: 10, paddingVertical: 4, marginRight: 6, marginBottom: 4, borderWidth: 1, borderColor: '#e8c97a' }}>
+                  <Text style={{ fontSize: 8.5, color: AMBER, fontFamily: 'Helvetica-Bold' }}>{label}</Text>
+                </View>
+              ))}
+            </View>
+          </>
+        )}
 
         {highlights.length > 0 && (
           <>

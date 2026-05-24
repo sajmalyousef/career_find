@@ -1,4 +1,5 @@
-import type { BigFiveScores, RIASECScores, LifestyleInputs } from './scoring';
+import type { BigFiveScores, RIASECScores, LifestyleInputs, AspirationProfile } from './scoring';
+export type { AspirationProfile } from './scoring';
 import careersData from '@/data/careers.json';
 import collegesData from '@/data/colleges.json';
 
@@ -41,12 +42,21 @@ export interface MatchResults {
   profileSummary: string;
   personalityHighlights: string[];
   topRIASEC: string[];
+  topAspirations: string[];
   careers: CareerResult[];
   eliminated: EliminatedCareer[];
   colleges: CollegeResult[];
 }
 
 // ─── Internal career shape from JSON ─────────────────────────────────────────
+
+interface AspirationFit {
+  wealthDrive: string;
+  impactDrive: string;
+  autonomyDrive: string;
+  stabilityDrive: string;
+  balanceDrive: string;
+}
 
 interface CareerData {
   id: string;
@@ -61,6 +71,7 @@ interface CareerData {
   salary5yr: string;
   exams: string[];
   careerTags: string[];
+  aspirationFit?: AspirationFit;
 }
 
 interface CollegeData {
@@ -94,6 +105,30 @@ function fits(actual: 'high' | 'medium' | 'low', required: string): number {
   return 0; // 'any'
 }
 
+// ─── Aspiration Scoring ───────────────────────────────────────────────────────
+
+function scoreAspirationFit(profile: AspirationProfile, fit: AspirationFit | undefined): number {
+  if (!fit) return 0;
+  const dims: (keyof AspirationProfile)[] = ['wealthDrive', 'impactDrive', 'autonomyDrive', 'stabilityDrive', 'balanceDrive'];
+  const pointsPerDim = 2; // 5 dims × 2 = 10 max
+  let score = 0;
+  for (const dim of dims) {
+    const req = fit[dim];
+    const val = profile[dim];
+    if (req === 'high') {
+      if (val >= 3) score += pointsPerDim;
+      else if (val >= 1) score += pointsPerDim * 0.5;
+    } else if (req === 'medium') {
+      if (val >= 1 && val < 4) score += pointsPerDim * 0.5;
+    } else if (req === 'low') {
+      if (val <= 0) score += pointsPerDim;
+      else if (val <= 1) score += pointsPerDim * 0.5;
+    }
+    // 'any' → no points added (neutral)
+  }
+  return score;
+}
+
 // ─── Career Scoring ───────────────────────────────────────────────────────────
 
 function scoreCareer(
@@ -101,6 +136,7 @@ function scoreCareer(
   bigFive: BigFiveScores,
   riasec: RIASECScores,
   lifestyle: LifestyleInputs,
+  aspirations?: AspirationProfile,
 ): number {
   let score = 0;
 
@@ -127,6 +163,11 @@ function scoreCareer(
   if (lifestyle.riskTolerance === 'risk_lover' && ['business', 'media', 'creative'].includes(career.cluster)) score += 1;
   if (lifestyle.riskTolerance === 'risk_averse' && ['government', 'education', 'healthcare'].includes(career.cluster)) score += 1;
   if (lifestyle.aiAttitude === 'ai_excited' && ['tech', 'science'].includes(career.cluster)) score += 1;
+
+  // Aspiration fit (third pillar — up to 10 pts)
+  if (aspirations) {
+    score += scoreAspirationFit(aspirations, career.aspirationFit);
+  }
 
   return score;
 }
@@ -538,12 +579,13 @@ export function computeResults(
   bigFive: BigFiveScores,
   riasec: RIASECScores,
   lifestyle: LifestyleInputs,
+  aspirations?: AspirationProfile,
 ): MatchResults {
   const careers = careersData as CareerData[];
 
   // Score all careers
   const scored = careers
-    .map((c) => ({ career: c, score: scoreCareer(c, bigFive, riasec, lifestyle) }))
+    .map((c) => ({ career: c, score: scoreCareer(c, bigFive, riasec, lifestyle, aspirations) }))
     .sort((a, b) => b.score - a.score);
 
   // Top 4 matches
@@ -598,10 +640,24 @@ export function computeResults(
   const personalityHighlights = buildPersonalityHighlights(bigFive, riasec);
   const topRIASEC = getTopRIASEC(riasec, 2);
 
+  // Top aspiration drives to surface in UI
+  const ASPIRATION_LABELS: Record<string, string> = {
+    wealthDrive: 'Wealth', impactDrive: 'Impact', autonomyDrive: 'Autonomy',
+    stabilityDrive: 'Stability', balanceDrive: 'Work-life balance',
+  };
+  const topAspirations = aspirations
+    ? (Object.entries(aspirations) as [string, number][])
+        .filter(([, v]) => v > 0)
+        .sort(([, a], [, b]) => b - a)
+        .slice(0, 2)
+        .map(([key]) => ASPIRATION_LABELS[key] ?? key)
+    : [];
+
   return {
     profileSummary,
     personalityHighlights,
     topRIASEC,
+    topAspirations,
     careers: matchedCareers,
     eliminated,
     colleges,
