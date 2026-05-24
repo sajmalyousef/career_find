@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { track } from '@vercel/analytics';
+import { trackEvent } from '@/lib/gtag';
 import { RadarChart, Radar, PolarGrid, PolarAngleAxis, ResponsiveContainer } from 'recharts';
 import type { BigFiveScores, RIASECScores } from '@/lib/scoring';
 import { getRIASECLabel } from '@/lib/scoring';
@@ -281,7 +281,7 @@ export default function ResultsPage() {
                     onMouseLeave={() => setHoveredStar(null)}
                     onClick={() => {
                       setSelectedRating(star);
-                      track('rating_submitted', { rating: star });
+                      trackEvent('rating_submitted', { rating: star });
                       setTimeout(() => setRatingDone(true), 600);
                     }}
                     style={{

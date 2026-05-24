@@ -564,16 +564,6 @@
             { "label": "₹15 lakh+", "value": "above_15L", "traits": {} },
             { "label": "We'd consider an education loan for the right college", "value": "loan_open", "traits": {} }
           ]
-        },
-        {
-          "id": "C2",
-          "text": "What grade are you currently in?",
-          "type": "choice",
-          "options": [
-            { "label": "Grade 8 or 9 (early explorer)", "value": "grade_8_9", "traits": {} },
-            { "label": "Grade 10 (board year coming)", "value": "grade_10", "traits": {} },
-            { "label": "Grade 11 or 12 (serious planning time)", "value": "grade_11_12", "traits": {} }
-          ]
         }
       ]
     },

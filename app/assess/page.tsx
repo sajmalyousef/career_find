@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { track } from '@vercel/analytics';
+import { trackEvent } from '@/lib/gtag';
 import questionsData from '@/data/questions.json';
 import { scoreBigFive, scoreRIASEC, extractLifestyle, scoreAspirations } from '@/lib/scoring';
 import { computeResults } from '@/lib/matching';
@@ -129,7 +129,7 @@ export default function AssessPage() {
             const aspirations = scoreAspirations(newAnswers);
             const result = computeResults(bigFive, riasec, lifestyle, aspirations);
             sessionStorage.setItem('careerResults', JSON.stringify({ result, bigFive, riasec, lifestyle, aspirations }));
-            track('assessment_completed');
+            trackEvent('assessment_completed');
             router.push('/results');
           } catch (err) {
             const detail = err instanceof Error ? err.message : 'Unknown error';

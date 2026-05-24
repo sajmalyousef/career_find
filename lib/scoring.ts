@@ -17,7 +17,6 @@ export interface RIASECScores {
 
 export interface LifestyleInputs {
   budgetBracket: string;
-  grade: string;
   location: string;
   priority: string;
   riskTolerance: string;
@@ -78,7 +77,6 @@ export function getBigFiveProfile(scores: BigFiveScores): Record<string, string>
 export function extractLifestyle(answers: SessionAnswers): LifestyleInputs {
   return {
     budgetBracket: answers['C1']?.value ?? 'unknown',
-    grade: answers['C2']?.value ?? 'unknown',
     location: answers['D1']?.value ?? 'unknown',
     priority: answers['D2']?.value ?? 'unknown',
     riskTolerance: answers['D3']?.value ?? 'unknown',
