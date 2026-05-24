@@ -7,277 +7,277 @@
       "questions": [
         {
           "id": "A1",
-          "text": "Your group project is going completely wrong — wrong direction, deadline is tomorrow. What do you do?",
+          "text": "It's 9pm and your group project is due tomorrow morning. You realise the team has been building in completely the wrong direction — the work is wasted and nobody has flagged it. You:",
           "type": "choice",
           "options": [
-            { "label": "Take charge and redirect the whole team myself", "traits": { "E": 2, "C": 1 } },
-            { "label": "Quietly fix my part and hope others follow", "traits": { "E": -1, "A": 1 } },
-            { "label": "Talk to each person individually to get everyone aligned", "traits": { "A": 2, "E": 1 } },
-            { "label": "Raise the issue openly so everyone pauses and rethinks", "traits": { "E": 1, "O": 1, "N": -1 } }
+            { "label": "Take charge and redirect everyone myself — tell them exactly what needs to change tonight", "traits": { "E": 2, "C": 1 } },
+            { "label": "Quietly fix my own section and do what I can, hoping the overall thing holds together", "traits": { "E": -1, "A": 1 } },
+            { "label": "Message each person individually, hear what went wrong, and get everyone on the same page", "traits": { "A": 2, "E": 1 } },
+            { "label": "Call an emergency group call and make everyone stop and rethink the whole approach from scratch", "traits": { "E": 1, "O": 1, "N": -1 } }
           ]
         },
         {
           "id": "A2",
-          "text": "You've been studying for 3 hours. Your friend calls asking you to come out. You:",
+          "text": "It's a completely free Saturday — no plans, no obligations. By evening you'd most likely have:",
           "type": "choice",
           "options": [
-            { "label": "Go — I need the break and time with friends", "traits": { "E": 2, "C": -1 } },
-            { "label": "Say no — I finish what I start", "traits": { "C": 2, "E": -1 } },
-            { "label": "Go for 30 minutes, then come back", "traits": { "A": 1, "C": 1 } },
-            { "label": "Feel guilty either way and can't focus", "traits": { "N": 2 } }
+            { "label": "Spent most of it with friends or family — calling, meeting, hanging out", "traits": { "E": 2, "A": 1 } },
+            { "label": "Done something productive alone — organised, planned, worked on a project", "traits": { "C": 2, "E": -1 } },
+            { "label": "Lost track of time going deep into something that fascinated me", "traits": { "O": 2, "E": -1 } },
+            { "label": "Chilled and recharged — no plans, no pressure, just rest", "traits": { "E": -2, "N": -1 } }
           ]
         },
         {
           "id": "A3",
-          "text": "Your teacher marks your answer wrong even though you're certain you're right. You:",
+          "text": "Your marked test paper comes back with a red cross on an answer you're completely certain is correct. You go home and verify it in two different textbooks — you were right. Next class you:",
           "type": "choice",
           "options": [
-            { "label": "Politely challenge them with your reasoning", "traits": { "E": 1, "O": 2, "A": -1 } },
-            { "label": "Accept it and move on to avoid conflict", "traits": { "A": 2, "N": -1 } },
-            { "label": "Stew about it but say nothing", "traits": { "N": 2, "E": -1 } },
-            { "label": "Double-check yourself first, then decide whether to speak up", "traits": { "C": 2, "O": 1 } }
+            { "label": "Raise your hand and politely challenge the teacher with your sources right there in class", "traits": { "E": 1, "O": 2, "A": -1 } },
+            { "label": "Accept the mark and move on — fighting it creates more stress than it's worth", "traits": { "A": 2, "N": -1 } },
+            { "label": "Say nothing out loud, but feel irritated about it for days", "traits": { "N": 2, "E": -1 } },
+            { "label": "Approach the teacher quietly after class and show them the evidence calmly", "traits": { "C": 2, "O": 1 } }
           ]
         },
         {
           "id": "A4",
-          "text": "There's a new student who knows nobody. What do you do?",
+          "text": "A new student joins your class mid-semester. It's their first day — they don't know anyone and are sitting alone at lunch looking at their phone. You:",
           "type": "choice",
           "options": [
-            { "label": "Walk up and introduce myself right away", "traits": { "E": 2, "A": 2 } },
-            { "label": "Wait to see if they seem open to talking first", "traits": { "E": -1, "A": 1 } },
-            { "label": "Ask someone else who's more outgoing to include them", "traits": { "E": -2, "A": 1 } },
-            { "label": "Smile and nod — let them settle in on their own", "traits": { "A": 1, "E": -1 } }
+            { "label": "Walk over, introduce myself, and invite them to sit with my group", "traits": { "E": 2, "A": 2 } },
+            { "label": "Make eye contact and smile — wait to see if they seem open before approaching", "traits": { "E": -1, "A": 1 } },
+            { "label": "Tell a more outgoing friend who's better at this kind of thing and ask them to check in", "traits": { "E": -2, "A": 1 } },
+            { "label": "Leave them to settle at their own pace — they'll find their people", "traits": { "A": 1, "E": -1 } }
           ]
         },
         {
           "id": "A5",
-          "text": "You have a week of holidays with no plans. What does your ideal week look like?",
+          "text": "Exams just ended and you have 7 full days of holiday with zero obligations — no tuition, no plans, nobody expecting anything from you. Your ideal week looks like:",
           "type": "choice",
           "options": [
-            { "label": "Hanging out with as many friends as possible", "traits": { "E": 2, "O": 1 } },
-            { "label": "Reading, watching documentaries, learning something new", "traits": { "O": 2, "E": -1 } },
-            { "label": "Mostly alone at home — sleep, recharge, peace", "traits": { "E": -2, "N": -1 } },
-            { "label": "Doing something useful — volunteering or helping family", "traits": { "A": 2, "O": 1 } }
+            { "label": "Packed with people — friends, hangouts, calls, catch-ups every day", "traits": { "E": 2, "O": 1 } },
+            { "label": "Reading, watching documentaries, picking up something new I've been curious about", "traits": { "O": 2, "E": -1 } },
+            { "label": "Mostly alone at home — sleeping in, peace and quiet, no one needing anything", "traits": { "E": -2, "N": -1 } },
+            { "label": "Doing something useful — volunteering, helping at home, or a project that actually matters", "traits": { "A": 2, "O": 1 } }
           ]
         },
         {
           "id": "A6",
-          "text": "You're in the middle of a tough exam and your mind completely blanks. You:",
+          "text": "You're 20 minutes into a 3-hour board exam that counts for 40% of your grade. You hit a question worth 8 marks — and your mind completely blanks. Nothing. You:",
           "type": "choice",
           "options": [
-            { "label": "Panic — heart racing, can't think straight", "traits": { "N": 2 } },
-            { "label": "Skip it, do other questions, come back to it calm", "traits": { "N": -1, "C": 2 } },
-            { "label": "Take a breath, close my eyes, try again methodically", "traits": { "N": -2, "C": 1 } },
-            { "label": "Accept the loss and focus on what's left", "traits": { "N": -1, "A": 1 } }
+            { "label": "Panic — heart rate spikes, hands tense up, it becomes hard to focus on anything", "traits": { "N": 2 } },
+            { "label": "Circle it, move to the next question, come back when I'm warmer — this is strategy, not defeat", "traits": { "N": -1, "C": 2 } },
+            { "label": "Close my eyes, breathe slowly for 10 seconds, then try rebuilding the answer from first principles", "traits": { "N": -2, "C": 1 } },
+            { "label": "Write whatever partial answer I have, accept I might lose those marks, and focus fully on the rest", "traits": { "N": -1, "A": 1 } }
           ]
         },
         {
           "id": "A7",
-          "text": "Your school is planning a big annual event and needs volunteers. You:",
+          "text": "Your school's annual cultural day is 3 weeks away. The teacher is looking for student volunteers to help organise it — decorations, logistics, performances, coordination. You:",
           "type": "choice",
           "options": [
-            { "label": "Step up to be the event coordinator", "traits": { "E": 2, "C": 1 } },
-            { "label": "Help with whatever task nobody else wants", "traits": { "A": 2, "E": -1 } },
-            { "label": "Come up with fresh ideas for the theme and entertainment", "traits": { "O": 2, "E": 1 } },
-            { "label": "Help only if a close friend is involved", "traits": { "E": -1, "A": 1 } }
+            { "label": "Put my hand up to be the overall coordinator — I'll own the whole thing", "traits": { "E": 2, "C": 1 } },
+            { "label": "Volunteer for whatever unglamorous task nobody else wants to do", "traits": { "A": 2, "E": -1 } },
+            { "label": "Jump in with ideas for the theme, the look, the vibe — the creative direction", "traits": { "O": 2, "E": 1 } },
+            { "label": "Wait to see if a close friend is involved first before deciding", "traits": { "E": -1, "A": 1 } }
           ]
         },
         {
           "id": "A8",
-          "text": "A friend asks you to help them copy your homework. You:",
+          "text": "Your teacher gets an urgent call and has to leave. The class is told it's a free period — no instructions, no task, do whatever you want for 45 minutes. You most naturally:",
           "type": "choice",
           "options": [
-            { "label": "Refuse and explain why it's a bad idea", "traits": { "C": 2, "A": -1 } },
-            { "label": "Help but feel uncomfortable the whole time", "traits": { "N": 2, "A": 1 } },
-            { "label": "Help without thinking twice — they need it", "traits": { "C": -2, "A": 2 } },
-            { "label": "Offer to explain the concept instead of giving answers", "traits": { "C": 2, "A": 2, "O": 1 } }
+            { "label": "Turn to whoever's nearby and start a conversation — suddenly the whole class is talking", "traits": { "E": 2, "A": 1 } },
+            { "label": "Pull out a book, notes, or something I've been meaning to get to", "traits": { "C": 2, "O": 1 } },
+            { "label": "Wander to another class or around school to see what's going on", "traits": { "E": 1, "O": 1 } },
+            { "label": "Put my head on the desk, close my eyes, and genuinely enjoy the silence", "traits": { "E": -2, "N": -1 } }
           ]
         },
         {
           "id": "A9",
-          "text": "Your class gets a surprise test on something you haven't studied. You feel:",
+          "text": "You walk into class and the teacher is already handing out test papers — on a chapter you skipped because it 'wasn't going to be tested.' The whole class is scrambling. You feel:",
           "type": "choice",
           "options": [
-            { "label": "Anxious — this is going to ruin my grade", "traits": { "N": 2, "C": 1 } },
-            { "label": "Annoyed but I'll just wing it", "traits": { "N": 1, "C": -1 } },
-            { "label": "Curious — let's see what I actually know", "traits": { "O": 2, "N": -1 } },
-            { "label": "Calm — one test doesn't define anything", "traits": { "N": -2 } }
+            { "label": "Genuinely anxious — this could really mess up my grade", "traits": { "N": 2, "C": 1 } },
+            { "label": "Annoyed at myself, but I'll just write what I know and move on", "traits": { "N": 1, "C": -1 } },
+            { "label": "Curious, almost amused — let's see how much I've actually absorbed without studying", "traits": { "O": 2, "N": -1 } },
+            { "label": "Calm — one surprise test doesn't define my grade or my worth", "traits": { "N": -2 } }
           ]
         },
         {
           "id": "A10",
-          "text": "You get assigned a big solo project due in 3 weeks. You:",
+          "text": "You've just been assigned a 2000-word research project on any topic of your choice, due in exactly 3 weeks. No check-ins, no milestones — just the final submission. You:",
           "type": "choice",
           "options": [
-            { "label": "Make a week-by-week plan immediately", "traits": { "C": 3 } },
-            { "label": "Think about it vaguely and start properly in week 2", "traits": { "C": -1, "N": 1 } },
-            { "label": "Start right away without much planning — I work better under pressure", "traits": { "C": -1, "O": 1 } },
-            { "label": "Get anxious about it for weeks, then rush at the end", "traits": { "N": 2, "C": -2 } }
+            { "label": "Open a notebook that evening and plan out exactly what I'll do in each of the 3 weeks", "traits": { "C": 3 } },
+            { "label": "Think about the topic for a few days, then start seriously around week 2", "traits": { "C": -1, "N": 1 } },
+            { "label": "Start writing immediately — I figure it out as I go and that works for me", "traits": { "C": -1, "O": 1 } },
+            { "label": "Stress about it quietly for 2 weeks, then stay up late in the final days to rush it out", "traits": { "N": 2, "C": -2 } }
           ]
         },
         {
           "id": "A11",
-          "text": "Two of your friends are in a fight and both want you to take their side. You:",
+          "text": "Your two closest friends had a falling-out two weeks ago over something petty that escalated badly. They're barely speaking. Both are separately messaging you to take their side. You:",
           "type": "choice",
           "options": [
-            { "label": "Try to mediate — hear both out and find common ground", "traits": { "A": 2, "E": 1 } },
-            { "label": "Stay out of it completely — not my problem", "traits": { "E": -2, "A": -1 } },
-            { "label": "Tell both honestly what I think, even if they don't like it", "traits": { "O": 1, "E": 1, "A": -1 } },
-            { "label": "Pick the one I think is right, even if it costs me the friendship", "traits": { "C": 1, "A": -1 } }
+            { "label": "Tell both I'll hear them out separately, then try to get them talking again — I want to fix this", "traits": { "A": 2, "E": 1 } },
+            { "label": "Stay completely out of it — I care about both of them but this isn't my conflict to own", "traits": { "E": -2, "A": -1 } },
+            { "label": "Tell each of them honestly what I think, including where they're wrong — even if they're annoyed at me", "traits": { "O": 1, "E": 1, "A": -1 } },
+            { "label": "Decide which one was actually in the wrong and stand with the other — clearly and openly", "traits": { "C": 1, "A": -1 } }
           ]
         },
         {
           "id": "A12",
-          "text": "You find out you made a mistake that affected your whole team's project marks. You:",
+          "text": "Results are out. You realise you accidentally used outdated data in the group assignment you submitted — and it probably dragged down the marks of all 5 people in your team. Nobody else has figured it out yet. You:",
           "type": "choice",
           "options": [
-            { "label": "Own it immediately — tell the team and teacher", "traits": { "C": 2, "N": -1 } },
-            { "label": "Feel terrible about it for days", "traits": { "N": 2, "A": 1 } },
-            { "label": "Quietly try to fix it before anyone notices", "traits": { "C": 1, "N": 1 } },
-            { "label": "Move on — mistakes happen, can't change the past", "traits": { "N": -2 } }
+            { "label": "Message the group immediately and own it — then tell the teacher and ask if anything can be done", "traits": { "C": 2, "N": -1 } },
+            { "label": "Feel genuinely awful about it — it keeps replaying in my head for days", "traits": { "N": 2, "A": 1 } },
+            { "label": "Try to quietly see if there's a way to resubmit or fix it before the team finds out", "traits": { "C": 1, "N": 1 } },
+            { "label": "Accept it as a mistake, note what I'll do differently, and move forward — dwelling helps nobody", "traits": { "N": -2 } }
           ]
         },
         {
           "id": "A13",
-          "text": "You overhear a teacher saying something harsh and unfair about a student. You:",
+          "text": "You're walking past the staffroom and the door is slightly open. You clearly hear a teacher tell another: 'That student is a lost cause — don't waste your energy on them.' You recognise who they're talking about. You:",
           "type": "choice",
           "options": [
-            { "label": "Speak to the student privately to check they're okay", "traits": { "A": 2, "E": 1 } },
-            { "label": "Report it to the school — it's wrong", "traits": { "C": 2, "O": 1 } },
-            { "label": "It's not my business — I didn't hear it", "traits": { "E": -1, "A": -1 } },
-            { "label": "Feel bothered but unsure what to do", "traits": { "N": 1, "A": 1 } }
+            { "label": "Find the student later and check in on them — they don't need to know what I heard, just that someone cares", "traits": { "A": 2, "E": 1 } },
+            { "label": "Report it to the principal or another trusted teacher — this is genuinely not okay", "traits": { "C": 2, "O": 1 } },
+            { "label": "Pretend I didn't hear it — it's not my place to get involved in teacher business", "traits": { "E": -1, "A": -1 } },
+            { "label": "Feel bothered and think about it for days but genuinely not know what to do", "traits": { "N": 1, "A": 1 } }
           ]
         },
         {
           "id": "A14",
-          "text": "You've been given ₹500 as a birthday gift. Most likely you:",
+          "text": "A relative hands you ₹500 cash at your birthday. You have no immediate needs and no pressure to spend it anywhere. Most likely you:",
           "type": "choice",
           "options": [
-            { "label": "Save it immediately — I have a goal in mind", "traits": { "C": 2, "N": -1 } },
-            { "label": "Spend it on something fun right now", "traits": { "C": -1, "E": 1 } },
-            { "label": "Split it — half save, half spend", "traits": { "C": 1 } },
-            { "label": "Use it to try something I've been curious about", "traits": { "O": 2 } }
+            { "label": "Put it straight into savings — I have something I'm working toward", "traits": { "C": 2, "N": -1 } },
+            { "label": "Spend it on something I've been wanting — why wait?", "traits": { "C": -1, "E": 1 } },
+            { "label": "Keep half, spend half — feels like the balanced thing to do", "traits": { "C": 1 } },
+            { "label": "Use it to try something I've never done before — a book, a class, an experience", "traits": { "O": 2 } }
           ]
         },
         {
           "id": "A15",
-          "text": "You're working on a creative assignment and you get an unusual, risky idea. You:",
+          "text": "For your English project you have to create anything on the theme 'change.' Halfway through, you get an unusual idea — it could be genuinely brilliant or it could completely miss the mark and cost you marks. You:",
           "type": "choice",
           "options": [
-            { "label": "Go for it — worst case I fail, but it'll be interesting", "traits": { "O": 2, "N": -1 } },
-            { "label": "Do the safe version first, keep the risky idea as backup", "traits": { "C": 1, "O": 1 } },
-            { "label": "Ask the teacher first before committing", "traits": { "N": 1, "A": 1 } },
-            { "label": "Drop it — I want marks, not experiments", "traits": { "C": 1, "O": -1 } }
+            { "label": "Go for the risky idea — worst case I fail, but at least it'll be something I actually made", "traits": { "O": 2, "N": -1 } },
+            { "label": "Build the safe version first so I have a fallback, then experiment with the risky one", "traits": { "C": 1, "O": 1 } },
+            { "label": "Check with the teacher before committing — I don't want to waste effort on something they'll reject", "traits": { "N": 1, "A": 1 } },
+            { "label": "Stick with the safe version — I'm here for the grade, not to experiment", "traits": { "C": 1, "O": -1 } }
           ]
         },
         {
           "id": "A16",
-          "text": "Your class is having a debate competition. You:",
+          "text": "Your school is holding inter-class debates next month. Each class needs speakers who'll argue in public, a researcher who preps all the data, and a coordinator who manages the whole team. You:",
           "type": "choice",
           "options": [
-            { "label": "Volunteer to speak — debates energise me", "traits": { "E": 2, "O": 1 } },
-            { "label": "Volunteer to do research and prep instead", "traits": { "E": -1, "C": 1, "O": 1 } },
-            { "label": "Participate only if I absolutely have to", "traits": { "E": -2, "N": 1 } },
-            { "label": "Help behind the scenes — manage the flow, time-keep", "traits": { "C": 2, "E": -1 } }
+            { "label": "Volunteer to be a speaker — arguing a position in front of people actually energises me", "traits": { "E": 2, "O": 1 } },
+            { "label": "Sign up as the researcher — I'd rather be the one finding the strongest arguments behind the scenes", "traits": { "E": -1, "C": 1, "O": 1 } },
+            { "label": "Agree to participate only because the class needs bodies — I'd rather not", "traits": { "E": -2, "N": 1 } },
+            { "label": "Take on the coordinator role — timing, logistics, keeping the team on track", "traits": { "C": 2, "E": -1 } }
           ]
         },
         {
           "id": "A17",
-          "text": "You're asked to give feedback to a friend about their creative work that's genuinely not good. You:",
+          "text": "Your friend spent 3 weeks making a short film for the school festival. They ask you to watch it and give honest feedback before they submit. It has real problems — the story is unclear, the audio is bad, the pacing is off. They're excited. You:",
           "type": "choice",
           "options": [
-            { "label": "Be honest even if it's uncomfortable — they need to know", "traits": { "O": 1, "A": -1, "C": 1 } },
-            { "label": "Find something positive to say and skip the negatives", "traits": { "A": 2, "N": -1 } },
-            { "label": "Ask them questions that help them see the issues themselves", "traits": { "A": 1, "O": 2 } },
-            { "label": "Tell them it's good — I hate hurting people", "traits": { "A": 2, "C": -1 } }
+            { "label": "Tell them clearly what's working and what isn't — honest feedback is the most respectful thing I can give", "traits": { "O": 1, "A": -1, "C": 1 } },
+            { "label": "Focus on what's genuinely good and skip the negatives — they've already submitted it in their head", "traits": { "A": 2, "N": -1 } },
+            { "label": "Ask questions — 'What were you going for here?' — and let them talk their way to the problems themselves", "traits": { "A": 1, "O": 2 } },
+            { "label": "Tell them it's great — I can't bring myself to dim their excitement over a school project", "traits": { "A": 2, "C": -1 } }
           ]
         },
         {
           "id": "A18",
-          "text": "You wake up and realise you've overslept and will be 20 minutes late to school. You:",
+          "text": "It's a regular school morning. You wake up, check your phone, and your stomach drops — you've overslept by 45 minutes. First period has already started. You:",
           "type": "choice",
           "options": [
-            { "label": "Panic and rush — this is terrible", "traits": { "N": 2, "C": 1 } },
-            { "label": "Feel bad but move quickly and accept the consequence", "traits": { "N": 1, "C": 1 } },
-            { "label": "Text a friend to cover for me while I figure out a plan", "traits": { "E": 1, "A": 1 } },
-            { "label": "Stay calm — being late once isn't the end of the world", "traits": { "N": -2 } }
+            { "label": "Heart racing, scramble to get ready as fast as possible — I hate being late, it ruins my whole day", "traits": { "N": 2, "C": 1 } },
+            { "label": "Feel annoyed at myself, get dressed quickly, accept I'll take the late mark, and move on", "traits": { "N": 1, "C": 1 } },
+            { "label": "Text a friend to let the teacher know I'm on my way, buy myself a few minutes", "traits": { "E": 1, "A": 1 } },
+            { "label": "Get ready without much fuss — one late morning out of 200 school days isn't a crisis", "traits": { "N": -2 } }
           ]
         },
         {
           "id": "A19",
-          "text": "When you disagree with a popular opinion in class, you usually:",
+          "text": "Your class is discussing a topic and most people are nodding along to a view that you genuinely disagree with — you think it's incomplete and you have a different take. You:",
           "type": "choice",
           "options": [
-            { "label": "Say so clearly — different views need to be heard", "traits": { "E": 1, "O": 2 } },
-            { "label": "Stay quiet — it's not worth the conflict", "traits": { "E": -1, "A": 1, "N": 1 } },
-            { "label": "Raise it as a question rather than a direct challenge", "traits": { "O": 1, "A": 1 } },
-            { "label": "Write it down for myself but don't say it out loud", "traits": { "E": -2, "O": 1 } }
+            { "label": "Say what I think, clearly — the class is better when there's a real counter-perspective on the table", "traits": { "E": 1, "O": 2 } },
+            { "label": "Stay quiet — everyone's agreed and starting a debate isn't worth the awkwardness", "traits": { "E": -1, "A": 1, "N": 1 } },
+            { "label": "Phrase it as a question: 'But doesn't that assume...?' — so it doesn't feel like a direct attack", "traits": { "O": 1, "A": 1 } },
+            { "label": "Write my actual view in my notes but keep it to myself — I'll think it through later", "traits": { "E": -2, "O": 1 } }
           ]
         },
         {
           "id": "A20",
-          "text": "You're working late on something important and a friend keeps messaging asking to hang out. You:",
+          "text": "You have 5 different tasks to get done today — homework, a reply to an email, a personal project, some reading, and a chore. No deadline conflicts, no specific order required. You typically:",
           "type": "choice",
           "options": [
-            { "label": "Keep working — I'll catch up with them later", "traits": { "C": 2, "E": -1 } },
-            { "label": "Stop working and go — the work will wait", "traits": { "E": 2, "C": -2 } },
-            { "label": "Feel torn and can't focus on either properly", "traits": { "N": 2 } },
-            { "label": "Finish the current section, then reply with a time I'm free", "traits": { "C": 1, "A": 1 } }
+            { "label": "Rank them by importance and start with the hardest — I want the heavy stuff off my plate first", "traits": { "C": 2, "N": -1 } },
+            { "label": "Start with something easy to get going, then work up to the harder ones", "traits": { "C": 1, "N": 1 } },
+            { "label": "Work on whichever one I feel pulled toward in the moment — I flow between tasks naturally", "traits": { "C": -1, "O": 1 } },
+            { "label": "Get stuck deciding where to start and end up losing time before I actually begin", "traits": { "N": 2, "C": -1 } }
           ]
         },
         {
           "id": "A21",
-          "text": "A classmate takes credit for an idea you came up with. You:",
+          "text": "During a group presentation, your classmate presents an idea you privately suggested to them last week — and takes full credit for it in front of the teacher without mentioning you. You:",
           "type": "choice",
           "options": [
-            { "label": "Correct the record in front of others immediately", "traits": { "E": 2, "A": -1 } },
-            { "label": "Bring it up with them privately after", "traits": { "A": 1, "C": 1 } },
-            { "label": "Let it go — I know the truth, that's enough", "traits": { "A": 1, "N": -1 } },
-            { "label": "Stew about it but say nothing and feel resentful", "traits": { "N": 2, "E": -1 } }
+            { "label": "Correct it right there: 'Actually, that was something I had suggested...' — calmly but clearly", "traits": { "E": 2, "A": -1 } },
+            { "label": "Say nothing now, but bring it up with them privately after class", "traits": { "A": 1, "C": 1 } },
+            { "label": "Let it go — the idea got used, I know where it came from, that's enough for me", "traits": { "A": 1, "N": -1 } },
+            { "label": "Say nothing but feel genuinely resentful about it for days", "traits": { "N": 2, "E": -1 } }
           ]
         },
         {
           "id": "A22",
-          "text": "You've been given a choice: work on a topic you know well or explore something completely new for a class project. You:",
+          "text": "For your history project you can choose your own topic. Option A: the Mughal Empire — you've studied it all year and know it well. Option B: the Byzantine Empire — genuinely interesting to you, but you know almost nothing about it. You:",
           "type": "choice",
           "options": [
-            { "label": "Explore the new topic — sounds more interesting", "traits": { "O": 2, "N": -1 } },
-            { "label": "Stick with the familiar — better chance of a good grade", "traits": { "C": 1, "O": -1 } },
-            { "label": "Pick the new topic but research thoroughly first", "traits": { "O": 1, "C": 1 } },
-            { "label": "Ask the teacher which one will be easier to score on", "traits": { "C": 1, "N": 1 } }
+            { "label": "Pick Byzantine — the fact that I know nothing about it is exactly what makes it interesting", "traits": { "O": 2, "N": -1 } },
+            { "label": "Stick with Mughal — I know it, I'll do it better, I want the marks", "traits": { "C": 1, "O": -1 } },
+            { "label": "Pick Byzantine but give myself extra time to research thoroughly before writing anything", "traits": { "O": 1, "C": 1 } },
+            { "label": "Ask the teacher which one is likely to score higher before deciding", "traits": { "C": 1, "N": 1 } }
           ]
         },
         {
           "id": "A23",
-          "text": "After a long day at school you feel most recharged by:",
+          "text": "You've just had a draining school day — back-to-back classes, a stressful test, and a lot of people. You get home at 4pm with a free evening ahead. What actually recharges you?",
           "type": "choice",
           "options": [
-            { "label": "Calling or meeting friends for a couple of hours", "traits": { "E": 2 } },
-            { "label": "Alone time — room, headphones, no one bothering me", "traits": { "E": -2 } },
-            { "label": "Something physical — a sport, a walk", "traits": { "E": 1, "N": -1 } },
-            { "label": "Something absorbing — a book, a show, a game", "traits": { "E": -1, "O": 1 } }
+            { "label": "Calling a friend or heading out to meet someone — connecting with people lifts me up", "traits": { "E": 2 } },
+            { "label": "Going to my room, putting on headphones, and having zero people around for a few hours", "traits": { "E": -2 } },
+            { "label": "Something physical — shooting hoops, going for a run, even a long walk", "traits": { "E": 1, "N": -1 } },
+            { "label": "Getting absorbed in something — a book, a series, a game — just me and the thing", "traits": { "E": -1, "O": 1 } }
           ]
         },
         {
           "id": "A24",
-          "text": "Your school introduces a new rule you think is unfair. You:",
+          "text": "Your school announces that phones will be completely banned on campus — even during lunch and free periods — starting next month. You think it's excessive and unfair. You:",
           "type": "choice",
           "options": [
-            { "label": "Organise a petition with classmates to push back", "traits": { "E": 2, "O": 1, "C": 1 } },
-            { "label": "Follow it regardless — rules are rules", "traits": { "C": 1, "A": 1 } },
-            { "label": "Complain to friends but do nothing about it", "traits": { "N": 1, "E": -1 } },
-            { "label": "Raise it respectfully with the teacher or principal", "traits": { "E": 1, "C": 1, "O": 1 } }
+            { "label": "Start organising — get classmates to sign a petition and present it to the principal as a group", "traits": { "E": 2, "O": 1, "C": 1 } },
+            { "label": "Follow the new rule without making a fuss — it's their school, not mine", "traits": { "C": 1, "A": 1 } },
+            { "label": "Vent to friends about how unfair it is, but don't actually do anything", "traits": { "N": 1, "E": -1 } },
+            { "label": "Request a meeting with the teacher or principal and make my case respectfully with reasons", "traits": { "E": 1, "C": 1, "O": 1 } }
           ]
         },
         {
           "id": "A25",
-          "text": "You've been asked to present in front of the whole school assembly. You feel:",
+          "text": "Your principal asks you personally to deliver the opening address at the school's annual day — 800 students and parents in the auditorium, 5-minute speech, on stage. How do you genuinely feel?",
           "type": "choice",
           "options": [
-            { "label": "Excited — I love having a platform", "traits": { "E": 2, "N": -1 } },
-            { "label": "Nervous but I'll prepare well and get through it", "traits": { "N": 1, "C": 1 } },
-            { "label": "Terrified — I'd rather do anything else", "traits": { "N": 2, "E": -2 } },
-            { "label": "Okay with it — it's just part of school life", "traits": { "N": -1, "E": 1 } }
+            { "label": "Excited — I'll take any platform I can get, and this one's a good one", "traits": { "E": 2, "N": -1 } },
+            { "label": "Nervous, but I'll write the speech carefully and prepare until I feel ready", "traits": { "N": 1, "C": 1 } },
+            { "label": "Dreading it — public speaking in front of that many people is genuinely distressing for me", "traits": { "N": 2, "E": -2 } },
+            { "label": "Fine — it's a bit uncomfortable but it's part of school life and I'll just do it", "traits": { "N": -1, "E": 1 } }
           ]
         }
       ]
@@ -570,136 +570,136 @@
     {
       "id": "D",
       "title": "What do you want your life to look like?",
-      "pickCount": 4,
+      "pickCount": 5,
       "questions": [
         {
           "id": "D1",
-          "text": "Picture yourself at 30. Where are you living?",
+          "text": "Close your eyes for a second. It's 2041. You're 30 years old, established in your career. Where are you living — and is that a choice or a compromise?",
           "type": "choice",
           "options": [
-            { "label": "A big metro — Mumbai, Delhi, Bangalore", "value": "metro", "traits": {} },
-            { "label": "A growing mid-size city", "value": "tier2", "traits": {} },
-            { "label": "Back in my hometown — I want to build it up", "value": "hometown", "traits": {} },
-            { "label": "Wherever the work takes me", "value": "flexible", "traits": {} }
+            { "label": "A big metro — Mumbai, Delhi, Bangalore. I want the energy, the opportunity, the scale", "value": "metro", "traits": {} },
+            { "label": "A growing mid-size city — enough career options, less chaos, actually liveable", "value": "tier2", "traits": {} },
+            { "label": "Back in my hometown — I want to build something there, not just leave", "value": "hometown", "traits": {} },
+            { "label": "Wherever the best work is — I'm not attached to a place, I'm attached to what I'm doing", "value": "flexible", "traits": {} }
           ]
         },
         {
           "id": "D2",
-          "text": "What matters most to you in a career?",
+          "text": "If you could design your own career from scratch — forget what's practical for a second — what would it absolutely have to give you? Pick the one thing you'd refuse to compromise on:",
           "type": "choice",
           "options": [
-            { "label": "Stability — predictable income, safe job", "value": "stability", "traits": { "N": -1 } },
-            { "label": "High income — I want to build serious wealth", "value": "wealth", "traits": { "En": 1 } },
-            { "label": "Impact — I want to change something real in the world", "value": "impact", "traits": { "O": 1 } },
-            { "label": "Flexibility — I want to work on my own terms", "value": "flexibility", "traits": { "O": 1, "E": -1 } }
+            { "label": "Stability — I need to know what's coming in every month, no roller coasters", "value": "stability", "traits": { "N": -1 } },
+            { "label": "High income — I want real financial freedom, not just a decent salary", "value": "wealth", "traits": { "En": 1 } },
+            { "label": "Meaning — I need to feel like the work actually matters, not just to me", "value": "impact", "traits": { "O": 1 } },
+            { "label": "Autonomy — I want to decide how, when, and where I work", "value": "flexibility", "traits": { "O": 1, "E": -1 } }
           ]
         },
         {
           "id": "D3",
-          "text": "You have ₹5,000 saved. Option A: Keep it safe in a fixed deposit. Option B: 50% chance you get ₹15,000, 50% chance you lose it all. You:",
+          "text": "You have ₹5,000 saved up over several months. A friend offers you a deal: flip it into a bet — 50% chance you walk away with ₹15,000, 50% chance you lose all ₹5,000. The alternative is leaving it in a fixed deposit at guaranteed 7% interest. You have no immediate need for the money. You:",
           "type": "choice",
           "options": [
-            { "label": "Take the fixed deposit — ₹5,000 for sure", "value": "risk_averse", "traits": { "N": 1 } },
-            { "label": "Take the gamble — the upside is worth it", "value": "risk_lover", "traits": { "En": 2, "N": -2 } },
-            { "label": "Depends on how urgently I need the money right now", "value": "calculated", "traits": { "C": 1 } }
+            { "label": "Fixed deposit, no question — I worked for that ₹5,000 and I'm not gambling it", "value": "risk_averse", "traits": { "N": 1 } },
+            { "label": "Take the bet — expected value is positive and I can handle losing it if I have to", "value": "risk_lover", "traits": { "En": 2, "N": -2 } },
+            { "label": "Think it through carefully — I'd want to know more about the bet before deciding either way", "value": "calculated", "traits": { "C": 1 } }
           ]
         },
         {
           "id": "D4",
-          "text": "How do you feel about AI changing jobs in the next 10 years?",
+          "text": "By 2035, AI will likely be doing jobs that humans do today — coding, writing, diagnosis, legal research. You'll be 24. When you think about this honestly, you feel:",
           "type": "choice",
           "options": [
-            { "label": "Worried — I want a career that's hard for AI to replace", "value": "ai_worried", "traits": {} },
-            { "label": "Excited — I want to work alongside AI and stay ahead of it", "value": "ai_excited", "traits": { "I": 1 } },
-            { "label": "Indifferent — I'll adapt to whatever the world becomes", "value": "ai_neutral", "traits": { "O": 1 } }
+            { "label": "Worried — I want to build a career that's genuinely hard for AI to replace", "value": "ai_worried", "traits": {} },
+            { "label": "Excited — I want to work with AI and use it as a tool to get ahead, not compete with it", "value": "ai_excited", "traits": { "I": 1 } },
+            { "label": "Unconcerned — every generation faces disruption and people always find their way", "value": "ai_neutral", "traits": { "O": 1 } }
           ]
         },
         {
           "id": "D5",
-          "text": "Imagine your dream workday at 28. Which sounds closest?",
+          "text": "It's 2037 and you're 28. You love your job. Describe a typical Tuesday — not the highlights, just a regular good day at work. Which version sounds most like you?",
           "type": "choice",
           "options": [
-            { "label": "Meeting clients or speaking to large groups all day", "value": "metro", "traits": { "E": 2 } },
-            { "label": "Deep focus work — just me, a problem, and no interruptions", "value": "flexible", "traits": { "E": -2, "I": 1 } },
-            { "label": "Mixed — some meetings, some independent work", "value": "tier2", "traits": {} },
-            { "label": "Working in the field — visiting sites, being out and about", "value": "flexible", "traits": { "R": 1, "E": 1 } }
+            { "label": "Back-to-back — meetings, presentations, calls, negotiating with people all day. I thrive on the interaction", "value": "metro", "traits": { "E": 2 } },
+            { "label": "Long stretches of deep focus on a hard problem — headphones in, no interruptions, fully absorbed", "value": "flexible", "traits": { "E": -2, "I": 1 } },
+            { "label": "A mix — some focused solo work in the morning, some collaboration in the afternoon", "value": "tier2", "traits": {} },
+            { "label": "Out in the field — visiting places, meeting people on-site, always moving around", "value": "flexible", "traits": { "R": 1, "E": 1 } }
           ]
         },
         {
           "id": "D6",
-          "text": "How important is it that your work feels meaningful and purposeful?",
+          "text": "Two job offers: Job A pays ₹30 LPA and is genuinely meaningful — you're working on something that helps people. Job B pays ₹50 LPA and is completely fine but doesn't particularly matter to the world. Both have similar hours and growth. You take:",
           "type": "choice",
           "options": [
-            { "label": "Essential — I can't do something that feels pointless", "value": "impact", "traits": { "O": 1, "A": 1 } },
-            { "label": "Nice but not essential — the money and growth matter more", "value": "wealth", "traits": { "En": 1 } },
-            { "label": "It depends on the day — both matter at different times", "value": "flexibility", "traits": {} },
-            { "label": "I mostly just want it to be low-stress and sustainable", "value": "stability", "traits": { "N": -1 } }
+            { "label": "Job A — I can't spend 10 hours a day on something that means nothing to me", "value": "impact", "traits": { "O": 1, "A": 1 } },
+            { "label": "Job B — the extra ₹20 LPA is real and I'll find meaning in other parts of my life", "value": "wealth", "traits": { "En": 1 } },
+            { "label": "Hard to say — I'd want to talk to people in both roles before deciding", "value": "flexibility", "traits": {} },
+            { "label": "Job A, but mainly because low-stress sustainable work tends to be in mission-driven places", "value": "stability", "traits": { "N": -1 } }
           ]
         },
         {
           "id": "D7",
-          "text": "You're 3 years into a stable, well-paying job but you're bored. You:",
+          "text": "You're 26. Three years into a stable, well-paying job with a reputable company. Good salary, no major stress. But you dread Mondays and feel like you're slowly fading. You:",
           "type": "choice",
           "options": [
-            { "label": "Push through — stability matters more than excitement", "value": "stability", "traits": { "N": 1, "C": 1 } },
-            { "label": "Start planning an exit toward something more interesting", "value": "flexibility", "traits": { "O": 2, "En": 1 } },
-            { "label": "Look for ways to make the current job more interesting first", "value": "calculated", "traits": { "C": 1, "O": 1 } },
-            { "label": "Leave and figure it out — life's too short", "value": "risk_lover", "traits": { "En": 1, "N": -1 } }
+            { "label": "Push through — I've built something stable here and excitement is overrated in a career", "value": "stability", "traits": { "N": 1, "C": 1 } },
+            { "label": "Start quietly planning an exit — save more aggressively and look for something that excites me", "value": "flexibility", "traits": { "O": 2, "En": 1 } },
+            { "label": "Try to change what I can from the inside first — request new projects, take on more, find the interesting parts", "value": "calculated", "traits": { "C": 1, "O": 1 } },
+            { "label": "Resign when I have 3 months of savings — figure out the next move with a clear head", "value": "risk_lover", "traits": { "En": 1, "N": -1 } }
           ]
         },
         {
           "id": "D8",
-          "text": "If you could choose, how much would you work per week at 30?",
+          "text": "At 30, you have full control over your schedule. You can choose how much you work — but the more you work, the more you earn and build. The less you work, the more time you have. What do you actually choose?",
           "type": "choice",
           "options": [
-            { "label": "As much as it takes — I want to build something big", "value": "wealth", "traits": { "En": 2, "C": 1 } },
-            { "label": "Standard hours — I want a life outside work too", "value": "stability", "traits": { "N": -1 } },
-            { "label": "Flexible — some weeks intense, some weeks light", "value": "flexibility", "traits": { "O": 1 } },
-            { "label": "As little as possible — I'd rather earn less and have more time", "value": "flexibility", "traits": { "E": -1 } }
+            { "label": "60–70 hours a week — I'm trying to build something and this is the season for it", "value": "wealth", "traits": { "En": 2, "C": 1 } },
+            { "label": "40–45 hours — I want to do great work and still have evenings and weekends", "value": "stability", "traits": { "N": -1 } },
+            { "label": "Depends on the month — I'd rather have peaks and valleys than a rigid routine", "value": "flexibility", "traits": { "O": 1 } },
+            { "label": "As little as I can sustain — I'd genuinely rather earn less and have more of my time back", "value": "flexibility", "traits": { "E": -1 } }
           ]
         },
         {
           "id": "D9",
-          "text": "What would genuinely bother you more?",
+          "text": "At 29, one of these is your reality. Which would genuinely bother you the most day-to-day — not which sounds worst in theory, but which would actually eat at you?",
           "type": "choice",
           "options": [
-            { "label": "Earning less than my friends", "value": "wealth", "traits": { "En": 1, "N": 1 } },
-            { "label": "Working in something I don't believe in", "value": "impact", "traits": { "O": 1, "A": 1 } },
-            { "label": "Not being in control of my own time", "value": "flexibility", "traits": { "En": 1 } },
-            { "label": "Feeling like my job could disappear at any moment", "value": "stability", "traits": { "N": 1 } }
+            { "label": "I'm earning significantly less than most of my friends doing similar work", "value": "wealth", "traits": { "En": 1, "N": 1 } },
+            { "label": "I'm good at my job but I don't believe in what my company actually does", "value": "impact", "traits": { "O": 1, "A": 1 } },
+            { "label": "I have no control over my time — the company owns my schedule completely", "value": "flexibility", "traits": { "En": 1 } },
+            { "label": "My role feels like it could be cut or automated at any point — no security", "value": "stability", "traits": { "N": 1 } }
           ]
         },
         {
           "id": "D10",
-          "text": "Your parents want you to take a high-paying but boring career path. You:",
+          "text": "After 12th, your parents sit you down and make their case: pursue CA or engineering — not because you love it, but because it's a safe, high-paying path and they've seen what instability does. You:",
           "type": "choice",
           "options": [
-            { "label": "Agree — their experience matters and security is real", "value": "stability", "traits": { "A": 1, "C": 1 } },
-            { "label": "Respectfully disagree and make my case with research", "value": "impact", "traits": { "O": 1, "E": 1 } },
-            { "label": "Feel torn but probably go with what they say", "value": "stability", "traits": { "N": 1, "A": 1 } },
-            { "label": "Do the boring path for a few years, then transition when I'm financially free", "value": "calculated", "traits": { "C": 2, "En": 1 } }
+            { "label": "Agree — their lived experience is real data and I'd rather be secure than right", "value": "stability", "traits": { "A": 1, "C": 1 } },
+            { "label": "Respectfully disagree — prepare a proper counter-argument with research and present it to them", "value": "impact", "traits": { "O": 1, "E": 1 } },
+            { "label": "Feel genuinely torn — their concerns are valid but so is mine, and I'm not sure what to do", "value": "stability", "traits": { "N": 1, "A": 1 } },
+            { "label": "Take their path but treat it as a 3–5 year plan — earn, save, then transition to what I actually want", "value": "calculated", "traits": { "C": 2, "En": 1 } }
           ]
         },
         {
           "id": "D11",
-          "text": "How do you feel about the idea of starting your own business one day?",
+          "text": "A friend who started a business 2 years ago calls you excited — it's finally profitable. But they also worked 70-hour weeks, had 6 months with no income, and nearly quit three times. When you hear that story, your honest reaction is:",
           "type": "choice",
           "options": [
-            { "label": "Genuinely exciting — it's something I think about often", "value": "risk_lover", "traits": { "En": 2, "O": 1 } },
-            { "label": "Interesting but scary — maybe someday", "value": "calculated", "traits": { "En": 1, "N": 1 } },
-            { "label": "Not for me — I'd rather be excellent in an existing organisation", "value": "stability", "traits": { "N": 1 } },
-            { "label": "Only if I had a genuinely good idea and the right support", "value": "calculated", "traits": { "C": 1, "O": 1 } }
+            { "label": "That sounds incredible — the hard parts are part of what makes it worth it", "value": "risk_lover", "traits": { "En": 2, "O": 1 } },
+            { "label": "I admire it, but I'm not sure I could handle 6 months of no income", "value": "calculated", "traits": { "En": 1, "N": 1 } },
+            { "label": "Genuinely not for me — I'd rather master a craft inside a great organisation than own the whole thing", "value": "stability", "traits": { "N": 1 } },
+            { "label": "Maybe — if I had the right idea and the right co-founder, I could see it", "value": "calculated", "traits": { "C": 1, "O": 1 } }
           ]
         },
         {
           "id": "D12",
-          "text": "Which of these worries you most about your future?",
+          "text": "It's 3am and you're lying awake thinking about your future. Which of these is most likely what you're actually anxious about — not the most noble-sounding one, but the real one?",
           "type": "choice",
           "options": [
-            { "label": "Not making enough money to support my family", "value": "wealth", "traits": { "N": 1 } },
-            { "label": "Spending my life doing something that doesn't matter", "value": "impact", "traits": { "O": 1, "A": 1 } },
-            { "label": "Choosing the wrong career and being stuck", "value": "stability", "traits": { "N": 2 } },
-            { "label": "Missing out on experiences because I'm always working", "value": "flexibility", "traits": { "E": 1 } }
+            { "label": "Not earning enough to take care of my parents and give them the life they deserve", "value": "wealth", "traits": { "N": 1 } },
+            { "label": "Spending 40 years doing something that doesn't change anything or matter to anyone", "value": "impact", "traits": { "O": 1, "A": 1 } },
+            { "label": "Making the wrong call on which career to pursue and being trapped in it", "value": "stability", "traits": { "N": 2 } },
+            { "label": "Looking back at 45 and realising I traded all my best years for a career and nothing else", "value": "flexibility", "traits": { "E": 1 } }
           ]
         }
       ]

@@ -217,12 +217,38 @@ export default function AssessPage() {
                 Section {Object.keys(BLOCK_LABELS).indexOf(blockId!) + 1} of 4
               </p>
               <h2 style={{ fontFamily: serif, fontSize: '1.75rem', color: 'var(--cream)', margin: '0 0 0.875rem' }}>{blockMeta.label}</h2>
-              <p style={{ fontSize: '0.88rem', color: 'rgba(255,250,243,0.5)', lineHeight: 1.7, margin: '0 0 2.5rem' }}>
-                {blockId === 'A' && 'Real-life scenarios. No right or wrong — just be honest.'}
-                {blockId === 'B' && 'What kind of work actually excites you?'}
-                {blockId === 'C' && 'Quick practical details to personalise your results.'}
-                {blockId === 'D' && 'Last section — tell us what you want your life to look like.'}
-              </p>
+              {blockId === 'A' && (
+                <div style={{ margin: '0 0 2.5rem' }}>
+                  <p style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--amber)', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 0.5rem' }}>Checking: Personality</p>
+                  <p style={{ fontSize: '0.88rem', color: 'rgba(255,250,243,0.6)', lineHeight: 1.75, margin: 0 }}>
+                    These are real-life scenarios based on the Big Five — the most validated personality framework in psychology. Your instinctive reactions reveal how you handle pressure, people, and uncertainty. This is the foundation of career fit: how you naturally operate, not how you wish you did.
+                  </p>
+                </div>
+              )}
+              {blockId === 'B' && (
+                <div style={{ margin: '0 0 2.5rem' }}>
+                  <p style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--amber)', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 0.5rem' }}>Checking: Interests</p>
+                  <p style={{ fontSize: '0.88rem', color: 'rgba(255,250,243,0.6)', lineHeight: 1.75, margin: 0 }}>
+                    These questions map your RIASEC interest profile — the same framework used by career counsellors worldwide. Interests predict job satisfaction better than test scores do. We're not asking what you're good at. We're asking what actually pulls your attention when nothing is forcing you.
+                  </p>
+                </div>
+              )}
+              {blockId === 'C' && (
+                <div style={{ margin: '0 0 2.5rem' }}>
+                  <p style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--amber)', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 0.5rem' }}>Checking: Your Situation</p>
+                  <p style={{ fontSize: '0.88rem', color: 'rgba(255,250,243,0.6)', lineHeight: 1.75, margin: 0 }}>
+                    One quick practical question. Your college budget shapes which paths are actually accessible — we use it to filter out options that don't fit your reality, not to limit your ambitions. Being honest here makes your results more useful.
+                  </p>
+                </div>
+              )}
+              {blockId === 'D' && (
+                <div style={{ margin: '0 0 2.5rem' }}>
+                  <p style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--amber)', textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 0.5rem' }}>Checking: Life Goals</p>
+                  <p style={{ fontSize: '0.88rem', color: 'rgba(255,250,243,0.6)', lineHeight: 1.75, margin: 0 }}>
+                    The same career can feel like a dream or a trap depending on what you want your life to look like. These questions measure your aspiration profile — wealth, impact, autonomy, stability, balance — so we can separate careers that match your ambitions from ones that technically fit your personality but would make you miserable.
+                  </p>
+                </div>
+              )}
               <button onClick={handleBlockContinue} style={{ width: '100%', padding: '1rem', background: 'rgba(255,250,243,0.07)', color: 'var(--cream)', fontFamily: 'inherit', fontWeight: 600, fontSize: '0.95rem', border: '1px solid rgba(255,250,243,0.12)', borderRadius: 14, cursor: 'pointer' }}>
                 Let's go →
               </button>
